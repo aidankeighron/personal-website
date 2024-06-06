@@ -2,10 +2,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 6rem;
+  margin: 0px;
 }
 
-.description {
+.scene {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  border: 5px red solid;
+  z-index: 2;
+}
+
+.canvas{
+  background: #000;
+}
+
+.header {
   display: inherit;
   justify-content: inherit;
   align-items: inherit;
@@ -14,9 +26,10 @@
   width: 100%;
   z-index: 2;
   font-family: var(--font-mono);
+  margin-top: 20px;
 }
 
-.description p {
+.header p {
   position: relative;
   margin: 0;
   padding: 1rem;
