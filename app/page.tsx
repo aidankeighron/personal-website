@@ -4,6 +4,7 @@ import css from "./page.module.css";
 import * as THREE from 'three';
 import React, { useRef, useState } from 'react';
 import { Canvas, useFrame, ThreeElements } from '@react-three/fiber';
+import { Scene } from "./components/Scene";
 
 function Box(props: ThreeElements['mesh']) {
   const ref = useRef<THREE.Mesh>(null!)
@@ -28,10 +29,7 @@ export default function Home() {
     <main className={css.main}>
       <div className={css.scene}>
         <Canvas>
-          <ambientLight />
-          <pointLight position={[10, 10, 10]} />
-          <Box position={[-1.2, 0, 0]} />
-          <Box position={[1.2, 0, 0]} />
+          <Scene />
         </Canvas>
       </div>
       <div className={css.header}>
