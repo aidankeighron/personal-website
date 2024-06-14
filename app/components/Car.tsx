@@ -1,11 +1,11 @@
 import { useBox, useRaycastVehicle } from "@react-three/cannon";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { Ref, useEffect, useRef } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useControls } from "./useControls";
 import { useWheels } from "./useWheels";
 import { WheelDebug } from "./WheelDebug";
-import { Quaternion, Vector3 } from "three";
+import { Group, Object3DEventMap, Quaternion, Vector3 } from "three";
 
 type CarParams = {
   thirdPerson: boolean
@@ -71,8 +71,8 @@ export function Car({thirdPerson}: CarParams): JSX.Element {
   }, [result]);
 
   return (
-    <group ref={vehicle} name="vehicle">
-      <group ref={chassisBody} name="chassisBody">
+    <group ref={vehicle as Ref<Group<Object3DEventMap>>} name="vehicle">
+      <group ref={chassisBody as Ref<Group<Object3DEventMap>>} name="chassisBody">
         <primitive object={result} rotation-y={Math.PI} position={[0, -0.09, 0]} />
       </group>
 

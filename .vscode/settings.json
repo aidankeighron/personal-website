@@ -7,6 +7,7 @@
         "Firestore",
         "GLTF",
         "metalness",
-        "Raycast"
+        "Raycast",
+        "Trimesh"
     ]
 }

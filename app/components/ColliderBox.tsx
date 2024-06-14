@@ -2,12 +2,12 @@ import { useBox } from "@react-three/cannon";
 
 const debug = false;
 
-type ColliderBox = {
+type ColliderBoxProps = {
     position: [x: number, y: number, z: number],
     scale: [width: number, height: number, depth: number]
 }
 
-export function ColliderBox({position, scale}: ColliderBox) {
+export function ColliderBox({position, scale}: ColliderBoxProps): boolean {
   useBox(() => ({
     args: scale,
     position,

@@ -1,7 +1,7 @@
 import { PublicApi, RaycastVehiclePublicApi } from "@react-three/cannon";
 import { useEffect, useState } from "react";
 
-export const useControls = (vehicleApi: RaycastVehiclePublicApi, chassisApi: PublicApi) => {
+export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: PublicApi) {
   let [controls, setControls] = useState<{[key: string]: boolean}>({ });
 
   useEffect(() => {

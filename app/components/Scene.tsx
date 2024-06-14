@@ -8,7 +8,7 @@ import {
   import { Ground } from "./Ground";
   import { Track } from "./Track";
   
-  export function Scene() {
+  export function Scene(): JSX.Element {
     const [thirdPerson, setThirdPerson] = useState<boolean>(false);
     const [cameraPosition, setCameraPosition] = useState<[x: number, y: number, z: number]>([-6, 3.9, 6.21]);
   

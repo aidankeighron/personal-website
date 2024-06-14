@@ -2,10 +2,10 @@ import { usePlane } from "@react-three/cannon";
 import { MeshReflectorMaterial } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
-import { BufferAttribute } from "three";
+import { BufferAttribute, Mesh } from "three";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 
-export function Ground() {
+export function Ground(): JSX.Element {
   usePlane(
     () => ({ 
       type: 'Static', 
@@ -35,8 +35,8 @@ export function Ground() {
     gridMap.anisotropy = 16;
   }, [gridMap]);
 
-  const meshRef = useRef<any>(null); // TODO
-  const meshRef2 = useRef<any>(null);
+  const meshRef = useRef<Mesh>(null);
+  const meshRef2 = useRef<Mesh>(null);
   useEffect(() => {
     if (!meshRef.current) return;
     
@@ -81,7 +81,7 @@ export function Ground() {
           roughness={0.4}
 
           dithering={true}
-          // blur={[1024, 512]} // Blur ground reflections (width, heigt), 0 skips blur
+          blur={[1024, 512]} // Blur ground reflections (width, heigt), 0 skips blur
           mixBlur={3} // How much blur mixes with surface roughness (default = 1)
           mixStrength={30} // Strength of the reflections
           mixContrast={1} // Contrast of the reflections
@@ -90,6 +90,7 @@ export function Ground() {
           depthScale={0} // Scale the depth factor (0 = no depth, default = 0)
           minDepthThreshold={0.9} // Lower edge for the depthTexture interpolation (default = 0)
           maxDepthThreshold={1} // Upper edge for the depthTexture interpolation (default = 0)
+          // debug={0}
           depthToBlurRatioBias={0.25} // Adds a bias factor to the depthTexture before calculating the blur amount [bl
           reflectorOffset={0.02} // Offsets the virtual camera that projects the reflection. Useful when the reflective
         ></MeshReflectorMaterial>

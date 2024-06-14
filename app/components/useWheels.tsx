@@ -1,4 +1,4 @@
-import { CompoundBodyProps, WheelInfoOptions, useCompoundBody } from "@react-three/cannon";
+import { BodyProps, CompoundBodyProps, WheelInfoOptions, useCompoundBody } from "@react-three/cannon";
 import { Ref, useRef } from "react";
 import { Group, Object3DEventMap } from "three";
 
@@ -44,7 +44,8 @@ export function useWheels(width: number, height: number, front: number, radius: 
     },
   ];
 
-  const propsFunc = (): CompoundBodyProps => ({
+  type GetByIndex<T extends BodyProps> = (index: number) => T
+  const propsFunc: GetByIndex<CompoundBodyProps> = () => ({
     collisionFilterGroup: 0,
     mass: 1,
     shapes: [
