@@ -1,21 +1,85 @@
+import { useBox, useRaycastVehicle } from "@react-three/cannon";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { useControls } from "./useControls";
+import { useWheels } from "./useWheels";
+import { WheelDebug } from "./WheelDebug";
+import { Quaternion, Vector3 } from "three";
 
-export function Car() {
-  // thanks to the_86_guy!
+type CarParams = {
+  thirdPerson: boolean
+}
+
+export function Car({thirdPerson}: CarParams): JSX.Element {
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
-  let mesh = useLoader(
+  let result = useLoader(
     GLTFLoader,
     "/models/car.glb"
   ).scene;
 
+  const position: [x: number, y: number, z: number] = [-1.5, 0.5, 3];
+  const width: number = 0.15;
+  const height: number = 0.07;
+  const front: number = 0.15;
+  const wheelRadius: number = 0.05;
+
+  const chassisBodyArgs: [x: number, y: number, z: number] = [width, height, front * 2];
+  const [chassisBody, chassisApi] = useBox(() => ({
+    allowSleep: false, // TODO what does this do
+    args: chassisBodyArgs,
+    mass: 150,
+    position,
+  }), useRef(null));
+
+  const [wheels, wheelInfos] = useWheels(width, height, front, wheelRadius);
+  const [vehicle, vehicleApi] = useRaycastVehicle(
+    () => ({
+      chassisBody,
+      wheelInfos,
+      wheels
+  }), useRef(null));
+
+  useControls(vehicleApi, chassisApi);
+
+  useFrame((state) => {
+    if(!thirdPerson || chassisBody.current == null) return;
+
+    let position = new Vector3(0,0,0);
+    position.setFromMatrixPosition(chassisBody.current.matrixWorld);
+
+    let quaternion = new Quaternion(0, 0, 0, 0);
+    quaternion.setFromRotationMatrix(chassisBody.current.matrixWorld);
+
+    let wDir = new Vector3(0,0,-1);
+    wDir.applyQuaternion(quaternion);
+    wDir.normalize();
+
+    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(-1).add(new Vector3(0, 0.3, 0)));
+    
+    wDir.add(new Vector3(0, 0.2, 0));
+    state.camera.position.copy(cameraPosition);
+    state.camera.lookAt(position);
+  });
+
   useEffect(() => {
+    if (!result) return;
+
+    let mesh = result; // so we don't hide the mesh JSX element
     mesh.scale.set(0.0012, 0.0012, 0.0012);
     mesh.children[0].position.set(-365, -18, -67);
-  }, [mesh]);
+  }, [result]);
 
   return (
-    <primitive object={mesh} rotation-y={Math.PI}/>
+    <group ref={vehicle} name="vehicle">
+      <group ref={chassisBody} name="chassisBody">
+        <primitive object={result} rotation-y={Math.PI} position={[0, -0.09, 0]} />
+      </group>
+
+      <WheelDebug wheelRef={wheels[0]} radius={wheelRadius} />
+      <WheelDebug wheelRef={wheels[1]} radius={wheelRadius} />
+      <WheelDebug wheelRef={wheels[2]} radius={wheelRadius} />
+      <WheelDebug wheelRef={wheels[3]} radius={wheelRadius} />
+    </group>
   );
 }

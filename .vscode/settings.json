@@ -1,6 +1,12 @@
 {
     "cSpell.words": [
+        "arrowdown",
+        "arrowleft",
+        "arrowright",
+        "arrowup",
+        "Firestore",
         "GLTF",
-        "metalness"
+        "metalness",
+        "Raycast"
     ]
 }

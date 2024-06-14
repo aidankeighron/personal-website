@@ -6,13 +6,13 @@ import { BufferAttribute } from "three";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 
 export function Ground() {
-//   const [ref] = usePlane(
-//     () => ({ 
-//       type: 'Static', 
-//       rotation: [-Math.PI / 2, 0, 0] }
-//     ), 
-//     useRef(null)
-//   );
+  usePlane(
+    () => ({ 
+      type: 'Static', 
+      rotation: [-Math.PI / 2, 0, 0] }
+    ), 
+    useRef(null)
+  );
 
   const gridMap = useLoader(
     TextureLoader,
@@ -29,15 +29,14 @@ export function Ground() {
     "/textures/alpha-map.png"
   );
 
-  const meshRef = useRef<any>(null); // TODO
-  const meshRef2 = useRef<any>(null);
-
   useEffect(() => {
     if (!gridMap) return;
 
     gridMap.anisotropy = 16;
   }, [gridMap]);
 
+  const meshRef = useRef<any>(null); // TODO
+  const meshRef2 = useRef<any>(null);
   useEffect(() => {
     if (!meshRef.current) return;
     
@@ -82,7 +81,7 @@ export function Ground() {
           roughness={0.4}
 
           dithering={true}
-        //   blur={[1024, 512]} // Blur ground reflections (width, heigt), 0 skips blur
+          // blur={[1024, 512]} // Blur ground reflections (width, heigt), 0 skips blur
           mixBlur={3} // How much blur mixes with surface roughness (default = 1)
           mixStrength={30} // Strength of the reflections
           mixContrast={1} // Contrast of the reflections
