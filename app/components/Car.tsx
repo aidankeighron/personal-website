@@ -19,10 +19,10 @@ export function Car({thirdPerson}: CarParams): JSX.Element {
   ).scene;
 
   const position: [x: number, y: number, z: number] = [-1.5, 0.5, 3];
-  const width: number = 0.15;
-  const height: number = 0.07;
-  const front: number = 0.15;
-  const wheelRadius: number = 0.05;
+  const width: number = 0.13;
+  const height: number = 0.04;
+  const front: number = 0.12;
+  const wheelRadius: number = 0.025;
 
   const chassisBodyArgs: [x: number, y: number, z: number] = [width, height, front * 2];
   const [chassisBody, chassisApi] = useBox(() => ({
@@ -75,6 +75,10 @@ export function Car({thirdPerson}: CarParams): JSX.Element {
       <group ref={chassisBody as Ref<Group<Object3DEventMap>>} name="chassisBody">
         <primitive object={result} rotation-y={Math.PI} position={[0, -0.09, 0]} />
       </group>
+      {/* <mesh ref={chassisBody}>
+        <meshBasicMaterial transparent={true} opacity={0.3} />
+        <boxGeometry args={chassisBodyArgs} />
+      </mesh> */}
 
       <WheelDebug wheelRef={wheels[0]} radius={wheelRadius} />
       <WheelDebug wheelRef={wheels[1]} radius={wheelRadius} />

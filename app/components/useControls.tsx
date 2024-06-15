@@ -25,14 +25,20 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
     if(!vehicleApi || !chassisApi) return;
 
     if (controls.w) {
+      vehicleApi.setBrake(0, 2);
+      vehicleApi.setBrake(0, 3);
       vehicleApi.applyEngineForce(150, 2);
       vehicleApi.applyEngineForce(150, 3);
     } else if (controls.s) {
+      vehicleApi.setBrake(0, 2);
+      vehicleApi.setBrake(0, 3);
       vehicleApi.applyEngineForce(-150, 2);
       vehicleApi.applyEngineForce(-150, 3);
     } else {
       vehicleApi.applyEngineForce(0, 2);
       vehicleApi.applyEngineForce(0, 3);
+      vehicleApi.setBrake(2, 2);
+      vehicleApi.setBrake(2, 3);
     }
 
     if (controls.a) {

@@ -5,12 +5,16 @@ import { Group, Object3DEventMap } from "three";
 export function useWheels(width: number, height: number, front: number, radius: number): [Ref<Group<Object3DEventMap>>[], WheelInfoOptions[]] {
   const wheels: Ref<Group<Object3DEventMap>>[] = [useRef(null), useRef(null), useRef(null), useRef(null)];
 
+  const widthMultiplier = 0.5;
+  const heightMultiplier = 0.0;
+  const frontMultiplier = 0.9;
+
   const wheelInfo: WheelInfoOptions = {
     radius,
     directionLocal: [0, -1, 0],
     axleLocal: [1, 0, 0],
     suspensionStiffness: 60,
-    suspensionRestLength: 0.1,
+    suspensionRestLength: 0.05,
     frictionSlip: 5,
     dampingRelaxation: 2.3,
     dampingCompression: 4.4,
@@ -24,22 +28,22 @@ export function useWheels(width: number, height: number, front: number, radius: 
   const wheelInfos: WheelInfoOptions[] = [
     {
       ...wheelInfo,
-      chassisConnectionPointLocal: [-width * 0.65, height * 0.4, front],
+      chassisConnectionPointLocal: [-width * widthMultiplier, height * heightMultiplier, front*frontMultiplier],
       isFrontWheel: true,
     },
     {
       ...wheelInfo,
-      chassisConnectionPointLocal: [width * 0.65, height * 0.4, front],
+      chassisConnectionPointLocal: [width * widthMultiplier, height * heightMultiplier, front*frontMultiplier],
       isFrontWheel: true,
     },
     {
       ...wheelInfo,
-      chassisConnectionPointLocal: [-width * 0.65, height * 0.4, -front],
+      chassisConnectionPointLocal: [-width * widthMultiplier, height * heightMultiplier, -front*frontMultiplier],
       isFrontWheel: false,
     },
     {
       ...wheelInfo,
-      chassisConnectionPointLocal: [width * 0.65, height * 0.4, -front],
+      chassisConnectionPointLocal: [width * widthMultiplier, height * heightMultiplier, -front*frontMultiplier],
       isFrontWheel: false,
     },
   ];

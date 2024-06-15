@@ -81,7 +81,7 @@ export function Ground(): JSX.Element {
           roughness={0.4}
 
           dithering={true}
-          blur={[1024, 512]} // Blur ground reflections (width, heigt), 0 skips blur
+          blur={[1024, 512]} // Blur ground reflections (width, height), 0 skips blur
           mixBlur={3} // How much blur mixes with surface roughness (default = 1)
           mixStrength={30} // Strength of the reflections
           mixContrast={1} // Contrast of the reflections
@@ -90,7 +90,6 @@ export function Ground(): JSX.Element {
           depthScale={0} // Scale the depth factor (0 = no depth, default = 0)
           minDepthThreshold={0.9} // Lower edge for the depthTexture interpolation (default = 0)
           maxDepthThreshold={1} // Upper edge for the depthTexture interpolation (default = 0)
-          // debug={0}
           depthToBlurRatioBias={0.25} // Adds a bias factor to the depthTexture before calculating the blur amount [bl
           reflectorOffset={0.02} // Offsets the virtual camera that projects the reflection. Useful when the reflective
         ></MeshReflectorMaterial>
