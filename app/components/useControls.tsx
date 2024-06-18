@@ -1,8 +1,12 @@
 import { PublicApi, RaycastVehiclePublicApi } from "@react-three/cannon";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: PublicApi) {
   let [controls, setControls] = useState<{[key: string]: boolean}>({ });
+  let shiftTimer = useRef<number>(0);
+  let lastTimeSeconds = useRef<number>(Date.now()/1000);
+  let gear = useRef<number>(1);
+  let speed = useRef<number>(0);
 
   useEffect(() => {
     const keyDownPressHandler = (e: KeyboardEvent) => {
@@ -22,25 +26,66 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
   }, []);
 
   useEffect(() => {
+    chassisApi.velocity.subscribe((value) => {
+      speed.current = Math.sqrt(
+        Math.pow(value[0], 2) + Math.pow(value[1], 2) + Math.pow(value[2], 2) 
+      );
+    });
+  }, []);
+  useEffect(() => {
     if(!vehicleApi || !chassisApi) return;
+    const currentTimeSeconds = Date.now() / 1000;
+    const timeStep = currentTimeSeconds - lastTimeSeconds.current;
+    lastTimeSeconds.current = currentTimeSeconds;
 
-    if (controls.w) {
-      vehicleApi.setBrake(0, 2);
-      vehicleApi.setBrake(0, 3);
-      vehicleApi.applyEngineForce(150, 2);
-      vehicleApi.applyEngineForce(150, 3);
-    } else if (controls.s) {
-      vehicleApi.setBrake(0, 2);
-      vehicleApi.setBrake(0, 3);
-      vehicleApi.applyEngineForce(-150, 2);
-      vehicleApi.applyEngineForce(-150, 3);
-    } else {
-      vehicleApi.applyEngineForce(0, 2);
-      vehicleApi.applyEngineForce(0, 3);
-      vehicleApi.setBrake(2, 2);
-      vehicleApi.setBrake(2, 3);
+    const engineForce = 500;
+    const maxGears = 5;
+    const gears: {'R': number, [key: number]: number} = {
+      'R': -4,
+      '0': 0,
+      '1': 5,
+      '2': 9,
+      '3': 13,
+      '4': 17,
+      '5': 22,
     }
 
+    if (shiftTimer.current > 0) {
+      shiftTimer.current -= timeStep;
+      shiftTimer.current = Math.max(0, shiftTimer.current);
+    } 
+    else {
+      if (controls.s) {
+        const power = (gears['R'] - Math.abs(speed.current)) / Math.abs(gears['R']);
+        const force = (engineForce / gear.current) * (Math.abs(power) ** 1);
+        vehicleApi.applyEngineForce(-force, 2);
+        vehicleApi.applyEngineForce(-force, 3);
+      }
+      else {
+        const power = (gears[gear.current] - speed.current) / (gears[gear.current] - gears[gear.current-1]);
+        console.log(power);
+        if (power < 0.7 && gear.current < maxGears) {
+          console.log("Upshift");
+          gear.current += 1;
+          shiftTimer.current = 0.2;
+          vehicleApi.applyEngineForce(0, 2);
+          vehicleApi.applyEngineForce(0, 3);
+        }
+        else if (power > 1.2 && gear.current > 1) {
+          console.log("Downshift");
+          gear.current -= 1
+          shiftTimer.current = 0.2;
+          vehicleApi.applyEngineForce(0, 2);
+          vehicleApi.applyEngineForce(0, 3);
+        }
+        else if (controls.w) {
+          const force = (engineForce / gear.current) * (power ** 1);
+          vehicleApi.applyEngineForce(force, 2);
+          vehicleApi.applyEngineForce(force, 3);
+        }
+      }
+    }
+    console.log("Gear: ", gear.current, " Shift: ", shiftTimer.current);
     if (controls.a) {
       vehicleApi.setSteeringValue(0.35, 2);
       vehicleApi.setSteeringValue(0.35, 3);
@@ -67,6 +112,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       chassisApi.velocity.set(0, 0, 0);
       chassisApi.angularVelocity.set(0, 0, 0);
       chassisApi.rotation.set(0, 0, 0);
+      gear.current = 1;
     }
   }, [controls, vehicleApi, chassisApi]);
 

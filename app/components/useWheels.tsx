@@ -13,16 +13,16 @@ export function useWheels(width: number, height: number, front: number, radius: 
     radius,
     directionLocal: [0, -1, 0],
     axleLocal: [1, 0, 0],
-    suspensionStiffness: 60,
+    suspensionStiffness: 20,
     suspensionRestLength: 0.05,
-    frictionSlip: 5,
+    maxSuspensionTravel: 0.1,
+    frictionSlip: 0.8,
     dampingRelaxation: 2.3,
     dampingCompression: 4.4,
-    maxSuspensionForce: 100000,
-    rollInfluence: 0.01,
-    maxSuspensionTravel: 0.1,
-    customSlidingRotationalSpeed: -30,
-    useCustomSlidingRotationalSpeed: true,
+    // maxSuspensionForce: 100000,
+    rollInfluence: 0.1,
+    // customSlidingRotationalSpeed: -30,
+    // useCustomSlidingRotationalSpeed: true,
   };
 
   const wheelInfos: WheelInfoOptions[] = [
