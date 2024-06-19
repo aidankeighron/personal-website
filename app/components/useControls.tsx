@@ -6,7 +6,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
   let shiftTimer = useRef<number>(0);
   let lastTimeSeconds = useRef<number>(Date.now()/1000);
   let gear = useRef<number>(1);
-  let speed = useRef<number>(0);
+  let [speed, setSpeed] = useState<number>(0);
 
   useEffect(() => {
     const keyDownPressHandler = (e: KeyboardEvent) => {
@@ -27,9 +27,9 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
 
   useEffect(() => {
     chassisApi.velocity.subscribe((value) => {
-      speed.current = Math.sqrt(
+      setSpeed(Math.sqrt(
         Math.pow(value[0], 2) + Math.pow(value[1], 2) + Math.pow(value[2], 2) 
-      );
+      ));
     });
   }, []);
   useEffect(() => {
@@ -40,52 +40,52 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
 
     const engineForce = 500;
     const maxGears = 5;
+    const shiftTime = 0.2;
     const gears: {'R': number, [key: number]: number} = {
-      'R': -4,
+      'R': -0.5,
       '0': 0,
-      '1': 5,
-      '2': 9,
-      '3': 13,
-      '4': 17,
-      '5': 22,
+      '1': 0.5,
+      '2': 0.9,
+      '3': 1.3,
+      '4': 1.7,
+      '5': 2.2,
     }
 
+    // console.log("Speed: ", Math.round(speed*10)," Power: ", Math.round(((gears[gear.current] - speed) / (gears[gear.current] - gears[gear.current-1]))*10), " Gear: ", gear.current);
     if (shiftTimer.current > 0) {
       shiftTimer.current -= timeStep;
       shiftTimer.current = Math.max(0, shiftTimer.current);
     } 
     else {
       if (controls.s) {
-        const power = (gears['R'] - Math.abs(speed.current)) / Math.abs(gears['R']);
-        const force = (engineForce / gear.current) * (Math.abs(power) ** 1);
+        const power = (gears['R'] - Math.abs(speed)) / Math.abs(gears['R']);
+        const force = (engineForce / gear.current) * Math.abs(power);
         vehicleApi.applyEngineForce(-force, 2);
         vehicleApi.applyEngineForce(-force, 3);
       }
       else {
-        const power = (gears[gear.current] - speed.current) / (gears[gear.current] - gears[gear.current-1]);
-        console.log(power);
-        if (power < 0.7 && gear.current < maxGears) {
+        const power = (gears[gear.current] - speed) / (gears[gear.current] - gears[gear.current-1]);
+        if (power < 0.1 && gear.current < maxGears) {
           console.log("Upshift");
           gear.current += 1;
-          shiftTimer.current = 0.2;
+          shiftTimer.current = shiftTime;
           vehicleApi.applyEngineForce(0, 2);
           vehicleApi.applyEngineForce(0, 3);
         }
         else if (power > 1.2 && gear.current > 1) {
           console.log("Downshift");
           gear.current -= 1
-          shiftTimer.current = 0.2;
+          shiftTimer.current = shiftTime;
           vehicleApi.applyEngineForce(0, 2);
           vehicleApi.applyEngineForce(0, 3);
         }
         else if (controls.w) {
-          const force = (engineForce / gear.current) * (power ** 1);
+          const force = (engineForce / gear.current) * power;
           vehicleApi.applyEngineForce(force, 2);
           vehicleApi.applyEngineForce(force, 3);
         }
       }
     }
-    console.log("Gear: ", gear.current, " Shift: ", shiftTimer.current);
     if (controls.a) {
       vehicleApi.setSteeringValue(0.35, 2);
       vehicleApi.setSteeringValue(0.35, 3);
@@ -114,7 +114,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       chassisApi.rotation.set(0, 0, 0);
       gear.current = 1;
     }
-  }, [controls, vehicleApi, chassisApi]);
+  }, [controls, vehicleApi, chassisApi, speed]);
 
   return controls;
 }
