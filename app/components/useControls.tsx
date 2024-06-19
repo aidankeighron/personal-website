@@ -86,6 +86,25 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
         }
       }
     }
+
+    if (controls[" "]) {
+      vehicleApi.setBrake(3, 2);
+      vehicleApi.setBrake(3, 3);
+    }
+    else {
+      vehicleApi.setBrake(0, 2);
+      vehicleApi.setBrake(0, 3);
+    }
+
+    if (!controls.w && !controls.s) {
+      vehicleApi.applyEngineForce(0, 2);
+      vehicleApi.applyEngineForce(0, 3);
+      vehicleApi.setBrake(1, 2);
+      vehicleApi.setBrake(1, 3);
+    }
+
+
+    
     if (controls.a) {
       vehicleApi.setSteeringValue(0.35, 2);
       vehicleApi.setSteeringValue(0.35, 3);

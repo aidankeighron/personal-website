@@ -67,7 +67,7 @@ export function Car({thirdPerson}: CarParams): JSX.Element {
 
     let mesh = result; // so we don't hide the mesh JSX element
     mesh.scale.set(0.0012, 0.0012, 0.0012);
-    mesh.children[0].position.set(-365, -18, -67);
+    mesh.children[0].position.set(-365, 26, -67);
   }, [result]);
 
   return (
