@@ -38,17 +38,18 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
     const timeStep = currentTimeSeconds - lastTimeSeconds.current;
     lastTimeSeconds.current = currentTimeSeconds;
 
+    const frontSteering = 0.5;
+    const backSteering = 0.1; // 0.25 drift?
     const engineForce = 500;
-    const maxGears = 5;
     const shiftTime = 0.2;
     const gears: {'R': number, [key: number]: number} = {
       'R': -0.5,
       '0': 0,
-      '1': 0.5,
-      '2': 0.9,
-      '3': 1.3,
-      '4': 1.7,
-      '5': 2.2,
+      '1': 1.0,
+      '2': 1.7,
+      '3': 2.5,
+      '4': 3.8,
+      '5': 5.0,
     }
 
     // console.log("Speed: ", Math.round(speed*10)," Power: ", Math.round(((gears[gear.current] - speed) / (gears[gear.current] - gears[gear.current-1]))*10), " Gear: ", gear.current);
@@ -65,7 +66,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       }
       else {
         const power = (gears[gear.current] - speed) / (gears[gear.current] - gears[gear.current-1]);
-        if (power < 0.1 && gear.current < maxGears) {
+        if (power < 0.1 && gear.current < Object.keys(gears).length-2) { // -2 for 0 and R
           console.log("Upshift");
           gear.current += 1;
           shiftTimer.current = shiftTime;
@@ -103,28 +104,21 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       vehicleApi.setBrake(1, 3);
     }
 
-
-    
     if (controls.a) {
-      vehicleApi.setSteeringValue(0.35, 2);
-      vehicleApi.setSteeringValue(0.35, 3);
-      vehicleApi.setSteeringValue(-0.1, 0);
-      vehicleApi.setSteeringValue(-0.1, 1);
+      vehicleApi.setSteeringValue(frontSteering, 2);
+      vehicleApi.setSteeringValue(frontSteering, 3);
+      vehicleApi.setSteeringValue(-backSteering, 0);
+      vehicleApi.setSteeringValue(-backSteering, 1);
     } else if (controls.d) {
-      vehicleApi.setSteeringValue(-0.35, 2);
-      vehicleApi.setSteeringValue(-0.35, 3);
-      vehicleApi.setSteeringValue(0.1, 0);
-      vehicleApi.setSteeringValue(0.1, 1);
+      vehicleApi.setSteeringValue(-frontSteering, 2);
+      vehicleApi.setSteeringValue(-frontSteering, 3);
+      vehicleApi.setSteeringValue(backSteering, 0);
+      vehicleApi.setSteeringValue(backSteering, 1);
     } else {
       for(let i = 0; i < 4; i++) {
         vehicleApi.setSteeringValue(0, i);
       }
     }
-
-    if (controls.arrowdown)  chassisApi.applyLocalImpulse([0, -5, 0], [0, 0, +1]);
-    if (controls.arrowup)    chassisApi.applyLocalImpulse([0, -5, 0], [0, 0, -1]);
-    if (controls.arrowleft)  chassisApi.applyLocalImpulse([0, -5, 0], [-0.5, 0, 0]);
-    if (controls.arrowright) chassisApi.applyLocalImpulse([0, -5, 0], [+0.5, 0, 0]);
 
     if (controls.r) {
       chassisApi.position.set(-1.5, 0.5, 3);
