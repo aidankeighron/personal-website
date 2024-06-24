@@ -5,6 +5,7 @@ import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Scene } from "./components/Scene";
 import { Physics } from "@react-three/cannon";
+import { Stats } from "@react-three/drei";
 
 export default function Home() {
   return(
@@ -15,6 +16,7 @@ export default function Home() {
             broadphase="SAP" gravity={[0, -2.6, 0]}>
             <Scene />
           </Physics>
+          <Stats />
         </Canvas>
       </div>
       <div className={css.header}>
