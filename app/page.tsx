@@ -1,13 +1,43 @@
 'use client'
 
 import css from "./page.module.css";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Scene } from "./components/Scene";
 import { Physics } from "@react-three/cannon";
 import { Stats } from "@react-three/drei";
+import { Container, Text, Root } from '@react-three/uikit'
+
+const cardStyle = {
+  titleFontSize: 36,
+  contentFontSize: 22,
+  width: 500,
+  height: 160,
+  padding: 15,
+  marginBottom: 200,
+  marginLeft: 750,
+};
+
+type Project = {
+  title: string
+  languages: string[],
+  techStack: string[],
+  shortDescription: string
+}
 
 export default function Home() {
+  const [projectList, setProjectList] = useState<Project[]>([]);
+
+  useEffect(() => {
+    fetch("/projects.json").then(Response => Response.json()).then(data => {
+      let newProjectList: Project[] = []
+      data.projects.forEach((project: Project) => {
+        newProjectList.push(project);
+      });
+      setProjectList(newProjectList);
+    });
+  }, []);
+  
   return(
     <main className={css.main}>
       <div className={css.scene}>
@@ -17,33 +47,34 @@ export default function Home() {
             <Scene />
           </Physics>
           <Stats />
+          <Root flexDirection="column" anchorX={'center'} anchorY={'center'} >
+          <Container transformRotateX={-90} flexDirection="column" alignSelf={"baseline"} positionType={"absolute"} inset={0} positionTop={0} positionLeft={0}>
+            {(() => {
+              return (projectList.map((project, index) => {
+                let language = "Language" + (project.languages.length > 1 ? "s: " : ": ") + project.languages.join(", ");
+                if (project.languages.length > 1) {
+                  let index = language.lastIndexOf(",");
+                  language = `${language.substring(0, index)}${project.languages.length == 2 ? "" : ","} and${language.substring(index + 1)}`;
+                }
+                let techStack = "TechStack: " + project.techStack.join(", ");
+                if (project.techStack.length > 1) {
+                  let index = techStack.lastIndexOf(",");
+                  techStack = `${techStack.substring(0, index)}${project.techStack.length == 2 ? "" : ","} and${techStack.substring(index + 1)}`;
+                }
+                const marginLeft = index % 2 != 0 ? cardStyle.marginLeft : 0;
+                return (
+                  <Container key={project.title} backgroundOpacity={0.5} backgroundColor="grey" width={cardStyle.width} height={cardStyle.height} 
+                  flexDirection={"column"} padding={cardStyle.padding} marginLeft={marginLeft} marginBottom={cardStyle.marginBottom}>
+                    <Text fontWeight={"semi-bold"} fontSize={cardStyle.titleFontSize}>{project.title}</Text>
+                    <Text fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{language}</Text>
+                    <Text fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{techStack}</Text>
+                    <Text fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{project.shortDescription}</Text>
+                  </Container>);
+              }));
+            })()}        
+          </Container>
+          </Root>
         </Canvas>
-      </div>
-      <div className={css.header}>
-        <p>Aidan Keighron</p>
-      </div>
-      <div className={css.timeline}>
-        <div className={css.card}>
-          <h3>Alchemy</h3>
-          <p>Language: JavaScript</p>
-          <p>Tech Stack: Electron and Firebase Firestore</p>
-          <p>Personal task organization software</p>
-          <a href="https://github.com/aidankeighron/alchemy">GitHub</a>
-        </div>
-        <div className={[css.cardOther, css.card].join(" ")}>
-          <h3>PID Visualizer</h3>
-          <p>Language: Java</p>
-          <p>Tech Stack: Swing</p>
-          <p>Visualization of a PID controller</p>
-          <a href="https://github.com/aidankeighron/PID-Visualizer">GitHub</a>
-        </div>
-        <div className={css.card}>
-          <h3>Fantasy FRC</h3>
-          <p>Languages: JavaScript, HTML, and CSS</p>
-          <p>Tech Stack: Express and Socket.io</p>
-          <p>Fantasy football but robotics</p>
-          <a href="https://github.com/aidankeighron/Fantasy-FRC">GitHub</a>
-        </div>
       </div>
     </main>
   );

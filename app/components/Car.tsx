@@ -51,11 +51,11 @@ export function Car({thirdPerson}: CarParams): JSX.Element {
     let quaternion = new Quaternion(0, 0, 0, 0);
     quaternion.setFromRotationMatrix(chassisBody.current.matrixWorld);
 
-    let wDir = new Vector3(0,0,-1);
+    let wDir = new Vector3(0,0,0);
     wDir.applyQuaternion(quaternion);
     wDir.normalize();
 
-    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(-1).add(new Vector3(0, 0.3, 0)));
+    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(-1).add(new Vector3(0, 6, 0)));
     
     wDir.add(new Vector3(0, 0.2, 0));
     state.camera.position.copy(cameraPosition);

@@ -1,6 +1,6 @@
 import { useBox } from "@react-three/cannon";
 
-const debug = false;
+const debug = true;
 
 type ColliderBoxProps = {
     position: [x: number, y: number, z: number],

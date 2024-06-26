@@ -1,12 +1,11 @@
 import {
-    Environment,
     OrbitControls,
     PerspectiveCamera,
-  } from "@react-three/drei";
-  import { Suspense, useEffect, useState } from "react";
-  import { Car } from "./Car";
-  import { Ground } from "./Ground";
-  import { Track } from "./Track";
+} from "@react-three/drei";
+import { Suspense, useEffect, useState } from "react";
+import { Car } from "./Car";
+import { Ground } from "./Ground";
+import { ColliderBox } from "./ColliderBox";
   
   export function Scene(): JSX.Element {
     const [thirdPerson, setThirdPerson] = useState<boolean>(false);
@@ -27,18 +26,15 @@ import {
   
     return (
       <Suspense fallback={null}>
-        <Environment
-          files={"/textures/envmap.hdr"}
-          background={true}
-        />
+        <ambientLight />
   
         <PerspectiveCamera makeDefault position={cameraPosition} fov={40} />
         {!thirdPerson && (
           <OrbitControls target={[-2.64, -0.71, 0.03]} />
         )}
-  
+        <ColliderBox position={[0, 0, 0]} scale={[1, 1, 1]}/>
+        <ColliderBox position={[1.75, 0, 0.5]} scale={[0.3, 1, 0.3]}/>
         <Ground />
-        <Track />
         <Car thirdPerson={thirdPerson} />
       </Suspense>
     );
