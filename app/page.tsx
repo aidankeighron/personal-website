@@ -9,13 +9,13 @@ import { Stats } from "@react-three/drei";
 import { Container, Text, Root } from '@react-three/uikit'
 
 const cardStyle = {
-  titleFontSize: 36,
-  contentFontSize: 22,
-  width: 500,
-  height: 160,
+  titleFontSize: 22,
+  contentFontSize: 12,
+  width: 300,
+  height: 100,
   padding: 15,
-  marginBottom: 200,
-  marginLeft: 750,
+  marginBottom: 100,
+  marginLeft: 550,
 };
 
 type Project = {

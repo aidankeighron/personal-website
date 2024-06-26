@@ -8,10 +8,9 @@ import { WheelDebug } from "./WheelDebug";
 import { Group, Object3DEventMap, Quaternion, Vector3 } from "three";
 
 type CarParams = {
-  thirdPerson: boolean
 }
 
-export function Car({thirdPerson}: CarParams): JSX.Element {
+export function Car(): JSX.Element {
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(
     GLTFLoader,
@@ -43,7 +42,7 @@ export function Car({thirdPerson}: CarParams): JSX.Element {
   useControls(vehicleApi, chassisApi);
 
   useFrame((state) => {
-    if(!thirdPerson || chassisBody.current == null) return;
+    if (chassisBody.current == null) return;
 
     let position = new Vector3(0,0,0);
     position.setFromMatrixPosition(chassisBody.current.matrixWorld);
@@ -54,7 +53,6 @@ export function Car({thirdPerson}: CarParams): JSX.Element {
     let wDir = new Vector3(0,0,0);
     wDir.applyQuaternion(quaternion);
     wDir.normalize();
-
     let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(-1).add(new Vector3(0, 6, 0)));
     
     wDir.add(new Vector3(0, 0.2, 0));

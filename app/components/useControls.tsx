@@ -52,13 +52,19 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       '5': 5.0,
     }
 
-    // console.log("Speed: ", Math.round(speed*10)," Power: ", Math.round(((gears[gear.current] - speed) / (gears[gear.current] - gears[gear.current-1]))*10), " Gear: ", gear.current);
+    const forward = controls.w || controls.arrowup;
+    const reverse = controls.s || controls.arrowdown;
+    const breaking = controls[" "];
+    const left = controls.a || controls.arrowleft;
+    const right = controls.d || controls.arrowright;
+    const reset = controls.r;
+
     if (shiftTimer.current > 0) {
       shiftTimer.current -= timeStep;
       shiftTimer.current = Math.max(0, shiftTimer.current);
     } 
     else {
-      if (controls.s) {
+      if (reverse) {
         const power = (gears['R'] - Math.abs(speed)) / Math.abs(gears['R']);
         const force = (engineForce / gear.current) * Math.abs(power);
         vehicleApi.applyEngineForce(-force, 2);
@@ -80,7 +86,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
           vehicleApi.applyEngineForce(0, 2);
           vehicleApi.applyEngineForce(0, 3);
         }
-        else if (controls.w) {
+        else if (forward) {
           const force = (engineForce / gear.current) * power;
           vehicleApi.applyEngineForce(force, 2);
           vehicleApi.applyEngineForce(force, 3);
@@ -88,7 +94,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       }
     }
 
-    if (controls[" "]) {
+    if (breaking) {
       vehicleApi.setBrake(3, 2);
       vehicleApi.setBrake(3, 3);
     }
@@ -96,20 +102,21 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       vehicleApi.setBrake(0, 2);
       vehicleApi.setBrake(0, 3);
     }
+    
 
-    if (!controls.w && !controls.s) {
+    if (!forward && !reverse && !breaking) {
       vehicleApi.applyEngineForce(0, 2);
       vehicleApi.applyEngineForce(0, 3);
       vehicleApi.setBrake(1, 2);
       vehicleApi.setBrake(1, 3);
     }
 
-    if (controls.a) {
+    if (left) {
       vehicleApi.setSteeringValue(frontSteering, 2);
       vehicleApi.setSteeringValue(frontSteering, 3);
       vehicleApi.setSteeringValue(-backSteering, 0);
       vehicleApi.setSteeringValue(-backSteering, 1);
-    } else if (controls.d) {
+    } else if (right) {
       vehicleApi.setSteeringValue(-frontSteering, 2);
       vehicleApi.setSteeringValue(-frontSteering, 3);
       vehicleApi.setSteeringValue(backSteering, 0);
@@ -120,7 +127,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       }
     }
 
-    if (controls.r) {
+    if (reset) {
       chassisApi.position.set(-1.5, 0.5, 3);
       chassisApi.velocity.set(0, 0, 0);
       chassisApi.angularVelocity.set(0, 0, 0);
