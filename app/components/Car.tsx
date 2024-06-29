@@ -53,11 +53,12 @@ export function Car(): JSX.Element {
     let wDir = new Vector3(0,0,0);
     wDir.applyQuaternion(quaternion);
     wDir.normalize();
+    position.multiply(new Vector3(0, 0, 1));
     let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(-1).add(new Vector3(0, 6, 0)));
-    
-    wDir.add(new Vector3(0, 0.2, 0));
+    // cameraPosition.multiply(new Vector3(0, 0, 0));
+
     state.camera.position.copy(cameraPosition);
-    state.camera.lookAt(position);
+    // state.camera.lookAt(position);
   });
 
   useEffect(() => {
