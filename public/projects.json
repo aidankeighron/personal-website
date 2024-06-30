@@ -4,19 +4,22 @@
             "title": "Alchemy",
             "languages": ["JavaScript"],
             "techStack": ["Electron", "Firebase"],
-            "shortDescription": "Personal task organization software"
+            "shortDescription": "Personal task organization software",
+            "page": "alchemy"
         },
         {
             "title": "PID Visualizer",
             "languages": ["Java"],
             "techStack": ["Java Swing"],
-            "shortDescription": "Visualization of a PID controller"
+            "shortDescription": "Visualization of a PID controller",
+            "page": "pidvisualizer"
         },
         {
             "title": "Fantasy FRC",
             "languages": ["JavaScript", "HTML", "CSS", "SQL"],
             "techStack": ["Express", "Socket.io", "mySQL"],
-            "shortDescription": "Fantasy football but robotics"
+            "shortDescription": "Fantasy football but robotics",
+            "page": "fantasyfrc"
         }
     ]
 }
