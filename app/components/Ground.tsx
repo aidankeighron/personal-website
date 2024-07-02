@@ -37,7 +37,7 @@ export function Ground(): JSX.Element {
     <>
       <mesh
         ref={meshRef}
-        position={[-2.285, -0.01, -1.325]}
+        position={[0, -0.01, 5]}
         rotation-x={-Math.PI * .5}
       >
         <planeGeometry args={[12, 12]} />

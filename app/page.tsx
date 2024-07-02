@@ -16,7 +16,8 @@ const cardStyle = {
   height: 100,
   padding: 15,
   marginBottom: 100,
-  marginLeft: 550,
+  centerGapLeft: 400,
+  centerGapRight: 50,
 };
 
 type Project = {
@@ -64,13 +65,13 @@ export default function Home() {
                   let index = techStack.lastIndexOf(",");
                   techStack = `${techStack.substring(0, index)}${project.techStack.length == 2 ? "" : ","} and${techStack.substring(index + 1)}`;
                 }
-                // const marginLeft = index % 2 != 0 ? cardStyle.marginLeft : 0;
-                const marginLeft = 0;
+
+                const marginLeft = index % 2 != 0 ? -cardStyle.centerGapLeft : cardStyle.centerGapRight;
 
                 return (
-                  <Container key={project.title} backgroundOpacity={0.5} backgroundColor="grey" width={cardStyle.width} height={cardStyle.height} 
+                  <Container key={project.title} backgroundOpacity={0.7} backgroundColor="grey" width={cardStyle.width} height={cardStyle.height} 
                   flexDirection={"column"} padding={cardStyle.padding} marginLeft={marginLeft} marginBottom={cardStyle.marginBottom}
-                  onClick={() => {router.push(`/${project.page}`)}}>
+                  onClick={() => {router.push(`/${project.page}`)}} borderRadius={10} borderColor={'grey'} borderWidth={3}>
                     <Text fontWeight={"semi-bold"} fontSize={cardStyle.titleFontSize}>{project.title}</Text>
                     <Text fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{language}</Text>
                     <Text fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{techStack}</Text>
