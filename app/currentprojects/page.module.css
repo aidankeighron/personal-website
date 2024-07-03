@@ -4,3 +4,15 @@
     align-items: center;
     margin: 0px;
 }
+
+.project {
+    border: 1px solid black;
+}
+
+.projectTitle {
+    font-size: 30px;
+}
+
+.projectDescription {
+    font-size: 24px;
+}
