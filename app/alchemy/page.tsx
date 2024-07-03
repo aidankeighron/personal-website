@@ -3,14 +3,13 @@
 import Link from 'next/link';
 import css from '../page.module.css';
 import React from 'react';
+import Header from '../components/Header';
 
 export default function Home() {
   
   return(
     <main className={css.main}>
-      <div className={css.header}>
-        <p>Aidan Keighron</p>
-      </div>
+      <Header />
       <div>
         <h1>Alchemy</h1>
         <Link href={'/'}>Back</Link>

@@ -1,0 +1,27 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+}
+
+.robotContainer {
+    border: 1px white solid;
+}
+
+.robotTitle {
+    font-size: 30;
+    font-weight: bold;
+}
+
+.robotStreak {
+    font-size: 20;
+}
+
+.robotDescription {
+    font-size: 26;
+}
+
+.robotInfo {
+    font-size: 24;
+}

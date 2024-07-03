@@ -8,6 +8,7 @@ import { Physics } from "@react-three/cannon";
 import { Stats } from "@react-three/drei";
 import { Container, Text, Root } from '@react-three/uikit'
 import { useRouter } from "next/navigation";
+import Header from "./components/Header";
 
 const cardStyle = {
   titleFontSize: 22,
@@ -41,7 +42,7 @@ export default function Home() {
       setProjectList(newProjectList);
     });
   }, []);
-  
+  // TODO start supporting dark/light mode from the start
   return(
     <main className={css.main}>
       <div className={css.scene}>
@@ -83,9 +84,7 @@ export default function Home() {
           </Root>
         </Canvas>
       </div>
-      <div className={css.header}>
-        <p>Aidan Keighron</p>
-      </div>
+      <Header />
     </main>
   );
 }

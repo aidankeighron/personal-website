@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px;
+}
+
+.title {
+    font-size: 30;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 24;
+}
