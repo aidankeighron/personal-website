@@ -5,13 +5,13 @@ export default function Header() {
     return (
         <div className={css.header}>
             <div className={css.name}>
-                <p>Aida Keighron</p>
+                <p>Aidan Keighron</p>
             </div>
             <div className='horizontal'>
-                <Link href={'/'}>Home</Link>
-                <Link href={'/currentprojects'}>Current Projects</Link>
-                <Link href={'/currentrobots'}>Current Robots</Link>
-                <Link href={'/aboutme'}>About Me</Link>
+                <Link href={'/'}><p className={css.bar}>Home</p></Link>
+                <Link href={'/currentprojects'}><p className={css.bar}>Current Projects</p></Link>
+                <Link href={'/currentrobots'}><p className={css.bar}>Current Robots</p></Link>
+                <Link href={'/aboutme'}><p className={css.bar}>About Me</p></Link>
             </div>
         </div>
     );

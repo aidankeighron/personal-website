@@ -7,6 +7,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: 60%;
+    z-index: 10;
 }
 
 .name {
@@ -19,4 +21,9 @@
     z-index: 3;
     font-family: var(--font-mono);
     margin-top: 20px;
+}
+
+.bar {
+    width: fit-content;
+    margin-right: 10px;
 }
