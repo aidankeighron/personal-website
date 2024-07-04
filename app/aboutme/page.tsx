@@ -11,7 +11,7 @@ export default function CurrentRobots() {
         <Header />
         <h1 className={css.title}>About Me</h1>
         
-        <div className='horizontal center-align' style={{marginTop: 15}}>
+        <div className='horizontal' style={{marginTop: 15, display: 'flex', justifyContent: 'center'}}>
           <Image src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron" width={4007/16} height={4004/16}
             quality={100} style={{marginRight: 15}}/>
           <p  className={css.description}>I am Aidan Keighron a sophomore at Michigan State University studying computer science. 

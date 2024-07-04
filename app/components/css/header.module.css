@@ -7,23 +7,20 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 60%;
     z-index: 10;
+    margin-bottom: 15px;
 }
 
 .name {
-    display: inherit;
-    justify-content: inherit;
-    align-items: inherit;
-    font-size: 0.85rem;
-    max-width: var(--max-width);
-    width: 100%;
-    z-index: 3;
-    font-family: var(--font-mono);
-    margin-top: 20px;
+    font-size: 24px;
 }
 
 .bar {
-    width: fit-content;
     margin-right: 10px;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 5px;
+    white-space: nowrap;
 }
