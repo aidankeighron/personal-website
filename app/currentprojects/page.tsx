@@ -6,7 +6,7 @@ import Header from '../components/Header';
 
 export default function CurrentRobots() {
     return (
-        <main className={css.main}>
+        <main className='main'>
         <Header />
         <div>
             <h1>Current Projects</h1>

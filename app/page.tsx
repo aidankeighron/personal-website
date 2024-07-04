@@ -44,7 +44,7 @@ export default function Home() {
   }, []);
   // TODO start supporting dark/light mode from the start
   return(
-    <main className={css.main}>
+    <main className='main'>
       <div className={css.scene}>
         <Canvas>
           <Physics
