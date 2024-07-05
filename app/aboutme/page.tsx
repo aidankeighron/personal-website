@@ -11,10 +11,10 @@ export default function CurrentRobots() {
         <Header />
         <h1 className={css.title}>About Me</h1>
         
-        <div className='horizontal' style={{marginTop: 15, display: 'flex', justifyContent: 'center'}}>
+        <div className={css.description}>
           <Image src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron" width={4007/16} height={4004/16}
-            quality={100} style={{marginRight: 15}}/>
-          <p  className={css.description}>I am Aidan Keighron a sophomore at Michigan State University studying computer science. 
+            quality={100} className={css.image}/>
+          <p>I am Aidan Keighron a sophomore at Michigan State University studying computer science. 
           I love STEM, robotics, and programming, outside of technology I love to read and rollerblade. 
           I am very involved in competitive robotics, I am the Team Manager of a combat robotics 
           team, Bad Conflict, we compete in antweight robotics competitions. I am an alumni of FRC team 

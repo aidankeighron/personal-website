@@ -7,7 +7,7 @@ export default function Header() {
             <div className={css.name}>
                 <p>Aidan Keighron</p>
             </div>
-            <div className='horizontal'>
+            <div className={css.bar}>
                 <Link href={'/'}><p className={css.bar}>Home</p></Link>
                 <Link href={'/currentprojects'}><p className={css.bar}>Current Projects</p></Link>
                 <Link href={'/currentrobots'}><p className={css.bar}>Current Robots</p></Link>

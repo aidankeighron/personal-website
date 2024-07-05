@@ -1,4 +1,20 @@
-.robotContainer {
+.robots {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.robots h1 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.robots h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.robot {
     border: 1px white solid;
     border-radius: 15px;
     width: 50%;
@@ -6,22 +22,22 @@
     margin-bottom: 15px;
 }
 
-.robotTitle {
+.robot h3 {
     font-size: 36px;
     font-weight: bold;
 }
 
-.robotStreak {
+.robot h4 {
     font-size: 16px;
     margin-bottom: 5px;
 }
 
-.robotDescription {
+.robot p {
     font-size: 20px;
     line-height: 24px;
     margin-bottom: 5px;
 }
 
-.robotInfo {
+.robotInfo p {
     font-size: 18px;
 }

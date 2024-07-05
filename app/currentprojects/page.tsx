@@ -1,29 +1,43 @@
 'use client'
 
 import css from './page.module.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 
+type Project = {
+    name: string,
+    description: string
+}
+
 export default function CurrentRobots() {
+    const [projectList, setProjectList] = useState<Project[]>([]);
+
+    useEffect(() => {
+        fetch("/data.json").then(Response => Response.json()).then(data => {
+          let newProjectList: Project[] = []
+          data.currentProjects.forEach((project: Project) => {
+            newProjectList.push(project);
+          });
+          setProjectList(newProjectList);
+        });
+      }, []);
+
     return (
         <main className='main'>
         <Header />
         <div>
-            <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
-                <h1 style={{marginBottom: 15}}>Current Projects</h1>
-                <div className={css.project}>
-                    <h3 className={css.projectTitle}>Alchemy</h3>
-                    <p className={css.projectDescription}> Alchemy is a productivity tool that I developed to help improve my time 
-                        management.</p>
-                </div>
-
-                <div className={css.project}>
-                    <h3 className={css.projectTitle}>Personal Website</h3>
-                    <p className={css.projectDescription}>This website that you are looking at right now I have developed myself. I used the Next.js 
-                    framework for the core of the website and Three.js for the car simulation. 
-                    This website will continue to grow with me and I will be keeping it updated as I work 
-                    on new projects.</p>
-                </div>
+            <div className={css.projects}>
+                <h1>Current Projects</h1>
+                {(() => {
+                    return (projectList.map((project) => {
+                        return (
+                            <div className={css.project}>
+                                <h3>{project.name}</h3>
+                                <p>{project.description}</p>
+                            </div>
+                        );
+                    }));
+                })()}
             </div>
         </div>
       </main>

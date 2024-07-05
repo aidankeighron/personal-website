@@ -1,0 +1,65 @@
+{
+    "projects": [
+        {
+            "title": "Alchemy",
+            "languages": ["JavaScript"],
+            "techStack": ["Electron", "Firebase"],
+            "shortDescription": "Personal task organization software",
+            "page": "alchemy"
+        },
+        {
+            "title": "PID Visualizer",
+            "languages": ["Java"],
+            "techStack": ["Java Swing"],
+            "shortDescription": "Visualization of a PID controller",
+            "page": "pidvisualizer"
+        },
+        {
+            "title": "Fantasy FRC",
+            "languages": ["JavaScript", "HTML", "CSS", "SQL"],
+            "techStack": ["Express", "Socket.io", "mySQL"],
+            "shortDescription": "Fantasy football but robotics",
+            "page": "fantasyfrc"
+        }
+    ],
+    "robots": [
+        {
+            "name": "Horizon",
+            "record": {
+                "w": 1,
+                "l": 3
+            },
+            "description": "Horizon is a horizontal spinner with a 100g weapon that spins at FIND_NUMBER RP. It has a TPU chassis to absorb impact and Carbon Fiber top and bottom plates for rigidity. It's weapon is AR500 Steel and has a tip speed of FIND_NUMBER MPH.",
+            "info": {
+                "Weight": "TODO",
+                "Weapon Hit Force": "TODO",
+                "Dimensions": "TODO",
+                "Number of Wires": "TODO"
+            }
+        },
+        {
+            "name": "Twofold",
+            "record": {
+                "w": "TODO",
+                "l": "TODO"
+            },
+            "description": "Twofold is a double wedge designed to get under opponents and push them around. The double wedge design allows Twofold to take a lot more damage as it comes with a spare ready to go. Fun fact: Twofold is so low to the ground that some weapons are unable to do any damage.",
+            "info": {
+                "Weight": "TODO",
+                "Weapon Hit Force": "TODO",
+                "Dimensions": "TODO",
+                "Ground Effect": "TODO"
+            }
+        }
+    ],
+    "currentProjects": [
+        {
+            "name": "Alchemy",
+            "description": "Alchemy is a productivity tool that I developed to help improve my time management."
+        },
+        {
+            "name": "Personal Website",
+            "description": "This website that you are looking at right now I have developed myself. I used the Next.js framework for the core of the website and Three.js for the car simulation. This website will continue to grow with me and I will be keeping it updated as I work on new projects."
+        }
+    ]
+}

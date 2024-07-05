@@ -34,7 +34,7 @@ export default function Home() {
   const router = useRouter();
   
   useEffect(() => {
-    fetch("/projects.json").then(Response => Response.json()).then(data => {
+    fetch("/data.json").then(Response => Response.json()).then(data => {
       let newProjectList: Project[] = []
       data.projects.forEach((project: Project) => {
         newProjectList.push(project);
@@ -77,7 +77,8 @@ export default function Home() {
                     <Text fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{language}</Text>
                     <Text fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{techStack}</Text>
                     <Text fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{project.shortDescription}</Text>
-                  </Container>);
+                  </Container>
+                );
               }));
             })()}        
           </Container>
