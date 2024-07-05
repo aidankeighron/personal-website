@@ -7,7 +7,7 @@ type ColliderBoxProps = {
     scale: [width: number, height: number, depth: number]
 }
 
-export function ColliderBox({position, scale}: ColliderBoxProps) {
+export function ColliderBox({position, scale}: ColliderBoxProps): any {
   useBox(() => ({
     args: scale,
     position,
