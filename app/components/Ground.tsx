@@ -27,11 +27,10 @@ export function Ground(): JSX.Element {
   const meshRef = useRef<Mesh>(null);
   useEffect(() => {
     if (!meshRef.current) return;
-    
-    if (!meshRef.current) return;
+
     const uvs2 = meshRef.current.geometry.attributes.uv.array;
     meshRef.current.geometry.setAttribute("uv2", new BufferAttribute(uvs2, 2));
-  }, [meshRef.current]);
+  }, [meshRef]);
 
   return (
     <>

@@ -40,16 +40,15 @@ export default function CurrentRobots() {
             {(() => {
               return (robotList.map((robot) => {
                 return (
-                    <div className={css.robot}>
+                    <div key={robot.name} className={css.robot}>
                         <h3>{robot.name}</h3>
                         <h4>W: {robot.record.w}, L: {robot.record.l}</h4>
                         <p className={css.robotDescription}>{robot.description}</p>
                         <div className={css.robotInfo}>
                             {(() => {
                                 return (Object.entries(robot.info).map(([key, value]) => {
-                                    console.log(key, value);
                                     return (
-                                        <p>{key}: {value}</p>
+                                        <p key={key}>{key}: {value}</p>
                                     );
                                 }));
                             })()}

@@ -31,7 +31,8 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
         Math.pow(value[0], 2) + Math.pow(value[1], 2) + Math.pow(value[2], 2) 
       ));
     });
-  }, []);
+  });
+
   useEffect(() => {
     if(!vehicleApi || !chassisApi) return;
     const currentTimeSeconds = Date.now() / 1000;
@@ -134,7 +135,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       chassisApi.rotation.set(0, 0, 0);
       gear.current = 1;
     }
-  }, [controls, vehicleApi, chassisApi, speed]);
+  }, [controls, vehicleApi, chassisApi, speed]); // TODO are all of these needed?
 
   return controls;
 }
