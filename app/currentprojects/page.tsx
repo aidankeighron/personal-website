@@ -31,7 +31,7 @@ export default function CurrentRobots() {
                 {(() => {
                     return (projectList.map((project) => {
                         return (
-                            <div className={css.project}>
+                            <div key={project.name} className={css.project}>
                                 <h3>{project.name}</h3>
                                 <p>{project.description}</p>
                             </div>
