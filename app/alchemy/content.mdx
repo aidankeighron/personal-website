@@ -1,4 +1,7 @@
 import './md.css';
+import './code.css';
+import CodeBlock from '../components/CodeBlock';
+
 # Project Overview
 
 I decided I wanted to create a non-conventional calculator. So, I created one that takes up no space (taking up zero bytes), but how does one create a zero-byte calculator?
@@ -21,11 +24,9 @@ The code shown here has been modified to make it easier to explain. If you would
 
 Why can't we just do this?:
 
-```java
-public int add(int x1, int x2) {
+<CodeBlock code="public int add(int x1, int x2) {
     return x1 + x2;
-}
-```
+}" language="language-java"/>
 
 Because it takes up space. For this project, we are trying to limit the space of whatever does the calculations, i.e., `return x1 + x2`. Nearly every programming language except for a few esoteric languages has a file size that is greater than zero bytes. So how is creating a zero-byte calculator possible? First, let me clarify a few things. For this project, there will be a program (written in Java for no particular reason) to generate this calculator and perform operations with it. The actual calculations will still be done with zero bytes, but we will be using a program to interact with it.
  
