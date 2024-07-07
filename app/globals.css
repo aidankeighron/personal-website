@@ -38,6 +38,9 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --main: #fff;
+  --secondary: #000;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -70,6 +73,9 @@
     --callout-border-rgb: 108, 108, 108;
     --card-rgb: 100, 100, 100;
     --card-border-rgb: 200, 200, 200;
+
+    --main: #000;
+    --secondary: #fff;
   }
 }
 
@@ -111,6 +117,8 @@ a {
   align-items: center;
   margin: 0px;
   padding: 20px;
+  color: var(--secondary);
+  background-color: var(--main);
 }
 
 @media (prefers-color-scheme: dark) {
