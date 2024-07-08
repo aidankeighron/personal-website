@@ -19,9 +19,11 @@
   -webkit-user-drag: none;
   -moz-window-dragging: none;
   -webkit-tap-highlight-color: transparent;
+  line-height: 180%;
 }
 * img {
   max-width: 100%;
+  cursor: zoom-in;
 }
 
 html,
@@ -47,10 +49,6 @@ main {
 }
 
 /* markdown content */
-
-* {
-  line-height: 180%;
-}
 p {
   margin: 0 0 1.75rem 0;
   padding: 0;
@@ -138,14 +136,15 @@ code {
   color: var(--white-2);
   white-space: pre;
   background-color: var(--gray-3);
+  border-radius: 5px;
+}
+
+.codeBlock {
+  padding: 3px 0px !important;
 }
 
 /* lbox */
-
-img {
-  cursor: zoom-in;
-}
-
+/* TODO test images */
 #lightbox {
   position: fixed;
   z-index: 1000;
