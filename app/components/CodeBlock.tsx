@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import rehypeStarryNight from 'rehype-starry-night' // TODO look at different options
+import rehypeStarryNight from 'rehype-starry-night';
 import {rehype} from 'rehype';
 
 type CodeBlockParams = {

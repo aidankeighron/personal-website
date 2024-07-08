@@ -152,9 +152,9 @@ When deleting files with code, we need to delete everything recursively because 
  
 ## Final Thoughts
  
-This project was not meant as a serious attempt at creating an efficient calculator. In reality, this calculator takes up more space than a conventional calculator and takes longer to find the answer. Analyzing it, we find it has a size complexity of $$O(2n^2 + n)$$ (simplifying down to $$O(n^2)$$) and I don't even want to spend the time calculating time complexity. Altogether it was a fun project and I enjoyed creating it and I hope you enjoyed reading about it.
+This project was not meant as a serious attempt at creating an efficient calculator. In reality, this calculator takes up more space than a conventional calculator and takes longer to find the answer. Analyzing it, we find it has a size complexity of O(2n² + n) (simplifying down to O(n²)) and I don't even want to spend the time calculating time complexity. Altogether it was a fun project and I enjoyed creating it and I hope you enjoyed reading about it.
  
-## $$O(n)$$ complexity
+## O(n) complexity
 
 <CodeBlock code={`for (int i = 0; i < size; i++) {
     new File("Numbers" + "\\" + i).mkdir(); // 1st Dimension of folders (size)
@@ -164,6 +164,6 @@ This project was not meant as a serious attempt at creating an efficient calcula
     }
 }`} language="language-java"/>
 
-I will talk a bit about how I found the $$O(n)$$ size complexity for this project. N is the size of calculable numbers i.e., calculable numbers from 0 to 1000 would have an N of 1001. The $$O(n)$$ for the files is simply just `size * numColumns` as seen above and the same is true for the 2nd dimension of files with the 1st dimension being just `size`.
+I will talk a bit about how I found the O(n) size complexity for this project. N is the size of calculable numbers i.e., calculable numbers from 0 to 1000 would have an N of 1001. The O(n) for the files is simply just `size * numColumns` as seen above and the same is true for the 2nd dimension of files with the 1st dimension being just `size`.
  
 Full code: <a href="https://github.com/aidankeighron/calculator" target="_blank">Calculator</a>
