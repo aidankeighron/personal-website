@@ -6,6 +6,8 @@
     width: 60%;
     z-index: 10;
     margin-bottom: 15px;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
 .name {
@@ -23,6 +25,7 @@
 .bar {
     display: flex;
     flex-direction: row;
+    pointer-events: auto;
 }
 
 .bar p {
