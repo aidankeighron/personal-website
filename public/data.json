@@ -1,25 +1,25 @@
 {
     "projects": [
         {
-            "title": "Alchemy",
-            "languages": ["JavaScript"],
-            "techStack": ["Electron", "Firebase"],
-            "shortDescription": "Personal task organization software",
-            "page": "alchemy"
+            "title": "File Calculator",
+            "languages": ["Java"],
+            "techStack": ["Multithreading", "Math"],
+            "shortDescription": "Calculator using files and folders",
+            "page": "file-calculator"
         },
         {
-            "title": "PID Visualizer",
+            "title": "Sheet Scraper",
+            "languages": ["Python"],
+            "techStack": ["Google Sheets API", "Discord API"],
+            "shortDescription": "Collection of FRC shirt trades",
+            "page": "sheet-scraper"
+        },
+        {
+            "title": "Productivity",
             "languages": ["Java"],
             "techStack": ["Java Swing"],
-            "shortDescription": "Visualization of a PID controller",
-            "page": "pidvisualizer"
-        },
-        {
-            "title": "Fantasy FRC",
-            "languages": ["JavaScript", "HTML", "CSS", "SQL"],
-            "techStack": ["Express", "Socket.io", "mySQL"],
-            "shortDescription": "Fantasy football but robotics",
-            "page": "fantasyfrc"
+            "shortDescription": "Desktop productivity app",
+            "page": "productivity"
         }
     ],
     "robots": [

@@ -13,7 +13,7 @@ import Header from "./components/Header";
 const cardStyle = {
   titleFontSize: 22,
   contentFontSize: 12,
-  width: 350,
+  width: 400,
   height: 100,
   padding: 15,
   marginBottom: 100,
@@ -58,8 +58,6 @@ export default function Home() {
                 normal: "/JetBrainsMono_Italic.json",
               }}
             >
-                      <Text >Test123</Text>
-            
             <Container transformRotateX={-90} flexDirection="column" positionType={"absolute"} inset={0} positionTop={0} positionLeft={0}>
               {(() => {
                 return (projectList.map((project, index) => {

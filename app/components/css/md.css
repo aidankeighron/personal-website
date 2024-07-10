@@ -10,6 +10,8 @@ body {
 
 .content {
   line-height: 180%;
+  max-width: 75%;
+  margin-bottom: 20px;
 }
 .content a {
   color: var(--tertiary);
