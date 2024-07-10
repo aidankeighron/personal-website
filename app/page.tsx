@@ -3,7 +3,7 @@
 import css from "./page.module.css";
 import React, { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Scene } from "./components/Scene";
+import { Scene } from "./components/physics/Scene";
 import { Physics } from "@react-three/cannon";
 import { Stats } from "@react-three/drei";
 import { Container, Text, Root, FontFamilyProvider } from '@react-three/uikit'
