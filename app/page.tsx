@@ -58,6 +58,7 @@ export default function Home() {
                 normal: "/JetBrainsMono_Italic.json",
               }}
             >
+              {/* TODO skills loading bar */}
             <Container transformRotateX={-90} flexDirection="column" positionType={"absolute"} inset={0} positionTop={0} positionLeft={0}>
               {(() => {
                 return (projectList.map((project, index) => {
