@@ -15,11 +15,25 @@ body {
   z-index: 2;
 }
 
+.contentWrapper {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .content {
+  line-height: 180%;
+  max-width: 70%;
+  margin-bottom: 20px;
+  transform: scale(2);
+}
+
+.contentOld {
   line-height: 180%;
   max-width: 80%;
   margin-bottom: 20px;
 }
+
 .content a {
   color: var(--tertiary);
   border-bottom: 1px solid var(--tertiary);

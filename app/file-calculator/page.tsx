@@ -17,8 +17,11 @@ export default function Page() {
             broadphase="SAP" gravity={[0, -2.6, 0]}>
             <Scene />
           </Physics>
-          <Html wrapperClass='content' occlude="blending" center >
-              <Content />
+          <Html className="contentWrapper" transform rotation-x={-Math.PI / 2} position={[0, 0, 0]} occlude="blending" scale={0.1} fullscreen>
+          {/* <Html wrapperClass='content' occlude="blending" center > */}
+              <div className='content'>
+                <Content />
+              </div>
           </Html>
         </Canvas>
       </div>

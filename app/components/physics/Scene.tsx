@@ -1,4 +1,5 @@
 import {
+  OrbitControls,
     PerspectiveCamera,
 } from "@react-three/drei";
 import { Suspense } from "react";
@@ -14,8 +15,10 @@ import { ColliderBox } from "./ColliderBox";
   
         <PerspectiveCamera makeDefault position={[-6, 3.9, 6.21]} fov={40} />
         {/* <OrbitControls target={[-2.64, -0.71, 0.03]} /> */}
-        <ColliderBox position={[0, 0, 0]} scale={[1, 1, 1]}/>
-        <ColliderBox position={[1.75, 0, 0.5]} scale={[0.3, 1, 0.3]}/>
+        {/* <ColliderBox position={[0, 0, 0]} scale={[1, 1, 1]}/> */}
+        {/* TODO plane geometry v ? */}
+        <ColliderBox position={[-4.5, 0, 0]} scale={[0.5, 1, 1000]}/>
+        <ColliderBox position={[4.5, 0, 0]} scale={[0.5, 1, 1000]}/>
         <Ground />
         <Car />
       </Suspense>

@@ -7,7 +7,7 @@ export default function Home() {
   return(
     <div className='main'>
       <Header />
-      <div className='content'>
+      <div className='contentOld'>
         <Content />
       </div>
     </div>
