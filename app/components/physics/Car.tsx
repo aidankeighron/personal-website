@@ -41,6 +41,8 @@ export function Car(): JSX.Element {
 
   useControls(vehicleApi, chassisApi);
 
+  const cameraOffset = new Vector3(0, 6, 0);
+  const positionMultiply = new Vector3(0, 0, 1);
   useFrame((state) => {
     if (chassisBody.current == null) return;
 
@@ -53,8 +55,8 @@ export function Car(): JSX.Element {
     let wDir = new Vector3(0,0,0);
     wDir.applyQuaternion(quaternion);
     wDir.normalize();
-    position.multiply(new Vector3(0, 0, 1));
-    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(-1).add(new Vector3(0, 6, 0)));
+    position.multiply(positionMultiply);
+    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(-1).add(cameraOffset));
 
     state.camera.position.copy(cameraPosition);
     state.camera.lookAt(position);
@@ -62,7 +64,7 @@ export function Car(): JSX.Element {
 
   useEffect(() => {
     if (!result) return;
-
+    console.log("Updating car mesh");
     let mesh = result; // so we don't hide the mesh JSX element
     mesh.scale.set(0.0012, 0.0012, 0.0012);
     mesh.children[0].position.set(-365, 26, -67);

@@ -15,11 +15,17 @@ export function ColliderBox({position, scale}: ColliderBoxProps): any {
   }));
 
   return (
-    debug && (
-      <mesh position={position}>
-        <boxGeometry args={scale} />
-        <meshBasicMaterial transparent={true} opacity={0.25} />
-      </mesh>
-    )
+    <mesh visible={debug} position={position}>
+      <boxGeometry args={scale} />
+      <meshBasicMaterial transparent={true} opacity={0.25} />
+    </mesh>
   );
+  // return (
+  //   debug && (
+  //     <mesh position={position}>
+  //       <boxGeometry args={scale} />
+  //       <meshBasicMaterial transparent={true} opacity={0.25} />
+  //     </mesh>
+  //   )
+  // );
 }

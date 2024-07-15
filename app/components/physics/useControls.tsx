@@ -26,32 +26,38 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
   }, []);
 
   useEffect(() => {
-    chassisApi.velocity.subscribe((value) => {
+    let subscription = chassisApi.velocity.subscribe((value) => {
       setSpeed(Math.sqrt(
         Math.pow(value[0], 2) + Math.pow(value[1], 2) + Math.pow(value[2], 2) 
       ));
     });
-  });
+    console.log("Subscribing to velocity");
+
+    return () => {
+      subscription();
+    }
+  }, []);
+
+  const frontSteering = 0.5;
+  const backSteering = 0.1; // 0.25 drift?
+  const engineForce = 500;
+  const shiftTime = 0.2;
+  const gears: {'R': number, [key: number]: number} = {
+    'R': -0.5,
+    '0': 0,
+    '1': 1.0,
+    '2': 1.7,
+    '3': 2.5,
+    '4': 3.8,
+    '5': 5.0,
+  }
 
   useEffect(() => {
     if(!vehicleApi || !chassisApi) return;
     const currentTimeSeconds = Date.now() / 1000;
-    const timeStep = currentTimeSeconds - lastTimeSeconds.current;
+    const timeStepSeconds = currentTimeSeconds - lastTimeSeconds.current;
     lastTimeSeconds.current = currentTimeSeconds;
-
-    const frontSteering = 0.5;
-    const backSteering = 0.1; // 0.25 drift?
-    const engineForce = 500;
-    const shiftTime = 0.2;
-    const gears: {'R': number, [key: number]: number} = {
-      'R': -0.5,
-      '0': 0,
-      '1': 1.0,
-      '2': 1.7,
-      '3': 2.5,
-      '4': 3.8,
-      '5': 5.0,
-    }
+    console.log("Time Step Milliseconds", timeStepSeconds*1000);
 
     const forward = controls.w || controls.arrowup;
     const reverse = controls.s || controls.arrowdown;
@@ -61,7 +67,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
     const reset = controls.r;
 
     if (shiftTimer.current > 0) {
-      shiftTimer.current -= timeStep;
+      shiftTimer.current -= timeStepSeconds;
       shiftTimer.current = Math.max(0, shiftTimer.current);
     } 
     else {
@@ -111,6 +117,10 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       vehicleApi.setBrake(1, 2);
       vehicleApi.setBrake(1, 3);
     }
+    // if (forward) {
+    //   vehicleApi.applyEngineForce(100, 2);
+    //   vehicleApi.applyEngineForce(100, 3);
+    // }
 
     if (left) {
       vehicleApi.setSteeringValue(frontSteering, 2);
@@ -135,7 +145,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       chassisApi.rotation.set(0, 0, 0);
       gear.current = 1;
     }
-  }, [controls, vehicleApi, chassisApi, speed]); // TODO are all of these needed?
+  }, [controls, vehicleApi, chassisApi]); // TODO are all of these needed?
 
   return controls;
 }

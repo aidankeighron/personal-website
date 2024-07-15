@@ -20,21 +20,21 @@ export function Ground(): JSX.Element {
 
   useEffect(() => {
     if (!gridMap) return;
-
+    console.log("Updating gridMap");
     gridMap.anisotropy = 16;
   }, [gridMap]);
 
   const meshRef = useRef<Mesh>(null);
   useEffect(() => {
     if (!meshRef.current) return;
-
+    console.log("Updating Mesh Ref");
     const uvs2 = meshRef.current.geometry.attributes.uv.array;
     meshRef.current.geometry.setAttribute("uv2", new BufferAttribute(uvs2, 2));
   }, [meshRef]);
 
   return (
     <>
-      <mesh
+      {/* <mesh
         ref={meshRef}
         position={[0, -0.01, 5]}
         rotation-x={-Math.PI * .5}
@@ -46,7 +46,7 @@ export function Ground(): JSX.Element {
           transparent={true}
           color={"white"}
         />
-      </mesh>
+      </mesh> */}
     </>
   );
 }
