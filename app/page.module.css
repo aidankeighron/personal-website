@@ -4,3 +4,31 @@
   height: 100%;
   z-index: 2;
 }
+
+.contentWrapper {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.projects {
+  max-width: 70%;
+  margin-bottom: 20px;
+  transform: scale(2);
+}
+
+.projectCard {
+  width: fit-content;
+  height: fit-content;
+  padding: 15;
+  margin-bottom: 100;
+  border-bottom: var(--tertiary) 1px solid;
+}
+
+.projectCard h1 {
+  font-size: 22;
+}
+
+.projectCard p {
+  font-size: 12;
+}

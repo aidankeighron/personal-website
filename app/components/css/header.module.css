@@ -8,7 +8,7 @@
     margin-bottom: 15px;
     pointer-events: none;
     background-color: var(--main);
-    padding-bottom: 26px;
+    padding: 40px;
 }
 
 .name {
