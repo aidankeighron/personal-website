@@ -1,7 +1,8 @@
+import { Position } from "@/app/types";
 import { PublicApi, RaycastVehiclePublicApi } from "@react-three/cannon";
 import { useEffect, useRef, useState } from "react";
 
-export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: PublicApi) {
+export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: PublicApi, startPosition: Position) {
   let [controls, setControls] = useState<{[key: string]: boolean}>({ });
   let shiftTimer = useRef<number>(0);
   let lastTimeSeconds = useRef<number>(Date.now()/1000);
@@ -139,10 +140,10 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
     }
 
     if (reset) {
-      chassisApi.position.set(-1.5, 0.5, 3);
+      chassisApi.position.set(...startPosition);
       chassisApi.velocity.set(0, 0, 0);
       chassisApi.angularVelocity.set(0, 0, 0);
-      chassisApi.rotation.set(0, 0, 0);
+      chassisApi.rotation.set(0, Math.PI, 0);
       gear.current = 1;
     }
   }, [controls, vehicleApi, chassisApi]); // TODO are all of these needed?

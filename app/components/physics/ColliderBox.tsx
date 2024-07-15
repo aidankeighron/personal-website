@@ -1,9 +1,10 @@
+import { Position } from "@/app/types";
 import { useBox } from "@react-three/cannon";
 
 const debug = true;
 
 type ColliderBoxProps = {
-    position: [x: number, y: number, z: number],
+    position: Position,
     scale: [width: number, height: number, depth: number]
 }
 

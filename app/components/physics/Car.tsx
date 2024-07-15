@@ -6,29 +6,34 @@ import { useControls } from "./useControls";
 import { useWheels } from "./useWheels";
 import { WheelDebug } from "./WheelDebug";
 import { Group, Object3DEventMap, Quaternion, Vector3 } from "three";
+import { Position } from "@/app/types";
 
 type CarParams = {
+  startPosition?: Position,
+  orbit?: boolean,
 }
 
-export function Car(): JSX.Element {
+export function Car({startPosition, orbit=false}: CarParams): JSX.Element {
   // https://sketchfab.com/3d-models/low-poly-car-muscle-car-2-ac23acdb0bd54ab38ea72008f3312861
   let result = useLoader(
     GLTFLoader,
     "/models/car.glb"
   ).scene;
 
-  const position: [x: number, y: number, z: number] = [-1.5, 0.5, 3];
+
+  const position: Position = startPosition ?? [-1.5, 0.5, 3];
   const width: number = 0.13;
   const height: number = 0.04;
   const front: number = 0.12;
   const wheelRadius: number = 0.025;
 
-  const chassisBodyArgs: [x: number, y: number, z: number] = [width, height, front * 2];
+  const chassisBodyArgs: Position = [width, height, front * 2];
   const [chassisBody, chassisApi] = useBox(() => ({
     allowSleep: false, // TODO what does this do
     args: chassisBodyArgs,
     mass: 150,
     position,
+    rotation: [0,Math.PI,0]
   }), useRef(null));
 
   const [wheels, wheelInfos] = useWheels(width, height, front, wheelRadius);
@@ -39,12 +44,13 @@ export function Car(): JSX.Element {
       wheels
   }), useRef(null));
 
-  useControls(vehicleApi, chassisApi);
+  useControls(vehicleApi, chassisApi, position);
 
   const cameraOffset = new Vector3(0, 6, 0);
   const positionMultiply = new Vector3(0, 0, 1);
+  
   useFrame((state) => {
-    if (chassisBody.current == null) return;
+    if (chassisBody.current == null || orbit) return;
 
     let position = new Vector3(0,0,0);
     position.setFromMatrixPosition(chassisBody.current.matrixWorld);

@@ -52,7 +52,7 @@ export default function Home() {
             <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)}>
               <Physics
                 broadphase="SAP" gravity={[0, -2.6, 0]}>
-                <Scene />
+                <Scene startPosition={[0, 0.2, -2]} />
               </Physics>
               <Stats />
               <Root flexDirection="column" anchorX={'center'} anchorY={'center'} >
