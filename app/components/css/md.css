@@ -73,7 +73,7 @@ body {
   margin-bottom: 1.75rem;
   font-style: italic;
   font-weight: 100;
-  border-left: 0.3rem solid var(--off-secondary);
+  border-left: 0.3rem solid var(--secondary1);
 }
 .content strong {
   font-weight: bold;
@@ -98,12 +98,12 @@ ul * ul {
   border-collapse: collapse;
 }
 .content table th {
-  background-color: var(--off-main);
-  color: var(--off-secondary);
-  border: 1px solid var(--main);
+  background-color: var(--main1);
+  color: var(--secondary1);
+  border: 1px solid var(--main0);
 }
 .content table * {
-  border: 1px solid var(--off-main);
+  border: 1px solid var(--main1);
   padding: 0.2rem;
 }
 .content img {
@@ -120,16 +120,16 @@ ul * ul {
 }
 
 .content pre {
-  background: var(--off-main) !important;
+  background: var(--main1) !important;
   padding: 1rem 2rem;
   margin-bottom: 1.75rem;
 }
 
 .content code {
   padding: 3px 5px;
-  color: var(--off-secondary);
+  color: var(--secondary1);
   white-space: pre;
-  background-color: var(--off-main);
+  background-color: var(--main1);
   border-radius: 5px;
 }
 

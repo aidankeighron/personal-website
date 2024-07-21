@@ -1,27 +1,9 @@
 'use client'
 
-// import { PerformanceMonitor, Stats, useAspect, useVideoTexture, useTexture } from "@react-three/drei";
-// import { Root, FontFamilyProvider } from '@react-three/uikit'
-// import { Scene } from "./components/physics/Scene";
-// import { Physics } from "@react-three/cannon";
-// import { Canvas } from '@react-three/fiber';
-// import { useRouter } from "next/navigation";
-// import { motion } from "framer-motion";
-// import css from "./page.module.css";
-// import React, { StrictMode, useEffect, useState, Suspense } from 'react';
 import React from 'react';
-// import Header from "./components/Header";
 import Image from 'next/image';
 import css from "./css/page.module.css"
 import Link from 'next/link';
-
-type Project = {
-  title: string
-  languages: string[],
-  techStack: string[],
-  shortDescription: string,
-  page: string,
-}
 
 function Header() {
   return (
@@ -72,6 +54,43 @@ function AboutMe() {
         </div>
     </div>
   );
+}
+
+type Robot = {
+  name: string,
+  description: string,
+  imageSrc: string,
+  imageAlt: string,
+}
+
+const robotList: Robot[] = [
+  {
+    name: "Bad Conflict",
+    description: "I am the Team Manager of a combat robotics team, Bad Conflict, we compete in ant-weight robotics competitions. I am an alumni of FRC team 2451 PWNAGE and FLL team 11676 TechNo Turtles. I have been doing competitive robotics since middle school and I height recommend it to anyone even vaguely interested.",
+    imageSrc: "/images/aidan_profile.jpg",
+    imageAlt: "Robot Photo",
+  },
+  {
+    name: "Horizon",
+    description: "My current robot is Horizon a horizontal spinner. It has 1/8 in Carbon Fiber top and bottom plates for armor and a TPU (3D printable rubber) chassis to absorb damage. With a 101g AR500 weapon spinning, theoretically, at 18000 RPM. That is a tip speed of 350 MPH, packing quite a punch.",
+    imageSrc: "/images/aidan_profile.jpg",
+    imageAlt: "Robot Photo",
+  },
+]
+
+function CombatRobots() {
+  return (
+    <div className={css.combatRobots}>
+      {robotList.map(robot => {
+        return (
+          <div key={robot.name}>
+            <Image src={robot.imageSrc} alt={robot.imageAlt} quality={100} className={css.image}/>
+            <p>{robot.description}</p>
+          </div>
+        )
+      })}
+    </div>
+  )
 }
 
 export default function Home() {

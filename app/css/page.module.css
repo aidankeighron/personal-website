@@ -7,7 +7,7 @@
   width: 100%;
   z-index: 1;
   pointer-events: none;
-  padding: 40px;
+  padding: var(--padding-xxl);
 }
 
 .header h1 {
@@ -15,9 +15,9 @@
   white-space: nowrap;
   margin-left: 200px;
   background-color: var(--main);
-  padding: 10px;
-  border-radius: 4px;
-  font-size: 36px;
+  padding: var(--padding-s);
+  border-radius: var(--border-radius-s);
+  font: var(--h2-ui);
 }
 
 .header div {
@@ -29,12 +29,13 @@
 
 .header p {
   background-color: var(--main);
-  font-size: 22px;
-  margin-right: 10px;
+  font: var(--h3-ui);
+  margin-right: var(--margin-s);
   border-bottom: 3px solid var(--tertiary);
-  padding: 8px;
-  border-radius: 4px;
-  white-space: nowrap;
+  padding: var(--padding-s);
+  border-radius: var(--border-radius-s);
+  white-space: nowrap; 
+  /* TODO needed ^ */
 }
 
 .entryDiv {
@@ -69,18 +70,18 @@
   justify-self: center;
   align-self: center;
   background-color: darkgrey;
-  padding: 24px;
+  padding: var(--padding-l);
   text-align: center;
-  border-radius: 20px;
+  border-radius: var(--border-radius-l);
   filter: drop-shadow(0px 1px 100px black);
 }
 
 .entryDiv h1 {
-  font-size: 24px;
+  font: var(--h3);
 }
 
 .entryDiv p {
-  font-size: 22px;
+  font: var(--big);
 }
 
 .aboutMe {
@@ -91,17 +92,17 @@
 
 .aboutMe h1 {
   border-bottom: 3px solid var(--tertiary);
-  font-size: 36px;
-  margin: 24px;
+  font: var(--h3);
+  margin: var(--margin-l);
   width: fit-content;
 }
 
 .aboutMe div {
   width: 40%; 
   background-color: teal;
-  padding: 24px;
-  margin-top: 48px;
-  border-radius: 20px;
+  padding: var(--padding-l);
+  margin-top: var(--margin-xxxl);
+  border-radius: var(--border-radius-l);
   flex-direction: row;
   display: flex;
   align-items: center;
@@ -110,10 +111,26 @@
 }
 
 .aboutMe .image {
-  border-radius: 16px;
+  border-radius: var(--border-radius-m);
+  width: 30%;
 }
 
 .aboutMe p {
-  margin-left: 20px;
-  font-size: 20px;
+  margin-left: var(--margin-l);
+  font: var(--big);
+}
+
+.combatRobotics {
+  align-self: center;
+}
+
+.combatRobotics div {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+}
+
+.combatRobotics p {
+  font: var(--big);
+  margin-left: var(--margin-m);
 }

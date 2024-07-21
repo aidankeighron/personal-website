@@ -1,20 +1,56 @@
 :root {
 
+  --border-radius-s: 4px;
+  --border-radius-m: 16px;
+  --border-radius-l: 20px;
 
+  --margin-xxs: 0.25rem; /* 4px */
+  --margin-xs: 0.5rem; /* 8px */
+  --margin-s: 0.75rem; /* 12px */
+  --margin-m: 1.0rem; /* 16px */
+  --margin-l: 1.25rem; /* 20px */
+  --margin-xl: 1.75rem; /* 28px */
+  --margin-xxl: 2.5rem; /* 40px */
+  --margin-xxxl: 3rem; /* 48px */
+  
+  --padding-xxs: 0.25rem;
+  --padding-xs: 0.5rem;
+  --padding-s: 0.75rem;
+  --padding-m: 1.0rem;
+  --padding-l: 1.25rem;
+  --padding-xl: 1.75rem;
+  --padding-xxl: 2.5rem;
 
-  --main: #fff;
-  --off-main: #a9abb3;
-  --secondary: #000;
-  --off-secondary: #111111;
+  --ff: "JetBrains Mono";
+  --h1: bold 4rem/1em var(--ff); /* 64px */
+  --h2: bold 3rem/1.2em var(--ff); /* 48px */
+  --h3: bold 2.25rem/1.2em var(--ff); /* 36px */
+  --h4: bold 1.5rem/1.6em var(--ff); /* 24px */
+  --big: 1.25rem/1.6em var(--ff); /* 20px */
+  --p: 1rem/1.6em var(--ff); /* 16px */
+  --small: 0.75rem/2em var(--ff); /* 12px */
+
+  --h1-ui: bold 3rem/1.2em var(--ff); /* 64px */
+  --h2-ui: bold 2.25rem/1.2em var(--ff); /* 36px */
+  --h3-ui: bold 1.5rem/1.2em var(--ff); /* 24px */
+  --h4-ui: bold 1.12rem/1.6em var(--ff); /* 18px */
+  --big-ui: 1rem/1.6em var(--ff); /* 16px */
+  --p-ui: 0.8rem/1.6em var(--ff); /* 12.8px */
+  --small-ui: 0.75rem/1.8em var(--ff); /* 12px */
+
+  --main0: #fff;
+  --main1: #a9abb3;
+  --secondary0: #000;
+  --secondary1: #111111;
   --tertiary: darkorange;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --main: #111111;
-    --off-main: #25282c;
-    --secondary: #fff;
-    --off-secondary: #a9abb3;
+    --main0: #111111;
+    --main1: #25282c;
+    --secondary0: #fff;
+    --secondary1: #a9abb3;
     --tertiary: cyan; 
   }
 }
@@ -42,7 +78,7 @@ body {
 }
 
 body {
-  background: var(--main);
+  background: var(--main0);
 }
 
 a {
@@ -61,8 +97,8 @@ a {
   align-items: center;
   margin: 0px;
   padding: 0px;
-  color: var(--secondary);
-  background-color: var(--main);
+  color: var(--secondary0);
+  background-color: var(--main0);
 }
 
 @media (prefers-color-scheme: dark) {
