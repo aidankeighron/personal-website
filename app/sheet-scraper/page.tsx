@@ -1,7 +1,7 @@
 "use client";
 
 import { Html, PerformanceMonitor, Stats } from '@react-three/drei';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import Content from './content.mdx';
 import { Canvas } from '@react-three/fiber';
 import { Scene } from "../components/physics/Scene";
@@ -13,7 +13,7 @@ export default function Page() {
 
   return (
     <div className='main'>
-      <Header />
+      {/* <Header /> */}
       <div className='scene'>
         <StrictMode>
           <Canvas frameloop="demand" dpr={dpr} performance={{current: 1, min: 0.1, max: 1, debounce: 200}}>

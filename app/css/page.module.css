@@ -1,0 +1,119 @@
+.header {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  z-index: 1;
+  pointer-events: none;
+  padding: 40px;
+}
+
+.header h1 {
+  border-bottom: 3px solid var(--tertiary);
+  white-space: nowrap;
+  margin-left: 200px;
+  background-color: var(--main);
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 36px;
+}
+
+.header div {
+  display: flex;
+  flex-direction: row;
+  pointer-events: auto;
+  margin-right: 200px;
+}
+
+.header p {
+  background-color: var(--main);
+  font-size: 22px;
+  margin-right: 10px;
+  border-bottom: 3px solid var(--tertiary);
+  padding: 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.entryDiv {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: calc(100vh - 100vw * calc(2160 / 3840));
+}
+
+/* TODO make better */
+@media (max-width: 1800px) {
+  .entryDiv {
+    top: 0;
+  }
+  .entryDiv div {
+    top: 0;
+  }
+}
+
+.entryDiv video {
+  width: 100vw;
+  /* 3840 / 2160 */
+}
+
+.entryDiv div {
+  position: absolute;
+  top: calc(calc(100vh - 100vw * calc(2160 / 3840)) * -1);
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  justify-self: center;
+  align-self: center;
+  background-color: darkgrey;
+  padding: 24px;
+  text-align: center;
+  border-radius: 20px;
+  filter: drop-shadow(0px 1px 100px black);
+}
+
+.entryDiv h1 {
+  font-size: 24px;
+}
+
+.entryDiv p {
+  font-size: 22px;
+}
+
+.aboutMe {
+  display: flex;
+  flex-direction: column;
+  margin-top: calc(calc(100vh - 100vw * calc(2160 / 3840)));
+}
+
+.aboutMe h1 {
+  border-bottom: 3px solid var(--tertiary);
+  font-size: 36px;
+  margin: 24px;
+  width: fit-content;
+}
+
+.aboutMe div {
+  width: 40%; 
+  background-color: teal;
+  padding: 24px;
+  margin-top: 48px;
+  border-radius: 20px;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  filter: drop-shadow(0px 10px 3px black);
+}
+
+.aboutMe .image {
+  border-radius: 16px;
+}
+
+.aboutMe p {
+  margin-left: 20px;
+  font-size: 20px;
+}

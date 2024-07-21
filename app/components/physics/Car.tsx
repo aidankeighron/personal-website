@@ -9,7 +9,7 @@ import { Group, Object3DEventMap, Quaternion, Vector3 } from "three";
 import { Position } from "@/app/types";
 
 type CarParams = {
-  startPosition?: Position,
+  startPosition: Position,
   orbit?: boolean,
 }
 
@@ -21,7 +21,7 @@ export function Car({startPosition, orbit=false}: CarParams): JSX.Element {
   ).scene;
 
 
-  const position: Position = startPosition ?? [-1.5, 0.5, 3];
+  const position: Position = startPosition;
   const width: number = 0.13;
   const height: number = 0.04;
   const front: number = 0.12;

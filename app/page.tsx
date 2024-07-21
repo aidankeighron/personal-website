@@ -1,25 +1,19 @@
 'use client'
 
-import css from "./page.module.css";
-import React, { StrictMode, useEffect, useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { Scene } from "./components/physics/Scene";
-import { Physics } from "@react-three/cannon";
-import { Html, PerformanceMonitor, Stats } from "@react-three/drei";
-import { Root, FontFamilyProvider } from '@react-three/uikit'
-import { useRouter } from "next/navigation";
-import Header from "./components/Header";
-
-const cardStyle = {
-  titleFontSize: 22,
-  contentFontSize: 12,
-  width: 400,
-  height: 100,
-  padding: 15,
-  marginBottom: 100,
-  centerGapLeft: 400,
-  centerGapRight: 50,
-};
+// import { PerformanceMonitor, Stats, useAspect, useVideoTexture, useTexture } from "@react-three/drei";
+// import { Root, FontFamilyProvider } from '@react-three/uikit'
+// import { Scene } from "./components/physics/Scene";
+// import { Physics } from "@react-three/cannon";
+// import { Canvas } from '@react-three/fiber';
+// import { useRouter } from "next/navigation";
+// import { motion } from "framer-motion";
+// import css from "./page.module.css";
+// import React, { StrictMode, useEffect, useState, Suspense } from 'react';
+import React from 'react';
+// import Header from "./components/Header";
+import Image from 'next/image';
+import css from "./css/page.module.css"
+import Link from 'next/link';
 
 type Project = {
   title: string
@@ -29,105 +23,78 @@ type Project = {
   page: string,
 }
 
+function Header() {
+  return (
+    <div className={css.header}>
+      <h1>Aidan Keighron</h1>
+      <div>
+        <Link href={'/'}><p>Home</p></Link>
+        <Link href={'/currentprojects'}><p>Current Projects</p></Link>
+        <Link href={'/currentrobots'}><p>Current Robots</p></Link>
+        <Link href={'#aboutme'} scroll={true}><p>About Me</p></Link>
+      </div>
+    </div>
+  );
+};
+
+function VideoEntry() {
+  return (
+    <div className={css.entryDiv}>
+      <video autoPlay loop muted playsInline preload="auto">
+        <source src="/videos/introVideo2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div>
+        <h1>Hi, I am Aidan Keighron</h1>
+        <p>I'm a Software Developer and I make robots in my spare time</p>
+      </div>
+    </div>
+  );
+}
+
+function AboutMe() {
+  return (
+    <div className={css.aboutMe}>
+        <h1 id={'aboutme'}>About Me</h1>
+        <div>
+          <Image src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron" width={4007/16} height={4004/16}
+              quality={100} className={css.image}/>
+          <p>I am Aidan Keighron a highly motivated computer science student at Michigan State University, 
+            fueled by a passion for robotics, automation, and software development. I am a sophomore at 
+            Michigan State University studying computer science. I love STEM, robotics, and programming, 
+            outside of technology I love to read and roller blade.</p>
+          {/* <p>I am Aidan Keighron a sophomore at Michigan State University studying computer science. 
+          I love STEM, robotics, and programming, outside of technology I love to read and rollerblade. 
+          I am very involved in competitive robotics, I am the Team Manager of a combat robotics 
+          team, Bad Conflict, we compete in antweight robotics competitions. I am an alumni of FRC team 
+          2451 PWNAGE and FLL team 11676 TechNo Turtles. I have been doing competitive robotics since 
+          middle school and I hight recommend it to anyone even vaguely interested.</p> */}
+        </div>
+    </div>
+  );
+}
+
 export default function Home() {
-  const [projectList, setProjectList] = useState<Project[]>([]);
-  const [dpr, setDpr] = useState(1.5);
-  const router = useRouter();
-  
-  useEffect(() => {
-    fetch("/data.json").then(Response => Response.json()).then(data => {
-      let newProjectList: Project[] = []
-      data.projects.forEach((project: Project) => {
-        newProjectList.push(project);
-      });
-      setProjectList(newProjectList);
-    });
-  }, []);
+  // const [dpr, setDpr] = useState(1.5);
+
   // TODO start supporting dark/light mode from the start
   return(
     <main className='main'>
-      <div className={css.scene}>
-        <StrictMode>
+      {/* <StrictMode>
           <Canvas frameloop="demand" dpr={dpr} performance={{current: 1, min: 0.1, max: 1, debounce: 200}}>
             <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)}>
               <Physics
                 broadphase="SAP" gravity={[0, -2.6, 0]}>
-                <Scene startPosition={[0, 0.2, -2]} />
+                <Scene startPosition={[0, 0, 0]} orbit={false} />
               </Physics>
               <Stats />
-              <Root flexDirection="column" anchorX={'center'} anchorY={'center'} >
-                <FontFamilyProvider
-                  JetBrainsMono={{
-                    normal: "/JetBrainsMono_Italic.json",
-                  }}
-                >
-                  {/* TODO skills loading bar */}
-                <Html className={css.contentWrapper} transform rotation-x={-Math.PI / 2} position={[0, 0, 0]} occlude="blending" scale={0.1} fullscreen>
-                  <div className={css.projects}>
-                  {(() => {
-                    return (projectList.map((project, index) => {
-                      let language = "Language" + (project.languages.length > 1 ? "s: " : ": ") + project.languages.join(", ");
-                      if (project.languages.length > 1) {
-                        let index = language.lastIndexOf(",");
-                        language = `${language.substring(0, index)}${project.languages.length == 2 ? "" : ","} and${language.substring(index + 1)}`;
-                      }
-                      let techStack = "TechStack: " + project.techStack.join(", ");
-                      if (project.techStack.length > 1) {
-                        let index = techStack.lastIndexOf(",");
-                        techStack = `${techStack.substring(0, index)}${project.techStack.length == 2 ? "" : ","} and${techStack.substring(index + 1)}`;
-                      }
-
-                      const marginLeft = index % 2 != 0 ? -cardStyle.centerGapLeft : cardStyle.centerGapRight;
-
-                      return (
-                        <div key={project.title} className={css.projectCard} style={{marginLeft}}
-                        onClick={() => {router.push(`/${project.page}`)}}>
-                          <h1>{project.title}</h1>
-                          <p>{language}</p>
-                          <p>{techStack}</p>
-                          <p>{project.shortDescription}</p>
-                        </div>
-                      );
-                    }));
-                  })()}
-                  </div> 
-                </Html>
-                {/* <Container transformRotateX={-90} flexDirection="column" positionType={"absolute"} inset={0} positionTop={0} positionLeft={0}>
-                  {(() => {
-                    return (projectList.map((project, index) => {
-                      let language = "Language" + (project.languages.length > 1 ? "s: " : ": ") + project.languages.join(", ");
-                      if (project.languages.length > 1) {
-                        let index = language.lastIndexOf(",");
-                        language = `${language.substring(0, index)}${project.languages.length == 2 ? "" : ","} and${language.substring(index + 1)}`;
-                      }
-                      let techStack = "TechStack: " + project.techStack.join(", ");
-                      if (project.techStack.length > 1) {
-                        let index = techStack.lastIndexOf(",");
-                        techStack = `${techStack.substring(0, index)}${project.techStack.length == 2 ? "" : ","} and${techStack.substring(index + 1)}`;
-                      }
-
-                      const marginLeft = index % 2 != 0 ? -cardStyle.centerGapLeft : cardStyle.centerGapRight;
-
-                      return (
-                        <Container key={project.title} backgroundOpacity={0.7} backgroundColor="grey" width={cardStyle.width} height={cardStyle.height} 
-                        flexDirection={"column"} padding={cardStyle.padding} marginLeft={marginLeft} marginBottom={cardStyle.marginBottom}
-                        onClick={() => {router.push(`/${project.page}`)}} borderRadius={10} borderColor={'grey'} borderWidth={3}>
-                          <Text fontFamily="JetBrainsMono" fontWeight={"normal"} fontSize={cardStyle.titleFontSize}>{project.title}</Text>
-                          <Text fontFamily="JetBrainsMono" fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{language}</Text>
-                          <Text fontFamily="JetBrainsMono" fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{techStack}</Text>
-                          <Text fontFamily="JetBrainsMono" fontWeight={"normal"} fontSize={cardStyle.contentFontSize}>{project.shortDescription}</Text>
-                        </Container>
-                      );
-                    }));
-                  })()}        
-                </Container> */}
-                </FontFamilyProvider>
-              </Root>
             </PerformanceMonitor>
           </Canvas>
-        </StrictMode>
-      </div>
+        </StrictMode> */}
       <Header />
+      <VideoEntry />
+      <AboutMe />
+      <div style={{height: '40vh'}}></div>
     </main>
   );
 }
