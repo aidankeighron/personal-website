@@ -2,7 +2,7 @@
 
 import css from './page.module.css';
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 
 type Robot = {
     name: string,
@@ -31,7 +31,7 @@ export default function CurrentRobots() {
 
     return (
         <main className='main'>
-        <Header />
+        {/* <Header /> */}
         <div className={css.robots}>
             <h1>Current Robots</h1>
 

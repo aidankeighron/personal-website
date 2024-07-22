@@ -20,7 +20,7 @@ export default function Page() {
           <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)}>
             <Physics
               broadphase="SAP" gravity={[0, -2.6, 0]}>
-              <Scene />
+              <Scene startPosition={[0,0,0]}/>
             </Physics>
             <Stats />
             <Html className="contentWrapper" transform rotation-x={-Math.PI / 2} position={[0, 0, 0]} occlude="blending" scale={0.1} fullscreen>

@@ -35,8 +35,8 @@ body {
 }
 
 .content a {
-  color: var(--tertiary);
-  border-bottom: 1px solid var(--tertiary);
+  color: var(--tertiary0);
+  border-bottom: 1px solid var(--tertiary0);
 }
 .content header {
   padding: 2rem 0 4rem 0;

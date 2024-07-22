@@ -2,7 +2,7 @@
 
 import css from './page.module.css';
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 
 type Project = {
     name: string,
@@ -24,7 +24,7 @@ export default function CurrentRobots() {
 
     return (
         <main className='main'>
-        <Header />
+        {/* <Header /> */}
         <div>
             <div className={css.projects}>
                 <h1>Current Projects</h1>

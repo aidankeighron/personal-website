@@ -6,36 +6,32 @@
   align-items: flex-end;
   width: 100%;
   z-index: 1;
-  pointer-events: none;
   padding: var(--padding-xxl);
+  padding-left: 200px;
+  padding-right: 200px;
 }
 
 .header h1 {
-  border-bottom: 3px solid var(--tertiary);
+  border-bottom: var(--text-border);
   white-space: nowrap;
-  margin-left: 200px;
-  background-color: var(--main);
+  background-color: var(--main0);
   padding: var(--padding-s);
-  border-radius: var(--border-radius-s);
+  border-radius: var(--border-radius-m) var(--border-radius-m) 0px 0px;
   font: var(--h2-ui);
 }
 
 .header div {
   display: flex;
   flex-direction: row;
-  pointer-events: auto;
-  margin-right: 200px;
 }
 
 .header p {
-  background-color: var(--main);
+  background-color: var(--main0);
   font: var(--h3-ui);
   margin-right: var(--margin-s);
-  border-bottom: 3px solid var(--tertiary);
+  border-bottom: var(--text-border);
   padding: var(--padding-s);
-  border-radius: var(--border-radius-s);
-  white-space: nowrap; 
-  /* TODO needed ^ */
+  border-radius: var(--border-radius-m) var(--border-radius-m) 0px 0px;
 }
 
 .entryDiv {
@@ -69,7 +65,7 @@
   right: 0px;
   justify-self: center;
   align-self: center;
-  background-color: darkgrey;
+  background-color: var(--main0);
   padding: var(--padding-l);
   text-align: center;
   border-radius: var(--border-radius-l);
@@ -91,17 +87,19 @@
 }
 
 .aboutMe h1 {
-  border-bottom: 3px solid var(--tertiary);
-  font: var(--h3);
-  margin: var(--margin-l);
+  border-bottom: var(--text-border);
+  font: var(--h2);
+  margin-top: var(--spacing-m);
+  margin-left: var(--spacing-s);
   width: fit-content;
 }
 
 .aboutMe div {
-  width: 40%; 
-  background-color: teal;
+  margin-top: var(--spacing-s);
+  width: 60%; 
+  background-color: var(--tertiary1);
+  color: var(--main0);
   padding: var(--padding-l);
-  margin-top: var(--margin-xxxl);
   border-radius: var(--border-radius-l);
   flex-direction: row;
   display: flex;
@@ -120,17 +118,117 @@
   font: var(--big);
 }
 
-.combatRobotics {
+.whatIDo h1 {
+  color: var(--secondary0);
+  font: var(--h2);
+  border-bottom: var(--text-border);
+  margin-top: var(--spacing-m);
+  margin-left: var(--spacing-s);
+  align-self: baseline;
+  width: fit-content;
+}
+
+.whatIDo h2 {
+  border-bottom: var(--text-border);
+  font: var(--h3);
+}
+
+.whatIDo h3 {
+  border-bottom: var(--text-border);
+  font: var(--p);
+  margin-top: var(--margin-xxs);
+  margin-bottom: var(--margin-xxl);
+}
+
+.combatRobots {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: var(--spacing-m);
+}
+
+.combatRobots .combatRobotsRobot {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: var(--margin-xxl);
+  justify-content: space-between;
+}
+
+.combatRobots .combatRobotsRobot p {
+  min-width: 45%;
+  width: 45%;
+  max-width: 45%;
+  font: var(--big);
+  margin-left: var(--margin-m);
   align-self: center;
 }
 
-.combatRobotics div {
-  width: 30%;
+.combatRobots .combatRobotsRobot:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.combatRobots .combatRobotsRobot:nth-child(even) p {
+  margin-left: 0px;
+  margin-right: var(--margin-m);
+}
+
+.combatRobots .robotModel {
+  min-width: 50%;
+  width: 50%;
+  max-width: 50%;
+  background-color: var(--main1);
+  border-radius: var(--border-radius-m);
+  align-self: center;
+}
+
+.projects {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: var(--spacing-m);
+}
+
+.projects .projectsProject {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: var(--margin-xxl);
+  justify-content: space-between;
+}
+
+.projects .projectsProject p {
+  min-width: 45%;
+  width: 45%;
+  max-width: 45%;
+  font: var(--big);
+  margin-right: var(--margin-m);
+  align-self: center;
+}
+
+.projects .projectsProject:nth-child(odd) {
   flex-direction: row;
 }
 
-.combatRobotics p {
-  font: var(--big);
+.projects .projectsProject:nth-child(even) p {
+  margin-right: 0px;
   margin-left: var(--margin-m);
+}
+
+.projects .projectsProject img {
+  object-fit: cover;
+  width: 50%;
+  height: 100%;
+  background-color: var(--main1);
+  border-radius: var(--border-radius-m);
+  align-self: center;
+}
+
+.projects .projectsProject video {
+  width: 50%;
+  height: 100%;
+  align-self: center;
+  border-radius: var(--border-radius-m);
 }

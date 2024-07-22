@@ -1,7 +1,7 @@
 "use client";
 
 import { Html, PerformanceMonitor, Stats } from '@react-three/drei';
-import Header from '../components/Header';
+// import Header from '../components/Header';
 import Content from './content.mdx';
 import { Canvas } from '@react-three/fiber';
 import { Scene } from "../components/physics/Scene";
@@ -13,14 +13,14 @@ export default function Page() {
 
   return (
     <div className='main'>
-      <Header />
+      {/* <Header /> */}
       <div className='scene'>
         <StrictMode>
           <Canvas frameloop="demand" dpr={dpr} performance={{current: 1, min: 0.1, max: 1, debounce: 200}}>
           <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)}>
             <Physics
               broadphase="SAP" gravity={[0, -2.6, 0]}>
-              <Scene />
+              <Scene startPosition={[0,0,0]} />
             </Physics>
             <Stats />
             <Html className="contentWrapper" transform rotation-x={-Math.PI / 2} position={[0, 0, 0]} occlude="blending" scale={0.1} fullscreen>
