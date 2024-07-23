@@ -41,7 +41,7 @@ function VideoEntry() {
 function AboutMe() {
   return (
     <div className={css.aboutMe}>
-        <h1 id={'aboutme'}>About Me</h1>
+        <h1 id={'aboutme'} className={css.sectionTitle}>About Me</h1>
         <div>
           <Image src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron" width={4007/16} height={4004/16}
               quality={100} className={css.image}/>
@@ -64,17 +64,18 @@ type Robot = {
   name: string,
   description: string,
   modelUrl: string,
-  imageAlt: string,
   scale: number,
   position: Position,
   rotation: Rotation,
+  title?: string,
+  titleBody?: string,
+  titleRightAlign?: boolean,
 }
 
 const robotList: Robot[] = [
   {
     name: "Bad Conflict",
     description: "I am the Team Manager of a combat robotics team, Bad Conflict, we compete in ant-weight robotics competitions. I am an alumni of FRC team 2451 PWNAGE and FLL team 11676 TechNo Turtles. I have been doing competitive robotics since middle school and I height recommend it to anyone even vaguely interested.",
-    imageAlt: "Robot Photo",
     modelUrl: "/models/twofold.glb",
     scale: 2,
     position: [0, 0, 0],
@@ -83,12 +84,23 @@ const robotList: Robot[] = [
   {
     name: "Horizon",
     description: "My current robot is Horizon a horizontal spinner. It has 1/8 in Carbon Fiber top and bottom plates for armor and a TPU (3D printable rubber) chassis to absorb damage. With a 101g AR500 weapon spinning, theoretically, at 18000 RPM. That is a tip speed of 350 MPH, packing quite a punch.",
-    imageAlt: "Robot Photo",
     modelUrl: "/models/horizon.glb",
     scale: 2,
     position: [0, 0, 0],
     rotation: [2*Math.PI/3, 0, -Math.PI/12],
   },
+  {
+    name: "Mantis",
+    description: "",
+    modelUrl: "/models/horizon.glb",
+    // modelUrl: "/models/mantis.glb",
+    scale: 1,
+    position: [0,0,0],
+    rotation: [0,0,0],
+    title: "Competitive Robotics",
+    titleBody: "January 2019 - May 2023",
+    titleRightAlign: false,
+  }
 ]
 
 type ShowModelProps = {
@@ -123,22 +135,28 @@ function CombatRobots() {
       <h3>August 2022 - Present</h3>
       {robotList.map(robot => {
         return (
-          <div key={robot.name} className={css.combatRobotsRobot}>
-            <p>{robot.description}</p>
-            <Canvas frameloop='demand' dpr={[1, 2]} className={css.robotModel} camera={{position: [0, 0, 300]}} orthographic>
-              <Suspense fallback={null}>
-                <OrbitControls
-                  enablePan={false}
-                  enableZoom={false}
-                  target={[0,0,0]}
-                  position={[0,0,0]}
-                />
-                <ShowModel url={robot.modelUrl} scale={robot.scale}
-                  position={robot.position} rotation={robot.rotation} />
-              </Suspense>
-              <Preload all />
-            </Canvas>
-          </div>
+          <>
+            {robot.title !== undefined && <>
+              <h2 style={{alignSelf: robot.titleRightAlign ? 'last baseline' : 'baseline'}}>{robot.title}</h2>
+              <h3 style={{alignSelf: robot.titleRightAlign ? 'last baseline' : 'baseline'}}>{robot.titleBody}</h3>
+            </>}
+            <div key={robot.name} className={css.combatRobotsRobot}>
+              <p>{robot.description}</p>
+              <Canvas frameloop='demand' dpr={[1, 2]} className={css.robotModel} camera={{position: [0, 0, 300]}} orthographic>
+                <Suspense fallback={null}>
+                  <OrbitControls
+                    enablePan={false}
+                    enableZoom={false}
+                    target={[0,0,0]}
+                    position={[0,0,0]}
+                  />
+                  <ShowModel url={robot.modelUrl} scale={robot.scale}
+                    position={robot.position} rotation={robot.rotation} />
+                </Suspense>
+                <Preload all />
+              </Canvas>
+            </div>
+          </>
         )
       })}
     </div>
@@ -188,6 +206,104 @@ function Projects() {
   )
 }
 
+type Skill = {
+  name: string,
+  experienceYears?: number,
+  skill?: 1 | 2 | 3 | 4 | 5,
+}
+
+const skillsets: {[key: string]: Skill[]} = {
+  Languages: [{
+    name: "Python",
+    experienceYears: 2,
+  },
+  {
+    name: "Java",
+    experienceYears: 3,
+  }],
+  Technologies: [
+    {
+      name: "GCP",
+      skill: 2,
+    },
+    {
+      name: "Machine Learning",
+      skill: 3,
+    }
+  ]
+}
+
+type WorkExperience = {
+  company: string,
+  description: string,
+  duration: string,
+  bullets: string,
+}
+
+const workExperience: WorkExperience[] = [
+  {
+    company: "APS Data Technologies",
+    description: "Tech startup based out of Auroria, IL",
+    duration: "August 2022 - Present",
+    bullets: `● Worked on backend systems for car tracking in a parking lot, using machine learning to identify potential cars, filtering the outputted list of cars and finding their match from the previous frame
+● Optimizing said algorithm to get it running in real time (from 2 seconds per frame to 10 frames per second)
+● Developed a mobile app for the Paramount Theater in downtown Aurora, allowing users to purchase tickets and memberships, working with their backend databases to ensure live updates and a seamless transition for existing users, adding extra security measures to help with fraud prevention
+● Managed a team of 7+ interns, handled team training and task assignments
+● Managed other company projects, performing code reviews and helping developers solve code issues
+`
+  }
+]
+
+function Skillsets() {
+  return (
+    <>
+    <h1 className={css.sectionTitle}>Skills</h1>
+    <div className={css.skillsets}>
+      {(() => {
+        return (Object.entries(skillsets).map(([name, skillset]) => {
+          return (
+            <div key={name} className={css.skill}>
+              <h1>{name}</h1>
+              {skillset.map(skill => {
+                return (
+                  <div key={skill.name}>
+                    <h2>{skill.name}</h2>
+                    {skill.experienceYears !== undefined &&
+                      <p>{skill.experienceYears} Year{skill.experienceYears != 1 ? 's' : ''} of experience</p>}
+                    {skill.skill !== undefined &&
+                      <p>Skill Level {skill.skill}</p>}
+                  </div>
+                )
+              })}
+            </div>
+        )}));
+      })()}
+    </div>
+    <div className={css.workExperience}>
+      <h1>Work Experience</h1>
+      {workExperience.map(experience => {
+        return (
+        <div key={experience.company}>
+          <h2>{experience.company}</h2>
+          <h3>{experience.description}</h3>
+          <h4>{experience.duration}</h4>
+          <p>{experience.bullets}</p>
+        </div>
+        );
+      })}
+    </div>
+    </>
+  );
+}
+
+function Resume() {
+  return (
+    <div className={css.resume}>
+      <a href='/AidanKeighronResume.pdf' target="_blank">View Resume</a>
+    </div>
+  )
+}
+
 export default function Home() {
   // const [dpr, setDpr] = useState(1.5);
 
@@ -209,10 +325,12 @@ export default function Home() {
       <VideoEntry />
       <AboutMe />
       <div className={css.whatIDo}>
-        <h1>What I Do</h1>
+        <h1 className={css.sectionTitle}>What I Do</h1>
         <CombatRobots />
         <Projects />
       </div>
+      <Skillsets />
+      <Resume />
       <div style={{height: '40vh'}}></div>
     </main>
   );
