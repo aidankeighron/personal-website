@@ -156,6 +156,15 @@
   align-self: center;
 }
 
+.combatRobots .combatRobotsRobot img {
+  object-fit: cover;
+  width: 50%;
+  height: 100%;
+  background-color: var(--main1);
+  border-radius: var(--border-radius-m);
+  align-self: center;
+}
+
 .combatRobots .combatRobotsRobot:nth-child(odd) {
   flex-direction: row-reverse;
 }
@@ -183,7 +192,7 @@
 
 .projects .projectsProject {
   width: 100%;
-  height: 400px;
+  height: 600px;
   display: flex;
   flex-direction: row-reverse;
   margin-bottom: var(--margin-xxl);

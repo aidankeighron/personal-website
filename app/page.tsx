@@ -5,7 +5,7 @@ import Image from 'next/image';
 import css from "./css/page.module.css"
 import Link from 'next/link';
 import { Canvas, useLoader } from '@react-three/fiber';
-import { OrbitControls, Preload } from '@react-three/drei';
+import { OrbitControls, Preload, Html, useProgress } from '@react-three/drei';
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Position, Rotation } from './types';
 import { projectList, robotList, skillsets, workExperience } from './pageData';
@@ -46,16 +46,7 @@ function AboutMe() {
         <div>
           <Image src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron" width={4007/16} height={4004/16}
               quality={100} className={css.image}/>
-          <p>I am Aidan Keighron a highly motivated computer science student at Michigan State University, 
-            fueled by a passion for robotics, automation, and software development. I am a sophomore at 
-            Michigan State University studying computer science. I love STEM, robotics, and programming, 
-            outside of technology I love to read and roller blade.</p>
-          {/* <p>I am Aidan Keighron a sophomore at Michigan State University studying computer science. 
-          I love STEM, robotics, and programming, outside of technology I love to read and rollerblade. 
-          I am very involved in competitive robotics, I am the Team Manager of a combat robotics 
-          team, Bad Conflict, we compete in antweight robotics competitions. I am an alumni of FRC team 
-          2451 PWNAGE and FLL team 11676 TechNo Turtles. I have been doing competitive robotics since 
-          middle school and I hight recommend it to anyone even vaguely interested.</p> */}
+          <p>I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. Driven by a desire to create practical applications, I'm constantly developing software and robotics projects. I Co-Founded the combat robotics team Bad Conflict, where we build robots to compete in antweight combat robotics competitions. I have created a startup called Alchemy, where I am making an all-in-one task management software that aims to reduce the time it takes to plan out your day. Outside of technology, I love to read and roller blade.</p>
         </div>
     </div>
   );
@@ -67,6 +58,36 @@ type ShowModelProps = {
   position: Position,
   rotation: Rotation,
 }
+
+function CanvasLoader() {
+  const { progress } = useProgress();
+
+  // TODO loading bar
+  return (
+    <Html
+      as='div'
+      center
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+      }}
+    >
+      <span className='canvas-loader'></span>
+      <p
+        style={{
+          fontSize: 14,
+          color: "#F1F1F1",
+          fontWeight: 800,
+          marginTop: 40,
+        }}
+      >
+        {progress.toFixed(2)}%
+      </p>
+    </Html>
+  );
+};
 
 function ShowModel({url, scale, position, rotation}: ShowModelProps) {
   const model: any = useLoader(GLTFLoader, url).scene;
@@ -100,8 +121,8 @@ function CombatRobots() {
             </>}
             <div key={robot.name} className={css.combatRobotsRobot}>
               <p>{robot.description}</p>
-              <Canvas frameloop='demand' dpr={[1, 2]} className={css.robotModel} camera={{position: [0, 0, 300]}} orthographic>
-                <Suspense fallback={null}>
+              {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} className={css.robotModel} camera={{position: [0, 0, 300]}} orthographic>
+                <Suspense fallback={<CanvasLoader />}>
                   <OrbitControls
                     enablePan={false}
                     enableZoom={false}
@@ -112,7 +133,8 @@ function CombatRobots() {
                     position={robot.position} rotation={robot.rotation} />
                 </Suspense>
                 <Preload all />
-              </Canvas>
+              </Canvas>}
+              {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt}/>}
             </div>
           </>
         )
@@ -175,7 +197,9 @@ function Skillsets() {
           <h2>{experience.company}</h2>
           <h3>{experience.description}</h3>
           <h4>{experience.duration}</h4>
-          <p>{experience.bullets}</p>
+          {experience.bullets.map(bullet => {
+            return (<p key={bullet}>● {bullet}</p>); // TODO list
+          })}
         </div>
         );
       })}
