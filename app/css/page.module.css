@@ -39,7 +39,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  top: calc(100vh - 100vw * calc(2160 / 3840));
+  /* top: calc(100vh - 100vw * calc(2160 / 3840)); */
 }
 
 /* TODO make better */
@@ -59,7 +59,8 @@
 
 .entryDiv div {
   position: absolute;
-  top: calc(calc(100vh - 100vw * calc(2160 / 3840)) * -1);
+  /* top: calc(calc(100vh - 100vw * calc(2160 / 3840)) * -1); */
+  top: 0px;
   bottom: 0px;
   left: 0px;
   right: 0px;
@@ -83,9 +84,8 @@
 .aboutMe {
   display: flex;
   flex-direction: column;
-  margin-top: calc(calc(100vh - 100vw * calc(2160 / 3840)));
+  /* margin-top: calc(calc(100vh - 100vw * calc(2160 / 3840))); */
 }
-
 
 .sectionTitle {
   font: var(--h2);
@@ -98,7 +98,7 @@
 }
 
 .aboutMe div {
-  width: 60%; 
+  max-width: 1300px;
   background-color: var(--tertiary1);
   color: var(--main0);
   padding: var(--padding-l);
@@ -110,14 +110,35 @@
   filter: drop-shadow(0px 10px 3px black);
 }
 
-.aboutMe .image {
+@media (max-width: 1200px) {
+  .aboutMe div {
+    flex-direction: column;
+  }
+  .aboutMe img {
+    margin-bottom: var(--margin-m);
+    /* max-width: 80%; */
+    min-width: 300px;
+    width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    height: 300px;
+    max-height: 300px;
+    object-fit: contain;
+  }
+}
+
+.aboutMe img {
   border-radius: var(--border-radius-m);
   width: 30%;
+  flex: 1;
 }
 
 .aboutMe p {
+  flex: 2;
   margin-left: var(--margin-l);
   font: var(--big);
+  font-weight: 500;
+  white-space: pre-line;
 }
 
 .whatIDo h2 {
@@ -157,12 +178,21 @@
 }
 
 .combatRobots .combatRobotsRobot img {
-  object-fit: cover;
-  width: 50%;
+  object-fit: contain;
+  width: fit-content;
   height: 100%;
-  background-color: var(--main1);
   border-radius: var(--border-radius-m);
   align-self: center;
+  margin-left: var(--margin-xxl);
+}
+
+.combatRobots .combatRobotsRobot video {
+  object-fit: contain;
+  width: fit-content;
+  height: 100%;
+  border-radius: var(--border-radius-m);
+  align-self: center;
+  margin-right: var(--margin-xxl);
 }
 
 .combatRobots .combatRobotsRobot:nth-child(odd) {

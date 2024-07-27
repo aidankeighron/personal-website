@@ -1,19 +1,17 @@
 'use client'
 
 import React, { Suspense } from 'react';
-import Image from 'next/image';
 import css from "./css/page.module.css"
 import Link from 'next/link';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { OrbitControls, Preload, Html, useProgress } from '@react-three/drei';
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Position, Rotation } from './types';
-import { projectList, robotList, skillsets, workExperience } from './pageData';
+import { competitiveRobotList, projectList, robotList, skillsets, workExperience } from './pageData';
 
 function Header() {
   return (
     <div className={css.header}>
-      <h1>Aidan Keighron</h1>
       <div>
         <Link href={'/'}><p>Home</p></Link>
         <Link href={'#aboutme'} scroll={true}><p>About Me</p></Link>
@@ -28,7 +26,7 @@ function VideoEntry() {
   return (
     <div className={css.entryDiv}>
       <video autoPlay loop muted playsInline preload="auto">
-        <source src="/videos/introVideo2.mp4" type="video/mp4" />
+        <source src="/videos/introVideo5.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div>
@@ -42,11 +40,13 @@ function VideoEntry() {
 function AboutMe() {
   return (
     <div className={css.aboutMe}>
-        <h1 id={'aboutme'} className={css.sectionTitle}>About Me</h1>
         <div>
-          <Image src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron" width={4007/16} height={4004/16}
-              quality={100} className={css.image}/>
-          <p>I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. Driven by a desire to create practical applications, I'm constantly developing software and robotics projects. I Co-Founded the combat robotics team Bad Conflict, where we build robots to compete in antweight combat robotics competitions. I have created a startup called Alchemy, where I am making an all-in-one task management software that aims to reduce the time it takes to plan out your day. Outside of technology, I love to read and roller blade.</p>
+          <img src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron"/>
+          <p>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
+
+I Co-Founded the combat robotics team Bad Conflict, where we build robots to compete in antweight combat robotics competitions. I created a startup called Alchemy, where I am making an all-in-one task management software that aims to reduce the time it takes to plan out your day.
+
+Outside of technology, I love to read and roller blade.`}</p>
         </div>
     </div>
   );
@@ -110,15 +110,10 @@ function ShowModel({url, scale, position, rotation}: ShowModelProps) {
 function CombatRobots() {
   return (
     <div className={css.combatRobots}>
-      <h2 id={'robotics'} >Combat Robotics</h2>
+      <h2 id={'robotics'}>Combat Robotics</h2>
       <h3>August 2022 - Present</h3>
       {robotList.map(robot => {
         return (
-          <>
-            {robot.title !== undefined && <>
-              <h2 style={{alignSelf: robot.titleRightAlign ? 'last baseline' : 'baseline'}}>{robot.title}</h2>
-              <h3 style={{alignSelf: robot.titleRightAlign ? 'last baseline' : 'baseline'}}>{robot.titleBody}</h3>
-            </>}
             <div key={robot.name} className={css.combatRobotsRobot}>
               <p>{robot.description}</p>
               {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} className={css.robotModel} camera={{position: [0, 0, 300]}} orthographic>
@@ -136,7 +131,34 @@ function CombatRobots() {
               </Canvas>}
               {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt}/>}
             </div>
-          </>
+        )
+      })}
+      <h2 style={{alignSelf: 'baseline'}}>Competitive Robotics</h2>
+      <h3 style={{alignSelf: 'baseline'}}>January 2019 - May 2023</h3>
+      {competitiveRobotList.map(robot => {
+        return (
+          <div key={robot.name} className={css.combatRobotsRobot}>
+            {robot.videoUrl && 
+            <video autoPlay loop muted playsInline preload="auto">
+              <source src={robot.videoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>}
+            <p>{robot.description}</p>
+            {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} className={css.robotModel} camera={{position: [0, 0, 300]}} orthographic>
+              <Suspense fallback={<CanvasLoader />}>
+                <OrbitControls
+                  enablePan={false}
+                  enableZoom={false}
+                  target={[0,0,0]}
+                  position={[0,0,0]}
+                />
+                <ShowModel url={robot.modelUrl} scale={robot.scale}
+                  position={robot.position} rotation={robot.rotation} />
+              </Suspense>
+              <Preload all />
+            </Canvas>}
+            {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt}/>}
+          </div>
         )
       })}
     </div>
@@ -179,7 +201,10 @@ function Skillsets() {
                   <div key={skill.name}>
                     <h2>{skill.name}</h2>
                     {skill.experienceYears !== undefined &&
-                      <p>{skill.experienceYears} Year{skill.experienceYears != 1 ? 's' : ''} of experience</p>}
+                      <p>{skill.experienceYears} Year{skill.experienceYears != 1 ? 's' : ''}</p>}
+                    {skill.subList !== undefined && skill.subList.map(sub => {
+                      return <p key={sub}>● {sub}</p>
+                    })}
                     {skill.skill !== undefined &&
                       <p>Skill Level {skill.skill}</p>}
                   </div>
@@ -256,6 +281,7 @@ export default function Home() {
         </StrictMode> */}
       <Header />
       <VideoEntry />
+      <h1 id={'aboutme'} className={css.sectionTitle}>About Me</h1>
       <AboutMe />
       <div className={css.whatIDo}>
         <h1 className={css.sectionTitle}>What I Do</h1>

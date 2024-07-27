@@ -6,15 +6,13 @@ type Robot = {
     modelUrl?: string,
     imageUrl?: string,
     imageAlt?: string,
+    videoUrl?: string,
     scale: number,
     position: Position,
     rotation: Rotation,
-    title?: string,
-    titleBody?: string,
-    titleRightAlign?: boolean,
 }
   
-const robotList: Robot[] = [
+const combatRobotList: Robot[] = [
     {
       name: "Bad Conflict",
       description: "I am the Team Manager of the combat robotics team, Bad Conflict. We compete in ant-weight robotics competitions, meaning the robots need to be less than one pound. Our team philosophy is to help our members compete in combat robotics by removing barriers to entry. We support our members throughout the creation process with member support for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat robotics.",
@@ -31,17 +29,18 @@ const robotList: Robot[] = [
       position: [0, 0, 0],
       rotation: [2*Math.PI/3, 0, -Math.PI/12],
     },
+]
+
+const competitiveRobotList: Robot[] = [
     {
       name: "Mantis",
       description: "I did competitive robotics in high school as the Programming Lead of team 2451 PWNAGE. Each season, we built a 125 pound robot to compete in 3v3 competitions. We build a wide variety of robots, from a 420 degree turret that shoots basketball sized balls to a triple jointed arm able to pick up cones and cubes. It was a lot of fun designing the code for these robots. You had to ride the line of what the robot was capable of and get it as fast as possible without burning out a motor or snapping a shaft.",
       imageUrl: "/images/2451-2023-1.png",
       imageAlt: "Image of 2451's 2023 FRC Robot",
+      videoUrl: "/videos/mantis_demo_1.mp4",
       scale: 1,
       position: [0,0,0],
       rotation: [0,0,0],
-      title: "Competitive Robotics",
-      titleBody: "January 2019 - May 2023",
-      titleRightAlign: false,
     }
 ]
 
@@ -167,4 +166,4 @@ const workExperience: WorkExperience[] = [
     }
 ]
 
-export { robotList, projectList, skillsets, workExperience }
+export { combatRobotList as robotList, projectList, skillsets, workExperience, competitiveRobotList }
