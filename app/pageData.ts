@@ -172,6 +172,7 @@ type OtherProject = {
     description: string,
     date: string,
     tags: string[],
+    page?: string,
 }
 
 const otherProjects: OtherProject[] = [
@@ -180,6 +181,7 @@ const otherProjects: OtherProject[] = [
         description: "A calculator that uses folders and files to do calculations",
         date: "February 2022",
         tags: ["Java", "Multithreading"],
+        page: '/file-calculator'
     },
     {
         name: "Physics Simulation",
@@ -204,12 +206,14 @@ const otherProjects: OtherProject[] = [
         description: "Scraped designed to make a collection of every FRC shirt trade.",
         date: "October 2021 - January 2022",
         tags: ["Python", "Google Sheets API"],
+        page: '/sheet-scraper'
     },
     {
         name: "Productivity",
         description: "Productivity software that runs in the corner of your desktop to keep track of all of your tasks, has many other cool features.",
         date: "December 2021 - May 2022",
         tags: ["Swing", "Java"],
+        page: '/productivity'
     },
 ]
 
