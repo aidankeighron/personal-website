@@ -237,10 +237,18 @@ function OtherProjects() {
     <div className='grid grid-cols-3 m-10 gap-10'>
       {otherProjects.map(project => {
         return (
-          <div key={project.name} className='bg-a-main dark:bg-second p-8 rounded-xl shadow-lg'>
+          <div key={project.name} className='bg-a-main dark:bg-second p-8 rounded-xl shadow-lg h-full flex flex-col'>
             <p className='text-3xl font-semibold mb-2 bottom-border w-fit'>{project.name}</p>
             <p className='text-base dark:text-d-a-second mb-3'>{project.date}</p>
             <p className='text-lg'>{project.description}</p>
+            <div className='flex gap-3 mt-4'>
+              {project.tags.length != 0 && project.tags.map(tag => {
+                return (
+                  <p key={tag} className='text-sm bg-a-main w-fit px-2 py-1 rounded-2xl'>{tag}</p>
+                );
+              })}
+            </div>
+            {project.page && <Link href={project.page} className='mt-auto'><p className='robot-learn-more'>Learn More</p></Link>}
           </div>
         )
       })}

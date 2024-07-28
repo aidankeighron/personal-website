@@ -3,11 +3,6 @@
   cursor: zoom-in;
 }
 
-html,
-body {
-  scroll-behavior: smooth;
-}
-
 .scene {
   position: fixed;
   width: 100%;
@@ -24,13 +19,6 @@ body {
 .content {
   line-height: 180%;
   max-width: 70%;
-  margin-bottom: 20px;
-  transform: scale(2);
-}
-
-.contentOld {
-  line-height: 180%;
-  max-width: 80%;
   margin-bottom: 20px;
 }
 
