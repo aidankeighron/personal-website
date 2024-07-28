@@ -24,7 +24,7 @@ function VideoEntry() {
     <div className='relative'>
       {/* TODO move up so width is max */}
       <video autoPlay loop muted playsInline preload="auto" className='aspect-video max-w-max h-screen'>
-        <source src="/videos/introVideo5.mp4" type="video/mp4" />
+        <source src="/videos/intro_video5.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div className='bg-a-main dark:bg-d-main absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-fit h-fit p-4 rounded-md border-b-4 border-third dark:border-d-third shadow-xl'>

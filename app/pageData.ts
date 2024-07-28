@@ -56,7 +56,7 @@ const projectList: Project[] = [
     {
         name: "Alchemy",
         description: "Alchemy is a task management tool that I designed to help me improve my time management. I always struggled with time management and I could never find an app or piece of software that suited me. Everything had too much overhead, which resulted in it taking forever to plan out my tasks. I set out to create a tool that would let you instantly create new tasks without removing customizability. I ended up with Alchemy. To create a task, all you have to do is click on the day you plan to complete the task and type in the name. It's that simple. You don’t need to do any unnecessary configuration or go through 3 menus before your task gets created; it's just one click. And with a powerful and fully customizable name pattern system, you can configure a task just by adding certain prefixes and suffixes to the task name. Maybe you set it up so a task prefixed with an exclamation mark colors the task red. Alchemy is fully customizable, so let it become the task management software designed just for you.",
-        videoUrl: "/videos/introVideo1.mp4",
+        videoUrl: "/videos/intro_video1.mp4",
     },
     {
         name: "Personal Website",
