@@ -10,6 +10,7 @@ type Robot = {
     scale: number,
     position: Position,
     rotation: Rotation,
+    pageUrl?: string,
 }
   
 const combatRobotList: Robot[] = [
@@ -166,4 +167,50 @@ const workExperience: WorkExperience[] = [
     }
 ]
 
-export { combatRobotList as robotList, projectList, skillsets, workExperience, competitiveRobotList }
+type OtherProject = {
+    name: string,
+    description: string,
+    date: string,
+    tags: string[],
+}
+
+const otherProjects: OtherProject[] = [
+    {
+        name: "File Calculator",
+        description: "A calculator that uses folders and files to do calculations",
+        date: "February 2022",
+        tags: ["Java", "Multithreading"],
+    },
+    {
+        name: "Physics Simulation",
+        description: "Physics simulation with an intractable cube that you can throw around a room",
+        date: "September 2023 - October 2023",
+        tags: ["C#", "Physics"],
+    },
+    {
+        name: "Fantasy FRC",
+        description: "Website for running a fantasy draft with FRC teams. It handles everything from picking teams to calculating their score.",
+        date: "October 2022 - January 2023",
+        tags: ["HTML/CSS", "JavaScript", "Express.js", "Socket.io"],
+    },
+    {
+        name: "Machine Learning Maze",
+        description: "Neural Network for a cube traveling through a maze, built without libraries.",
+        date: "October 2021 - January 2022",
+        tags: ["AI", "Java"],
+    },
+    {
+        name: "Sheet Scraper",
+        description: "Scraped designed to make a collection of every FRC shirt trade.",
+        date: "October 2021 - January 2022",
+        tags: ["Python", "Google Sheets API"],
+    },
+    {
+        name: "Productivity",
+        description: "Productivity software that runs in the corner of your desktop to keep track of all of your tasks, has many other cool features.",
+        date: "December 2021 - May 2022",
+        tags: ["Swing", "Java"],
+    },
+]
+
+export { combatRobotList, projectList, skillsets, workExperience, competitiveRobotList, otherProjects }

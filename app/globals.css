@@ -22,13 +22,19 @@
     @apply flex flex-row w-full h-[400px] mb-20 justify-between odd:flex-row-reverse dark:text-main text-d-main;
   }
   .robot-text {
-    @apply min-w-[45%] max-w-[45%] text-xl leading-9 self-center;
+    @apply text-xl leading-9 self-center;
+  }
+  .robot-container-text {
+    @apply min-w-[45%] max-w-[45%] leading-9 self-center;
+  }
+  .robot-learn-more {
+    @apply bg-a-third dark:bg-d-third w-fit p-3 mt-4 rounded-2xl text-xl;
   }
   .robot-image {
-    @apply object-contain h-full rounded-xl ml-20;
+    @apply object-contain h-full rounded-xl mr-10;
   }
   .robot-video {
-    @apply object-contain w-fit h-full rounded-xl mr-20;
+    @apply object-contain w-fit h-full rounded-xl ml-10;
   }
   .robot-model {
     @apply min-w-[50%] max-w-[50%] bg-d-a-main rounded-xl self-center;

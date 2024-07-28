@@ -6,7 +6,7 @@ import { Canvas, useLoader } from '@react-three/fiber';
 import { OrbitControls, Preload, Html, useProgress } from '@react-three/drei';
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Position, Rotation } from './types';
-import { competitiveRobotList, projectList, robotList, skillsets, workExperience } from './pageData';
+import { competitiveRobotList, projectList, combatRobotList, skillsets, workExperience, otherProjects } from './pageData';
 
 function Header() {
   return (
@@ -93,10 +93,15 @@ function CombatRobots() {
     <div className='flex flex-col items-end px-20'>
       <h2 id={'robotics'} className='what-i-do-title'>Combat Robotics</h2>
       <h3 className='what-i-do-date'>August 2022 - Present</h3>
-      {robotList.map(robot => {
+      {combatRobotList.map(robot => {
         return (
             <div key={robot.name} className='robot-container'>
-              <p className='robot-text'>{robot.description}</p>
+              <div className='robot-container-text'>
+                <p className='robot-text'>{robot.description}</p>
+                {<div className='robot-learn-more'>
+                  <Link href={robot.pageUrl ?? ""}><p>Learn More</p></Link>
+                </div>}
+              </div>
               {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} className='robot-model' camera={{position: [0, 0, 300]}} orthographic>
                 <Suspense fallback={<CanvasLoader />}>
                   <OrbitControls
@@ -124,7 +129,12 @@ function CombatRobots() {
               <source src={robot.videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>}
-            <p className='robot-text'>{robot.description}</p>
+            <div className='robot-container-text'>
+              <p className='robot-text'>{robot.description}</p>
+              {<div className='robot-learn-more'>
+                <Link href={robot.pageUrl ?? ""}><p>Learn More</p></Link>
+              </div>}
+            </div>
             {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} className='robot-model' camera={{position: [0, 0, 300]}} orthographic>
               <Suspense fallback={<CanvasLoader />}>
                 <OrbitControls
@@ -138,6 +148,7 @@ function CombatRobots() {
               </Suspense>
               <Preload all />
             </Canvas>}
+            {/* TODO use <Image /> for better optimization */}
             {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt} className='robot-image'/>}
           </div>
         )
@@ -155,7 +166,7 @@ function Projects() {
         return (
           <div className='robot-container h-[600px]' key={project.name}>
             <p className='robot-text'>{project.description}</p>
-            {project.videoUrl !== undefined && <video autoPlay loop muted playsInline preload="auto" className='robot-video w-1/2 object-none'>
+            {project.videoUrl !== undefined && <video autoPlay loop muted playsInline preload="auto" className='robot-video w-1/2 object-none m-0 mr-10'>
               <source src={project.videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>}
@@ -221,6 +232,22 @@ function Resume() {
   )
 }
 
+function OtherProjects() {
+  return (
+    <div className='grid grid-cols-3 m-10 gap-10'>
+      {otherProjects.map(project => {
+        return (
+          <div key={project.name} className='bg-a-main dark:bg-second p-8 rounded-xl shadow-lg'>
+            <p className='text-3xl font-semibold mb-2 bottom-border w-fit'>{project.name}</p>
+            <p className='text-base dark:text-d-a-second mb-3'>{project.date}</p>
+            <p className='text-lg'>{project.description}</p>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 export default function Home() {
   // const [dpr, setDpr] = useState(1.5);
 
@@ -248,6 +275,8 @@ export default function Home() {
       <h1 className='section-title'>Skills</h1>
       <Skillsets />
       <Resume />
+      <h1 className='section-title'>Other Projects</h1>
+      <OtherProjects />
       <div style={{height: '20vh'}}></div>
     </main>
   );
