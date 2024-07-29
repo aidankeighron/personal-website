@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Suspense } from 'react';
+import React, { Suspense, useLayoutEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { OrbitControls, Preload, Html, useProgress } from '@react-three/drei';
@@ -11,7 +11,6 @@ import { competitiveRobotList, projectList, combatRobotList, skillsets, workExpe
 function Header() {
   return (
     <div className='absolute flex z-10 space-x-4 w-full items-end justify-end mr-96 p-10'>
-        <Link href={'/'}><p className='header-link'>Home</p></Link>
         <Link href={'#aboutme'} scroll={true}><p className='header-link'>About Me</p></Link>
         <Link href={'#robotics'} scroll={true}><p className='header-link'>Robotics</p></Link>
         <Link href={'#projects'} scroll={true}><p className='header-link'>Projects</p></Link>
@@ -20,10 +19,29 @@ function Header() {
 };
 
 function VideoEntry() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoTopOffset, setVideoTopOffset] = useState<number>(0);
+
+  useLayoutEffect(() => {
+    if (videoRef.current) {
+      // console.log(videoRef.current);
+      // console.log(videoRef.current.offsetWidth);
+      console.log(videoRef.current.offsetHeight);
+      // console.log(window.innerWidth)
+      console.log(window.innerHeight)
+      // TODO change this to a ratio of the width
+      if (videoRef.current.offsetHeight > window.innerHeight) {
+        console.log("over by", videoRef.current.offsetHeight-window.innerHeight);
+        setVideoTopOffset(videoRef.current.offsetHeight-window.innerHeight);
+      }
+    }
+  })
+
   return (
     <div className='relative'>
       {/* TODO move up so width is max */}
-      <video autoPlay loop muted playsInline preload="auto" className='aspect-video max-w-max h-screen'>
+      {/* <video ref={videoRef} autoPlay loop muted playsInline preload="auto" className='aspect-video max-w-max h-screen'> */}
+      <video ref={videoRef} autoPlay loop muted playsInline preload="auto" className='aspect-video' style={{marginTop: `-${videoTopOffset}px`}}>
         <source src="/videos/intro_video5.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -93,14 +111,14 @@ function CombatRobots() {
     <div className='flex flex-col items-end px-20'>
       <h2 id={'robotics'} className='what-i-do-title'>Combat Robotics</h2>
       <h3 className='what-i-do-date'>August 2022 - Present</h3>
+      <div className='robot-learn-more mb-20'>
+        <Link href={"/currentrobots"}><p>Learn More</p></Link>
+      </div>
       {combatRobotList.map(robot => {
         return (
             <div key={robot.name} className='robot-container'>
               <div className='robot-container-text'>
                 <p className='robot-text'>{robot.description}</p>
-                {<div className='robot-learn-more'>
-                  <Link href={robot.pageUrl ?? ""}><p>Learn More</p></Link>
-                </div>}
               </div>
               {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} className='robot-model' camera={{position: [0, 0, 300]}} orthographic>
                 <Suspense fallback={<CanvasLoader />}>
@@ -121,6 +139,9 @@ function CombatRobots() {
       })}
       <h2 className='what-i-do-title self-baseline'>Competitive Robotics</h2>
       <h3 className='what-i-do-date  self-baseline'>January 2019 - May 2023</h3>
+      <div className='robot-learn-more self-baseline mb-20'>
+        <Link href={"/currentrobots"}><p>Learn More</p></Link>
+      </div>
       {competitiveRobotList.map(robot => {
         return (
           <div key={robot.name} className='robot-container'>
@@ -131,9 +152,6 @@ function CombatRobots() {
             </video>}
             <div className='robot-container-text'>
               <p className='robot-text'>{robot.description}</p>
-              {<div className='robot-learn-more'>
-                <Link href={robot.pageUrl ?? ""}><p>Learn More</p></Link>
-              </div>}
             </div>
             {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} className='robot-model' camera={{position: [0, 0, 300]}} orthographic>
               <Suspense fallback={<CanvasLoader />}>
@@ -159,9 +177,9 @@ function CombatRobots() {
 
 function Projects() {
   return (
-    <div className='px-20'>
-      <h2 id={'projects'} className='what-i-do-title'>Projects</h2>
-      <h3 className='what-i-do-date'>October 2021 - Present</h3>
+    <div className='px-20 flex flex-col'>
+      <h2 id={'projects'} className='what-i-do-title self-end'>Projects</h2>
+      <h3 className='what-i-do-date self-end'>October 2021 - Present</h3>
       {projectList.map(project => {
         return (
           <div className='robot-container h-[600px]' key={project.name}>
@@ -171,6 +189,9 @@ function Projects() {
               Your browser does not support the video tag.
             </video>}
             {project.imageUrl !== undefined && <img src={project.imageUrl} alt={project.imageAlt} className='robot-image object-contain w-1/2'/>}
+            {project.page && <div className='robot-learn-more mb-20 self-end'>
+              <Link href={project.page}><p>Learn More</p></Link>
+            </div>}
           </div>
         )
       })}
@@ -259,7 +280,6 @@ function OtherProjects() {
 export default function Home() {
   // const [dpr, setDpr] = useState(1.5);
 
-  // TODO start supporting dark/light mode from the start
   return(
     <main className='flex flex-col items-center'>
       {/* <StrictMode>

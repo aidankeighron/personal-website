@@ -8,7 +8,7 @@ type WheelDebugParams = {
     wheelRef: Ref<Group<Object3DEventMap>>
 }
 
-export function WheelDebug({radius, wheelRef}: WheelDebugParams): JSX.Element {
+export function WheelDebug({radius, wheelRef}: WheelDebugParams) {
   return debug && (
     <group ref={wheelRef}>
       <mesh rotation={[0, 0, Math.PI / 2]}>

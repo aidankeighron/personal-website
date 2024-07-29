@@ -51,6 +51,7 @@ type Project = {
     videoUrl?: string,
     imageUrl?: string,
     imageAlt?: string,
+    page?: string,
 }
 
 const projectList: Project[] = [
@@ -215,6 +216,57 @@ const otherProjects: OtherProject[] = [
         tags: ["Swing", "Java"],
         page: '/productivity'
     },
-]
+];
 
-export { combatRobotList, projectList, skillsets, workExperience, competitiveRobotList, otherProjects }
+type BCRobot = {
+    name: string,
+    record: {
+        w: string | number,
+        l: string | number,
+    },
+    description: string,
+    info: {
+        [key: string]: string,
+    },
+    image1?: string,
+    image1Alt?: string,
+    image2?: string,
+    image2Alt?: string,
+}
+
+const badConflictRobots: BCRobot[] = [
+    {
+        name: "Horizon",
+        record: {
+            w: 1,
+            l: 3
+        },
+        description: "Horizon is a horizontal spinner with a 100g weapon that spins at ~18000 RPM. It has a TPU chassis to absorb impact and Carbon Fiber top and bottom plates for rigidity. It's weapon is AR500 Steel and has a tip speed of 350 MPH.",
+        info: {
+            "Weight": "TODO",
+            "Weapon Hit Force": "TODO",
+            "Dimensions": "6.6in x 4.9in x 1.5in",
+            "Number of Wires": "15"
+        },
+    },
+    {
+        name: "Twofold",
+        record: {
+            w: "5",
+            l: "7"
+        },
+        description: "Twofold is a double wedge designed to get under opponents and push them around. The double wedge design allows Twofold to take a lot more damage as it comes with a spare ready to go. Fun fact: Twofold is so low to the ground that some weapons are unable to do any damage.",
+        info: {
+            "Weight": "0.5lb",
+            "Weapon Hit Force": "0",
+            "Dimensions": "7in x 7.2in x 1in",
+            "Ground Effect": "All of it"
+        },
+        image1: "/images/twofold_1.jpg",
+        image1Alt: "Twofold after a competition",
+        image2: "/images/twofold_2.jpg",
+        image2Alt: "Twofold before a competition",
+    }
+];
+
+export { combatRobotList, projectList, skillsets, workExperience, competitiveRobotList, otherProjects, badConflictRobots }
