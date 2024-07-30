@@ -7,6 +7,7 @@ import { OrbitControls, Preload, Html, useProgress } from '@react-three/drei';
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Position, Rotation } from './types';
 import { competitiveRobotList, projectList, combatRobotList, skillsets, workExperience, otherProjects } from './pageData';
+import { motion } from 'framer-motion';
 
 function Header() {
   return (
@@ -258,7 +259,12 @@ function OtherProjects() {
     <div className='grid grid-cols-3 m-10 gap-10'>
       {otherProjects.map(project => {
         return (
-          <div key={project.name} className='bg-a-main dark:bg-second p-8 rounded-xl shadow-lg h-full flex flex-col'>
+          <motion.div key={project.name}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+          >
+          <div  className='bg-a-main dark:bg-second p-8 rounded-xl shadow-lg h-full flex flex-col'>
             <p className='text-3xl font-semibold mb-2 bottom-border w-fit'>{project.name}</p>
             <p className='text-base dark:text-d-a-second mb-3'>{project.date}</p>
             <p className='text-lg'>{project.description}</p>
@@ -271,6 +277,7 @@ function OtherProjects() {
             </div>
             {project.page && <Link href={project.page} className='mt-auto'><p className='robot-learn-more'>Learn More</p></Link>}
           </div>
+          </motion.div>
         )
       })}
     </div>
