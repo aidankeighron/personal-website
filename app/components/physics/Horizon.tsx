@@ -4,8 +4,8 @@ import { useBox, useRaycastVehicle, PublicApi, RaycastVehiclePublicApi,
 import { useFrame, useLoader } from "@react-three/fiber";
 import { Ref, useEffect, useRef, useState } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { WheelDebug } from "./WheelDebug";
-import { Group, Object3DEventMap, Quaternion, Vector3 } from "three";
+// import { WheelDebug } from "./WheelDebug";
+import { Group, Object3DEventMap } from "three";
 import { Position } from "@/app/types";
 
 const GROUP0 = 1;
@@ -17,156 +17,122 @@ type CarParams = {
 }
 
 export function Horizon({startPosition, orbit=false}: CarParams): JSX.Element {
-    const result = useLoader(
-    GLTFLoader,
-    "/models/horizon_no_weapon.glb"
-    ).scene;
+  // TODO make drive upside down
+  // TODO hitting objects pushes you up
+  // TODO reset cubes
+  const result = useLoader(
+  GLTFLoader,
+  "/models/horizon_no_weapon.glb"
+  ).scene;
 
-    const weaponRef = useRef<any>(null);
-    const weapon = useLoader(
-    GLTFLoader,
-    "/models/horizon_weapon.glb"
-    ).scene;
+  const weaponRef = useRef<any>(null);
+  const weapon = useLoader(
+  GLTFLoader,
+  "/models/horizon_weapon.glb"
+  ).scene;
 
-    const position: Position = startPosition;
-    const width: number = 0.2;
-    const height: number = 0.08;
-    const front: number = 0.15;
-    const wheelRadius: number = 0.05;
+  const position: Position = startPosition;
+  const width: number = 0.2;
+  const height: number = 0.08;
+  const front: number = 0.15;
+  const wheelRadius: number = 0.05;
 
-    const chassisBodyArgs: Position = [width, height, front * 2];
-    const [chassisBody, chassisApi] = useBox(() => ({
-    allowSleep: false, // TODO what does this do
-    args: chassisBodyArgs,
-    mass: 150,
-    position,
-    rotation: [0,0,0],
-    type: 'Dynamic',
-    collisionFilterGroup: GROUP1,
-    collisionFilterMask: GROUP0,
-    }), useRef(null));
+  const chassisBodyArgs: Position = [width, height, front * 2];
+  const [chassisBody, chassisApi] = useBox(() => ({
+  allowSleep: false, // TODO what does this do
+  args: chassisBodyArgs,
+  mass: 150,
+  position,
+  rotation: [0,0,0],
+  type: 'Dynamic',
+  collisionFilterGroup: GROUP1,
+  collisionFilterMask: GROUP0,
+  }), useRef(null));
 
-    const [wheels, wheelInfos] = useWheels(width, height, front, wheelRadius);
-    const [vehicle, vehicleApi] = useRaycastVehicle(
-    () => ({
-        chassisBody,
-        wheelInfos,
-        wheels
-    }), useRef(null));
+  const [wheels, wheelInfos] = useWheels(width, height, front, wheelRadius);
+  const [vehicle, vehicleApi] = useRaycastVehicle(
+  () => ({
+      chassisBody,
+      wheelInfos,
+      wheels
+  }), useRef(null));
 
-    useControls(vehicleApi, chassisApi, position);
+  useControls(vehicleApi, chassisApi, position);
 
-    const cameraOffset = new Vector3(0, 6, 0);
-    const positionMultiply = new Vector3(0, 0, 1);
+  let weaponAngle = 0;
+  useFrame(() => {
+    const slow = true;
 
-    useFrame((state) => {
-    if (chassisBody.current == null || orbit) return;
+    if (slow) {
+      weaponAngle -= 0.3;
+      vehicleApi.setSteeringValue(weaponAngle, 3);
+      weaponRef.current.rotation.z += 0.3;
+    }
+    else {
+      weaponAngle -= 1;
+      vehicleApi.setSteeringValue(weaponAngle, 3);
+      weaponRef.current.rotation.z += 1;
+    }
+  });
 
-    let position = new Vector3(0,0,0);
-    position.setFromMatrixPosition(chassisBody.current.matrixWorld);
+  useEffect(() => {
+  if (!result || !weapon) return;
+  let mesh = result;
+  mesh.scale.set(0.002, 0.002, 0.002);
+  let mesh1 = weapon;
+  mesh1.scale.set(0.002, 0.002, 0.002);
+  }, [result]);
 
-    let quaternion = new Quaternion(0, 0, 0, 0);
-    quaternion.setFromRotationMatrix(chassisBody.current.matrixWorld);
+  return (
+    <>
+      <group ref={vehicle as Ref<Group<Object3DEventMap>>} name="vehicle">
+          <group ref={chassisBody as Ref<Group<Object3DEventMap>>} name="chassisBody">
+              <primitive object={result} rotation-x={-Math.PI/2} rotation-y={Math.PI} position={[0, -0.05, 0.06]}/>
+              <group ref={weaponRef} rotation-x={-Math.PI/2} rotation-y={Math.PI} position={[0, 0.0125, -0.165]}>
+                  <primitive object={weapon} />
+              </group>
+          </group>
 
-    let wDir = new Vector3(0,0,0);
-    wDir.applyQuaternion(quaternion);
-    wDir.normalize();
-    position.multiply(positionMultiply);
-    let cameraPosition = position.clone().add(wDir.clone().multiplyScalar(-1).add(cameraOffset));
+          {/* <WheelDebug wheelRef={wheels[0]} radius={wheelRadius} />
+          <WheelDebug wheelRef={wheels[1]} radius={wheelRadius} />
+          <WheelDebug wheelRef={wheels[2]} radius={wheelRadius} /> */}
+          {/* <group ref={wheels[3]}>
+            <mesh rotation={[0, 0, Math.PI / 2]}>
+              <boxGeometry args={weaponArgs} />
+              <meshNormalMaterial transparent={true} opacity={0.25} />
+            </mesh>
+          </group> */}
+      </group>
+      <PhysicsBox position={[0, 0.1, -0.5]} args={[0.2, 0.2, 0.2]} color="blue" />
+      <PhysicsBox position={[0, 0.3, -0.5]} args={[0.1, 0.1, 0.1]} color="purple" />
+      <PhysicsBox position={[-0.5, 0.1, -0.5]} args={[0.3, 0.3, 0.3]} color="red" />
+      <PhysicsBox position={[-0.5, 0.5, -0.5]} args={[0.3, 0.3, 0.3]} color="yellow" />
+      <PhysicsBox position={[-0.4, 1, -0.5]} args={[0.3, 0.3, 0.3]} color="green" />
+    </>
+  );
+}
 
-    state.camera.position.copy(cameraPosition);
-    state.camera.lookAt(position);
-    });
-
-    useEffect(() => {
-    if (!result || !weapon) return;
-    let mesh = result; // so we don't hide the mesh JSX element
-    mesh.scale.set(0.002, 0.002, 0.002);
-    let mesh1 = weapon; // so we don't hide the mesh JSX element
-    mesh1.scale.set(0.002, 0.002, 0.002);
-    }, [result]);
-
-    // const weaponBodyArgs: Position = [0.31, 0.02, 0.01];
-    const weaponBodyArgs: Position = [0.31, 0.2, 0.05];
-    // const [weaponCollision, weaponCollisionAPI] = useBox(() => ({
-    //     allowSleep: false,
-    //     mass: 5,
-    //     // collisionFilterGroup: GROUP1,
-    //     collisionFilterMask: GROUP0,
-    //     collisionFilterGroup: GROUP1,
-    //     // collisionFilterMask: GROUP1,
-    //     type: 'Dynamic',
-    //     rotation: [0,0.5,0],
-    //     position: [0,1,-1],
-    //     args: weaponBodyArgs,//[0.31, 0.02, 0.01],
-    //     angularFactor: [0, 1, 0], 
-    //     material: {friction: 0}
-    // }), useRef(null));
-
-    const boxArgs: Position = [0.1, 0.1, 0.1];
-    const [physicsBox, ] = useBox(() => ({
-        allowSleep: false, // TODO what does this do
-        args: boxArgs,
-        mass: 200,
-        position: [0,0.5,-1],
-        rotation: [0,0,0],
-        // collisionFilterGroup: GROUP1,
-        // collisionFilterMask: GROUP0,
-        type: 'Dynamic',
-    }), useRef(null));
-
-    let a = 0;
-    useFrame(() => {
-      const slow = true;
-
-      if (slow) {
-        a -= 0.3;
-        vehicleApi.setSteeringValue(a, 3);
-        weaponRef.current.rotation.z += 0.3;
-      }
-      else {
-        a -= 1;
-        vehicleApi.setSteeringValue(a, 3);
-        weaponRef.current.rotation.z += 1;
-      }
-    });
-
-    return (
-      <>
-        <group ref={vehicle as Ref<Group<Object3DEventMap>>} name="vehicle">
-            <group ref={chassisBody as Ref<Group<Object3DEventMap>>} name="chassisBody">
-                <primitive object={result} rotation-x={-Math.PI/2} rotation-y={Math.PI} position={[0, -0.05, 0.06]}/>
-                <group ref={weaponRef} rotation-x={-Math.PI/2} rotation-y={Math.PI} position={[0, 0.0125, -0.165]}>
-                    <primitive object={weapon} />
-                </group>
-            </group>
-            {/* <mesh ref={weaponCollision as any} visible={true}>
-                <boxGeometry args={weaponBodyArgs} />
-                <meshBasicMaterial transparent={true} opacity={1} />
-            </mesh> */}
-            {/* <mesh ref={chassisBody}>
-            <meshBasicMaterial transparent={true} opacity={0.3} />
-            <boxGeometry args={chassisBodyArgs} />
-            </mesh> */}
-
-            <WheelDebug wheelRef={wheels[0]} radius={wheelRadius} />
-            <WheelDebug wheelRef={wheels[1]} radius={wheelRadius} />
-            <WheelDebug wheelRef={wheels[2]} radius={wheelRadius} />
-            <group ref={wheels[3]}>
-              <mesh rotation={[0, 0, Math.PI / 2]}>
-                <boxGeometry args={weaponArgs} />
-                {/* <boxGeometry args={[0.05, 0.2, 0.2]} /> */}
-                {/* <boxGeometry args={[0.03, 0.05, 0.3]} /> */}
-                <meshNormalMaterial transparent={true} opacity={0.25} />
-              </mesh>
-            </group>
-        </group>
-        <mesh ref={physicsBox as any}>
-          <meshBasicMaterial transparent={true} opacity={0.3} />
-          <boxGeometry args={boxArgs} />
-        </mesh>
-      </>
-    );
+type PhysicsBoxArgs = {
+  position: Position,
+  args: Position,
+  color: string,
+}
+function PhysicsBox({position, args, color}: PhysicsBoxArgs) {
+  const [physicsBox, ] = useBox(() => ({
+      allowSleep: false, // TODO what does this do
+      args: args,
+      mass: 200,
+      position: position,
+      rotation: [0,0,0],
+      type: 'Dynamic',
+  }), useRef(null));
+  
+  return (
+    <mesh ref={physicsBox as any}>
+    <meshBasicMaterial color={color} opacity={0.5} />
+    <boxGeometry args={args} />
+  </mesh>
+  )
 }
 
 function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: PublicApi, startPosition: Position) {
@@ -263,10 +229,7 @@ function useWheels(width: number, height: number, front: number, radius: number)
       frictionSlip: 20,
       dampingRelaxation: 10,
       dampingCompression: 10,
-      // maxSuspensionForce: 100000,
       rollInfluence: 0.1,
-      // customSlidingRotationalSpeed: -30,
-      // useCustomSlidingRotationalSpeed: true,
     };
   
     const wheelInfos: WheelInfoOptions[] = [
@@ -295,11 +258,7 @@ function useWheels(width: number, height: number, front: number, radius: number)
         frictionSlip: 20,
         dampingRelaxation: 10,
         dampingCompression: 10,
-        // maxSuspensionForce: 100000,
         rollInfluence: 0.1,
-        // customSlidingRotationalSpeed: -30,
-        // useCustomSlidingRotationalSpeed: true,
-        // chassisConnectionPointLocal: [0, 0.02, -0.315],
         chassisConnectionPointLocal: [0, 0.02, -0.16],
         isFrontWheel: false,
       },
@@ -319,7 +278,7 @@ function useWheels(width: number, height: number, front: number, radius: number)
         ],
         type: "Kinematic",
     });
-    const propsFunc1: GetByIndex<CompoundBodyProps> = () => ({
+    const propsFuncWeapon: GetByIndex<CompoundBodyProps> = () => ({
         collisionFilterGroup: GROUP1,
         collisionFilterMask: GROUP0,
         mass: 100,
@@ -336,7 +295,7 @@ function useWheels(width: number, height: number, front: number, radius: number)
     useCompoundBody(propsFunc, wheels[0]);
     useCompoundBody(propsFunc, wheels[1]);
     useCompoundBody(propsFunc, wheels[2]);
-    useCompoundBody(propsFunc1, wheels[3]);
+    useCompoundBody(propsFuncWeapon, wheels[3]);
   
     return [wheels, wheelInfos];
   };

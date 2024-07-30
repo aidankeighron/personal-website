@@ -47,7 +47,8 @@ export default function CurrentRobots() {
           )
         })}
         </div>
-        <h1 className='text-3xl bottom-border font-medium w-fit mb-10'>Playground</h1>
+        <h1 className='text-3xl bottom-border font-medium w-fit mb-2'>Playground</h1>
+        <p className='text-d-a-second text-base mb-10'>* W A S D to move | R to reset</p>
         <StrictMode>
           <Canvas frameloop="demand" dpr={dpr} performance={{current: 1, min: 0.1, max: 1, debounce: 200}} style={{height: '90vh'}} className='bg-d-a-main rounded-xl'>
             <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)}>
@@ -59,7 +60,7 @@ export default function CurrentRobots() {
             </PerformanceMonitor>
           </Canvas>
         </StrictMode>
-        <div className='mb-[100px]'></div>
+        <div className='mb-[5vh]'></div>
       </div>
     </div>
   )

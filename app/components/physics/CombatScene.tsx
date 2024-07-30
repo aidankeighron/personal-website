@@ -5,7 +5,6 @@ import {
 import { Suspense } from "react";
 import { Ground } from "./Ground";
 import { Position } from "@/app/types";
-import { ColliderBox } from "./ColliderBox";
 import { Horizon } from "./Horizon";
 
   type SceneProps = {
@@ -14,16 +13,14 @@ import { Horizon } from "./Horizon";
   };
   
   export function CombatScene({startPosition, orbit=false}: SceneProps): JSX.Element {
-  
     return (
       <Suspense fallback={null}>
         <ambientLight />
         {orbit && <OrbitControls target={[0,0,0]} 
-        // maxPolarAngle={Math.PI/2-0.01} // TODO
+        maxPolarAngle={Math.PI/2-0.01}
         />}
         <PerspectiveCamera makeDefault position={[-2,1,2]} fov={40} />
         <Ground />
-
         <mesh rotation-x={-Math.PI/2}>
             <planeGeometry args={[12, 12]}/>
             <meshBasicMaterial
@@ -33,7 +30,6 @@ import { Horizon } from "./Horizon";
             />
         </mesh>
         <Horizon startPosition={startPosition} orbit={orbit} />
-        <ColliderBox position={[1,0,0]} scale={[1,1,1]} />
       </Suspense>
     );
   }
