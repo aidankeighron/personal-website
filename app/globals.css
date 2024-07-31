@@ -7,13 +7,13 @@
     @apply text-main bg-d-main rounded-md text-3xl border-b-4 border-third dark:border-d-third p-2 shadow-xl;
   }
   .section-title {
-    @apply dark:text-main text-d-main text-5xl border-b-4 font-medium border-third dark:border-d-third p-1 m-11 self-baseline w-fit ml-20;
+    @apply dark:text-main text-d-main text-5xl border-b-4 font-medium border-third dark:border-d-third p-1 ml-[5%] mt-[10vh] mb-[5vh] self-baseline w-fit;
   }
   .bottom-border {
     @apply border-b-4 border-third dark:border-d-third;
   }
   .what-i-do-title {
-    @apply w-fit text-3xl font-semibold bottom-border mb-0 mt-10 dark:text-main text-d-main;
+    @apply w-fit text-3xl font-semibold bottom-border mb-0 mt-[1vh] dark:text-main text-d-main;
   }
   .what-i-do-date {
     @apply w-fit text-base font-medium bottom-border dark:text-main text-d-main my-2;

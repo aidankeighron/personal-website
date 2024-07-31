@@ -11,7 +11,7 @@ import { motion } from 'framer-motion';
 
 function Header() {
   return (
-    <div className='absolute flex z-10 space-x-4 w-full items-end justify-end mr-96 p-10'>
+    <div className='absolute flex z-10 space-x-4 w-full items-end justify-end mr-[2.5%] p-10'>
         <Link href={'#aboutme'} scroll={true}><p className='header-link'>About Me</p></Link>
         <Link href={'#robotics'} scroll={true}><p className='header-link'>Robotics</p></Link>
         <Link href={'#projects'} scroll={true}><p className='header-link'>Projects</p></Link>
@@ -57,7 +57,7 @@ function VideoEntry() {
 function AboutMe() {
   return (
     <div className='flex items-center flex-col'>
-        <div className='max-w-[1500px] bg-a-third dark:bg-d-third flex flex-row items-center rounded-2xl p-4 shadow-xl'>
+        <div className='max-w-[1500px] mx-[5%] bg-a-third dark:bg-d-third flex flex-row items-center rounded-2xl p-4 shadow-xl'>
           <img className='w-1/3 rounded-xl m-4' src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron"/>
           <p className='text-second dark:text-d-second text-2xl whitespace-pre-line mr-4'>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
 
@@ -112,7 +112,7 @@ function CombatRobots() {
     <div className='flex flex-col items-end px-20'>
       <h2 id={'robotics'} className='what-i-do-title'>Combat Robotics</h2>
       <h3 className='what-i-do-date'>August 2022 - Present</h3>
-      <div className='robot-learn-more mb-20'>
+      <div className='robot-learn-more mb-[2.5%]'>
         <Link href={"/currentrobots"}><p>Learn More</p></Link>
       </div>
       {combatRobotList.map(robot => {
