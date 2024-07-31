@@ -256,7 +256,7 @@ function Resume() {
 
 function OtherProjects() {
   return (
-    <div className='grid grid-cols-3 m-10 gap-10'>
+    <div className='flex flex-wrap m-10 justify-around gap-y-10'>
       {otherProjects.map(project => {
         return (
           <motion.div key={project.name}
@@ -264,11 +264,11 @@ function OtherProjects() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-          <div  className='bg-a-main dark:bg-second p-8 rounded-xl shadow-lg h-full flex flex-col'>
+          <div className='bg-a-main dark:bg-second p-8 rounded-xl shadow-lg h-full flex flex-col w-[400px]'>
             <p className='text-3xl font-semibold mb-2 bottom-border w-fit'>{project.name}</p>
             <p className='text-base dark:text-d-a-second mb-3'>{project.date}</p>
             <p className='text-lg'>{project.description}</p>
-            <div className='flex gap-3 mt-4'>
+            <div className='flex flex-wrap gap-3 mt-4'>
               {project.tags.length != 0 && project.tags.map(tag => {
                 return (
                   <p key={tag} className='text-sm bg-a-main w-fit px-2 py-1 rounded-2xl'>{tag}</p>
