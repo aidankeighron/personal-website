@@ -22,10 +22,7 @@
     @apply flex flex-row w-full h-[400px] mb-20 justify-between odd:flex-row-reverse dark:text-main text-d-main;
   }
   .robot-text {
-    @apply text-xl leading-9 self-center;
-  }
-  .robot-container-text {
-    @apply min-w-[45%] max-w-[45%] leading-9 self-center;
+    @apply text-xl leading-9 self-center text-ellipsis basis-1/2 h-min overflow-y-clip mx-[2.5%];
   }
   .robot-learn-more {
     @apply bg-a-third dark:bg-d-third w-fit p-3 mt-3 rounded-2xl text-xl;

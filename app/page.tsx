@@ -118,10 +118,8 @@ function CombatRobots() {
       {combatRobotList.map(robot => {
         return (
             <div key={robot.name} className='robot-container'>
-              <div className='robot-container-text'>
-                <p className='robot-text'>{robot.description}</p>
-              </div>
               {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} className='robot-model' camera={{position: [0, 0, 300]}} orthographic>
+              <p className='robot-text'>{robot.description}</p>
                 <Suspense fallback={<CanvasLoader />}>
                   <OrbitControls
                     enablePan={false}
@@ -151,10 +149,8 @@ function CombatRobots() {
               <source src={robot.videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>}
-            <div className='robot-container-text'>
-              <p className='robot-text'>{robot.description}</p>
-            </div>
             {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} className='robot-model' camera={{position: [0, 0, 300]}} orthographic>
+            <p className='robot-text'>{robot.description}</p>
               <Suspense fallback={<CanvasLoader />}>
                 <OrbitControls
                   enablePan={false}
