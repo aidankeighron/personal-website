@@ -4,10 +4,10 @@
 
 @layer components {
   .header-link {
-    @apply text-main bg-d-main rounded-md text-3xl border-b-4 border-third dark:border-d-third p-2 shadow-xl;
+    @apply text-main bg-d-main rounded-md text-xl border-b-4 border-third dark:border-d-third p-2 shadow-xl;
   }
   .section-title {
-    @apply dark:text-main text-d-main text-5xl border-b-4 font-medium border-third dark:border-d-third p-1 ml-[5%] mt-[10vh] mb-[5vh] self-baseline w-fit;
+    @apply dark:text-main text-d-main text-4xl border-b-4 font-medium border-third dark:border-d-third p-1 ml-[5%] mt-[10vh] mb-[5vh] self-baseline w-fit;
   }
   .bottom-border {
     @apply border-b-4 border-third dark:border-d-third;
@@ -16,25 +16,25 @@
     @apply w-fit text-3xl font-semibold bottom-border mb-0 mt-[1vh] dark:text-main text-d-main;
   }
   .what-i-do-date {
-    @apply w-fit text-base font-medium bottom-border dark:text-main text-d-main my-2;
+    @apply w-fit text-base font-medium bottom-border dark:text-d-a-second text-a-second my-2;
   }
   .robot-container {
-    @apply flex flex-row w-full h-[400px] mb-20 justify-between odd:flex-row-reverse dark:text-main text-d-main;
+    @apply flex flex-row h-[400px] mb-20 justify-between odd:flex-row-reverse dark:text-main text-d-main;
   }
   .robot-text {
-    @apply text-xl leading-9 self-center text-ellipsis basis-1/2 h-min overflow-y-clip mx-[2.5%];
+    @apply text-base leading-9 self-center text-ellipsis basis-1/2 h-min overflow-y-clip mx-[2.5%] min-w-[500px];
   }
   .robot-learn-more {
     @apply bg-a-third dark:bg-d-third w-fit p-3 mt-3 rounded-2xl text-xl;
   }
   .robot-image {
-    @apply object-contain h-full rounded-xl mr-10;
+    @apply object-contain basis-1/4 h-full rounded-xl;
   }
   .robot-video {
-    @apply object-contain w-fit h-full rounded-xl ml-10;
+    @apply object-contain basis-1/4 h-full rounded-xl;
   }
   .robot-model {
-    @apply basis-1/2 bg-d-a-main rounded-xl self-center;
+    @apply basis-1/2 bg-d-a-main rounded-xl self-center min-w-[500px];
   }
 }
 

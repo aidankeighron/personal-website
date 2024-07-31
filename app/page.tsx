@@ -48,7 +48,7 @@ function VideoEntry() {
       </video>
       <div className='bg-a-main dark:bg-d-main absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-fit h-fit p-4 rounded-md border-b-4 border-third dark:border-d-third shadow-xl'>
         <h1 className='text-second dark:text-d-second text-4xl font-bold text-center'>Hi, I am Aidan Keighron</h1>
-        <p className='text-second dark:text-d-second text-xl font-medium text-center'>I'm a Software Developer and I make robots in my spare time</p>
+        <p className='text-second dark:text-d-second text-base font-medium text-center'>I'm a Software Developer and I make robots in my spare time</p>
       </div>
     </div>
   );
@@ -59,7 +59,7 @@ function AboutMe() {
     <div className='flex items-center flex-col'>
         <div className='max-w-[1500px] mx-[5%] bg-a-third dark:bg-d-third flex flex-row items-center rounded-2xl p-4 shadow-xl'>
           <img className='w-1/3 rounded-xl m-4' src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron"/>
-          <p className='text-second dark:text-d-second text-2xl whitespace-pre-line mr-4'>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
+          <p className='text-second dark:text-d-second text-xl whitespace-pre-line mr-4'>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
 
 I Co-Founded the combat robotics team Bad Conflict, where we build robots to compete in antweight combat robotics competitions. I created a startup called Alchemy, where I am making an all-in-one task management software that aims to reduce the time it takes to plan out your day.
 
@@ -109,7 +109,7 @@ function ShowModel({url, scale, position, rotation}: ShowModelProps) {
 
 function CombatRobots() {
   return (
-    <div className='flex flex-col items-end'>
+    <div className='flex flex-col items-end mx-[5%]'>
       <h2 id={'robotics'} className='what-i-do-title'>Combat Robotics</h2>
       <h3 className='what-i-do-date'>August 2022 - Present</h3>
       <div className='robot-learn-more mb-[2.5%]'>
@@ -151,7 +151,7 @@ function CombatRobots() {
               Your browser does not support the video tag.
             </video>}
             <p className='robot-text'>{robot.description}</p>
-            {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} camera={{position: [0, 0, 400]}} orthographic
+            {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} camera={{position: [0, 0, 500]}} orthographic
                                         className='robot-model'>
               <Suspense fallback={<CanvasLoader />}>
                 <OrbitControls
@@ -181,13 +181,13 @@ function Projects() {
       <h3 className='what-i-do-date self-end'>October 2021 - Present</h3>
       {projectList.map(project => {
         return (
-          <div className='robot-container h-[600px]' key={project.name}>
+          <div className='robot-container min-h-[800px]' key={project.name}>
             <p className='robot-text'>{project.description}</p>
-            {project.videoUrl !== undefined && <video autoPlay loop muted playsInline preload="auto" className='robot-video w-1/2 object-none m-0 mr-10'>
+            {project.videoUrl !== undefined && <video autoPlay loop muted playsInline preload="auto" className='robot-video basis-1/2 w-[45%] object-none'>
               <source src={project.videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>}
-            {project.imageUrl !== undefined && <img src={project.imageUrl} alt={project.imageAlt} className='robot-image object-contain w-1/2'/>}
+            {project.imageUrl !== undefined && <img src={project.imageUrl} alt={project.imageAlt} className='robot-image object-contain basis-1/2 w-[45%]'/>}
             {project.page && <div className='robot-learn-more mb-20 self-end'>
               <Link href={project.page}><p>Learn More</p></Link>
             </div>}
@@ -201,23 +201,23 @@ function Projects() {
 function Skillsets() {
   return (
     <>
-    <div className='mx-[5%] flex flex-wrap flex-row justify-around mb-10 dark:text-main text-d-main'>
+    <div className='mx-[5%] flex flex-wrap flex-row justify-around mb-10 dark:text-main text-d-main w-[90%]'>
       {(() => {
         return (Object.entries(skillsets).map(([name, skillset]) => {
           return (
             <div key={name} className='p-4 mt-5'>
-              <h1 className='w-min text-5xl font-bold mb-6'>{name}</h1>
+              <h1 className='w-min text-3xl font-bold mb-6'>{name}</h1>
               {skillset.map(skill => {
                 return (
                   <div className='mb-5 font-medium' key={skill.name}>
-                    <h2 className='text-2xl'>{skill.name}</h2>
+                    <h2 className='text-xl'>{skill.name}</h2>
                     {skill.experienceYears !== undefined &&
-                      <p className='text-xl text-d-a-second'>{skill.experienceYears} Year{skill.experienceYears != 1 ? 's' : ''}</p>}
+                      <p className='text-sm text-d-a-second'>{skill.experienceYears} Year{skill.experienceYears != 1 ? 's' : ''}</p>}
                     {skill.subList !== undefined && skill.subList.map(sub => {
-                      return <p key={sub} className='text-xl text-d-a-second'>● {sub}</p>
+                      return <p key={sub} className='text-sm text-d-a-second'>● {sub}</p>
                     })}
                     {skill.skill !== undefined &&
-                      <p className='text-xl text-d-a-second mb-1'>Skill Level {skill.skill}</p>}
+                      <p className='text-sm text-d-a-second mb-1'>Skill Level {skill.skill}</p>}
                   </div>
                 )
               })}
@@ -225,16 +225,16 @@ function Skillsets() {
         )}));
       })()}
     </div>
-    <div className='mx-[5%] mb-10 dark:text-main text-d-main'>
-      <h1 className='text-5xl font-bold mb-6'>Work Experience</h1>
+    <div className='mx-[15%] mb-10 dark:text-main text-d-main'>
+      <h1 className='text-4xl font-bold mb-6'>Work Experience</h1>
       {workExperience.map(experience => {
         return (
         <div key={experience.company}>
-          <h2 className='text-4xl font-bold bottom-border w-fit mb-3'>{experience.company}</h2>
-          <h3 className='text-base mb-1 text-d-a-second'>{experience.description}</h3>
-          <h4 className='text-base mb-4 text-d-a-second'>{experience.duration}</h4>
+          <h2 className='text-2xl font-bold bottom-border w-fit mb-3'>{experience.company}</h2>
+          <h3 className='text-sm mb-1 text-d-a-second'>{experience.description}</h3>
+          <h4 className='text-sm mb-4 text-d-a-second'>{experience.duration}</h4>
           {experience.bullets.map(bullet => {
-            return (<p key={bullet} className='text-xl mb-2'>● {bullet}</p>); // TODO list
+            return (<p key={bullet} className='text-base mb-2'>● {bullet}</p>); // TODO list
           })}
         </div>
         );
@@ -247,7 +247,7 @@ function Skillsets() {
 function Resume() {
   return (
     <div className='bg-d-third w-full h-[120px] dark:text-main text-d-main'>
-      <a href='/AidanKeighronResume.pdf' target="_blank" className='text-5xl flex items-center justify-center w-full h-full'>View Resume</a>
+      <a href='/AidanKeighronResume.pdf' target="_blank" className='text-4xl flex items-center justify-center w-full h-full'>View Resume</a>
     </div>
   )
 }
@@ -264,8 +264,8 @@ function OtherProjects() {
           >
           <div className='bg-a-main dark:bg-second p-8 rounded-xl shadow-lg h-full flex flex-col w-[400px]'>
             <p className='text-3xl font-semibold mb-2 bottom-border w-fit'>{project.name}</p>
-            <p className='text-base dark:text-d-a-second mb-3'>{project.date}</p>
-            <p className='text-lg'>{project.description}</p>
+            <p className='text-sm dark:text-d-a-second mb-3'>{project.date}</p>
+            <p className='text-base'>{project.description}</p>
             <div className='flex flex-wrap gap-3 mt-4'>
               {project.tags.length != 0 && project.tags.map(tag => {
                 return (
@@ -310,7 +310,7 @@ export default function Home() {
       <Resume />
       <h1 className='section-title'>Other Projects</h1>
       <OtherProjects />
-      <div style={{height: '20vh'}}></div>
+      <div style={{height: '10vh'}}></div>
     </main>
   );
 }
