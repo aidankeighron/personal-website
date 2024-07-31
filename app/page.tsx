@@ -203,12 +203,12 @@ function Projects() {
 function Skillsets() {
   return (
     <>
-    <div className='w-[80%] flex flex-row justify-between mb-10 dark:text-main text-d-main'>
+    <div className='mx-[5%] flex flex-wrap flex-row justify-around mb-10 dark:text-main text-d-main'>
       {(() => {
         return (Object.entries(skillsets).map(([name, skillset]) => {
           return (
             <div key={name} className='p-4 mt-5'>
-              <h1 className='text-5xl font-bold mb-6'>{name}</h1>
+              <h1 className='w-min text-5xl font-bold mb-6'>{name}</h1>
               {skillset.map(skill => {
                 return (
                   <div className='mb-5 font-medium' key={skill.name}>
@@ -219,7 +219,7 @@ function Skillsets() {
                       return <p key={sub} className='text-xl text-d-a-second'>● {sub}</p>
                     })}
                     {skill.skill !== undefined &&
-                      <p className='text-xl text-d-a-second'>Skill Level {skill.skill}</p>}
+                      <p className='text-xl text-d-a-second mb-1'>Skill Level {skill.skill}</p>}
                   </div>
                 )
               })}
@@ -227,7 +227,7 @@ function Skillsets() {
         )}));
       })()}
     </div>
-    <div className='w-[80%] p-4 mb-10 dark:text-main text-d-main'>
+    <div className='mx-[5%] mb-10 dark:text-main text-d-main'>
       <h1 className='text-5xl font-bold mb-6'>Work Experience</h1>
       {workExperience.map(experience => {
         return (
@@ -236,7 +236,7 @@ function Skillsets() {
           <h3 className='text-base mb-1 text-d-a-second'>{experience.description}</h3>
           <h4 className='text-base mb-4 text-d-a-second'>{experience.duration}</h4>
           {experience.bullets.map(bullet => {
-            return (<p key={bullet} className='text-xl'>● {bullet}</p>); // TODO list
+            return (<p key={bullet} className='text-xl mb-2'>● {bullet}</p>); // TODO list
           })}
         </div>
         );
@@ -248,7 +248,7 @@ function Skillsets() {
 
 function Resume() {
   return (
-    <div className='bg-d-third w-full h-[120px] mb-20 dark:text-main text-d-main'>
+    <div className='bg-d-third w-full h-[120px] dark:text-main text-d-main'>
       <a href='/AidanKeighronResume.pdf' target="_blank" className='text-5xl flex items-center justify-center w-full h-full'>View Resume</a>
     </div>
   )
