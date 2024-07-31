@@ -34,7 +34,7 @@
     @apply object-contain w-fit h-full rounded-xl ml-10;
   }
   .robot-model {
-    @apply min-w-[50%] max-w-[50%] bg-d-a-main rounded-xl self-center;
+    @apply basis-1/2 bg-d-a-main rounded-xl self-center;
   }
 }
 
