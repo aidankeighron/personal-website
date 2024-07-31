@@ -109,7 +109,7 @@ function ShowModel({url, scale, position, rotation}: ShowModelProps) {
 
 function CombatRobots() {
   return (
-    <div className='flex flex-col items-end px-20'>
+    <div className='flex flex-col items-end'>
       <h2 id={'robotics'} className='what-i-do-title'>Combat Robotics</h2>
       <h3 className='what-i-do-date'>August 2022 - Present</h3>
       <div className='robot-learn-more mb-[2.5%]'>

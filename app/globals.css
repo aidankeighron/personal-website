@@ -28,7 +28,7 @@
     @apply min-w-[45%] max-w-[45%] leading-9 self-center;
   }
   .robot-learn-more {
-    @apply bg-a-third dark:bg-d-third w-fit p-3 mt-4 rounded-2xl text-xl;
+    @apply bg-a-third dark:bg-d-third w-fit p-3 mt-3 rounded-2xl text-xl;
   }
   .robot-image {
     @apply object-contain h-full rounded-xl mr-10;
