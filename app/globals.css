@@ -58,15 +58,15 @@
   }
 }
 
-@font-face {
-  font-family: "JetBrains Mono";
+/* @font-face { */
+  /* font-family: "JetBrains Mono"; */
   /* src: url("/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf"); */
-  src: url("/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf");
-}
+  /* src: url("/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf"); */
+/* } */
 
-* {
+/* * {
   font-family: "JetBrains Mono", monospace;
-}
+} */
 
 html {
   scrollbar-width: thin;

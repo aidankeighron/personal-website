@@ -8,6 +8,8 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Position, Rotation } from './types';
 import { competitiveRobotList, projectList, combatRobotList, skillsets, workExperience, otherProjects } from './pageData';
 import { domAnimation, LazyMotion, m, MotionConfig, useScroll } from 'framer-motion';
+import Image from 'next/image';
+import aboutMeImage from '../public/images/aidan_profile.jpg';
 
 function Header() {
   const variants = {
@@ -79,11 +81,6 @@ function VideoEntry() {
 
   useLayoutEffect(() => {
     if (videoRef.current) {
-      // console.log(videoRef.current);
-      // console.log(videoRef.current.offsetWidth);
-      console.log(videoRef.current.offsetHeight);
-      // console.log(window.innerWidth)
-      console.log(window.innerHeight)
       // TODO change this to a ratio of the width
       if (videoRef.current.offsetHeight > window.innerHeight) {
         console.log("over by", videoRef.current.offsetHeight-window.innerHeight);
@@ -94,8 +91,7 @@ function VideoEntry() {
 
   return (
     <div className='relative'>
-      {/* TODO move up so width is max */}
-      {/* <video ref={videoRef} autoPlay loop muted playsInline preload="auto" className='aspect-video max-w-max h-screen'> */}
+      {/* TODO loading issue on laptop (use dev tools to throttle internet) */}
       <video ref={videoRef} autoPlay loop muted playsInline preload="auto" className='aspect-video' style={{marginTop: `-${videoTopOffset}px`}}>
         <source src="/videos/intro_video5.mp4" type="video/mp4" />
         Your browser does not support the video tag.
@@ -117,16 +113,21 @@ function AboutMe() {
   return (
     <div className='flex items-center flex-col'>
         <div className='max-w-[1500px] mx-[5%] bg-a-third dark:bg-d-third flex flex-row items-center rounded-2xl p-4 shadow-xl'>
-          <m.img
+          <m.div
             initial={{opacity: 0, scale: 0.7}}
             whileInView={{opacity: 1, scale: 1, transition: {
               duration: 1,
               ease: 'easeOut'
             }}}            
             viewport={{once: true, amount: 'some'}}
-            className='w-1/3 rounded-xl m-4' src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron"
-          />
-          <p className='text-second dark:text-d-second text-xl whitespace-pre-line mr-4'>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
+            className='w-1/3 m-4'
+          >
+          <Image placeholder='blur' blurDataURL='/images/aidan_profile.jpg' priority
+                src={aboutMeImage} alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' />
+          {/* <Image width={0} height={0} sizes="100vw" placeholder='blur' blurDataURL='/images/aidan_profile.jpg'
+                src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' /> */}
+          </m.div>
+          <p className='text-second dark:text-d-second w-2/3 text-xl whitespace-pre-line mr-4'>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
 
 I Co-Founded the combat robotics team Bad Conflict, where we build robots to compete in antweight combat robotics competitions. I created a startup called Alchemy, where I am making an all-in-one task management software that aims to reduce the time it takes to plan out your day.
 
@@ -450,7 +451,7 @@ function Skillsets() {
           <h3 className='text-sm mb-1 text-d-a-second'>{experience.description}</h3>
           <h4 className='text-sm mb-4 text-d-a-second'>{experience.duration}</h4>
           {experience.bullets.map(bullet => {
-            return (<p key={bullet} className='text-base mb-2'>● {bullet}</p>); // TODO list
+            return (<p key={bullet} className='text-base mb-2'>● {bullet}</p>);
           })}
         </m.div>
         );
