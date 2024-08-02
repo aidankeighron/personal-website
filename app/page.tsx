@@ -1,4 +1,4 @@
-'use client'
+'use client' // TODO remove to utalize server side rendering
 
 import React, { Suspense, useLayoutEffect, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -41,7 +41,7 @@ function Header() {
       initial="hidden"
       animate="visible"
       variants={variants}
-      className='absolute flex z-10 space-x-4 w-full items-end justify-end mr-[2.5%] p-10'
+      className='absolute flex z-10 space-x-4 w-full items-end justify-end mr-[2.5%] p-10 invisible md:visible'
     >
       <Link href={'#aboutme'} scroll={true}>
         <m.p className='header-link'
@@ -83,7 +83,6 @@ function VideoEntry() {
     if (videoRef.current) {
       // TODO change this to a ratio of the width
       if (videoRef.current.offsetHeight > window.innerHeight) {
-        console.log("over by", videoRef.current.offsetHeight-window.innerHeight);
         setVideoTopOffset(videoRef.current.offsetHeight-window.innerHeight);
       }
     }
@@ -99,11 +98,11 @@ function VideoEntry() {
       <m.div
         initial={{opacity: 0, y: '25%', x: '-50%'}}
         whileInView={{opacity: 1, y: '0', x: '-50%', transition: {duration: 1, ease: 'easeOut'}}}
-        viewport={{once: true, amount: 'all', margin: '5%'}}
+        viewport={{once: true, amount: 'some', margin: '5%'}}
         className='bg-a-main dark:bg-d-main absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-fit h-fit p-4 rounded-md border-b-4 border-third dark:border-d-third shadow-xl'
       >
-        <h1 className='text-second dark:text-d-second text-4xl font-bold text-center'>Hi, I am Aidan Keighron</h1>
-        <p className='text-second dark:text-d-second text-base font-medium text-center'>I'm a Software Developer and I make robots in my spare time</p>
+        <h1 className='text-second dark:text-d-second text-xl md:text-2xl lg:text-4xl font-bold text-center whitespace-nowrap'>Hi, I am Aidan Keighron</h1>
+        <p className='text-second dark:text-d-second text-xs md:text-sm lg:text-base font-medium text-center'>I'm a Software Developer and I make robots in my spare time</p>
       </m.div>
     </div>
   );
@@ -405,7 +404,7 @@ function Skillsets() {
       whileInView="visible"
       viewport={{once: true, amount: 'some'}}
       variants={variants}
-      className='mx-[5%] flex flex-wrap flex-row justify-around mb-10 dark:text-main text-d-main w-[90%]'
+      className='mx-[5%] flex flex-wrap flex-row sm:justify-around mb-10 dark:text-main text-d-main w-[90%]'
     >
       {(() => {
         return (Object.entries(skillsets).map(([name, skillset]) => {
@@ -464,13 +463,13 @@ function Skillsets() {
 function Resume() {
   return (
     <m.div
-      initial={{ width: '25%', borderRadius: '36px' }}
+      initial={{ width: 'min-content', borderRadius: '36px' }}
       whileInView={{ width: '100%', borderRadius: '0px' }}
       viewport={{once: true, amount: 'some'}}
       transition={{ease: 'easeInOut', duration: 1}}
       className='bg-d-third h-[120px] dark:text-main text-d-main' // w-full
     >
-      <a href='/AidanKeighronResume.pdf' target="_blank" className='text-4xl flex items-center justify-center w-full h-full'>View Resume</a>
+      <a href='/AidanKeighronResume.pdf' target="_blank" className='text-4xl flex items-center justify-center h-full mx-[5vw] whitespace-nowrap'>View Resume</a>
     </m.div>
   )
 }
@@ -481,11 +480,11 @@ function OtherProjects() {
       {otherProjects.map(project => {
         return (
           <m.div
-            initial={{opacity: 0, y: '0'}}
-            whileInView={{opacity: 1, y: '-25%', transition: {duration: 1, ease: 'easeOut'}}}
+            initial={{opacity: 0, y: '25%'}}
+            whileInView={{opacity: 1, y: '0', transition: {duration: 1, ease: 'easeOut'}}}
             viewport={{once: true, amount: 'some', margin: '5%'}}
             key={project.name}
-            className='bg-a-main dark:bg-second p-8 rounded-xl shadow-lg h-full flex flex-col w-[400px]'
+            className='bg-a-main dark:bg-second p-8 rounded-xl shadow-lg h-full flex flex-col max-[400px]:w-[300px] w-[400px]'
           >
             <p className='text-3xl font-semibold mb-2 bottom-border w-fit'>{project.name}</p>
             <p className='text-sm dark:text-d-a-second mb-3'>{project.date}</p>
@@ -533,7 +532,7 @@ export default function Home() {
       <m.h1
         initial={{opacity: 0, x: '-10vh'}}
         whileInView={{opacity: 1, x: 0, transition: {duration: 1}}}
-        viewport={{once: true, amount: 'all', margin: '5%'}}
+        viewport={{once: true, amount: 'some', margin: '5%'}}
         id={'aboutme'} className='section-title'
       >
         About Me
@@ -543,7 +542,7 @@ export default function Home() {
       <m.h1
         initial={{opacity: 0, x: '-10vh'}}
         whileInView={{opacity: 1, x: 0, transition: {duration: 1}}}
-        viewport={{once: true, amount: 'all', margin: '5%'}}
+        viewport={{once: true, amount: 'some', margin: '5%'}}
         className='section-title'
       >
         What I Do
@@ -554,7 +553,7 @@ export default function Home() {
       <m.h1
         initial={{opacity: 0, x: '-10vh'}}
         whileInView={{opacity: 1, x: 0, transition: {duration: 1}}}
-        viewport={{once: true, amount: 'all', margin: '5%'}}
+        viewport={{once: true, amount: 'some', margin: '5%'}}
         id={'skills'} className='section-title'
       >
         Skills
@@ -565,7 +564,7 @@ export default function Home() {
       <m.h1
         initial={{opacity: 0, x: '-10vh'}}
         whileInView={{opacity: 1, x: 0, transition: {duration: 1}}}
-        viewport={{once: true, amount: 'all', margin: '5%'}}
+        viewport={{once: true, amount: 'some', margin: '5%'}}
         className='section-title'
       >
         Other Projects

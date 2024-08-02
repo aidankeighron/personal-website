@@ -18,7 +18,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
     <html lang="en" className={`dark text-main bg-d-main ${jetBrains.className}`}>
       <SpeedInsights/>
       <Analytics />
-      <body className="bg-main dark:bg-d-main">{children}</body>
+      <body className="bg-main dark:bg-d-main" suppressHydrationWarning={true}>{children}</body>
     </html>
   );
 }
