@@ -178,6 +178,7 @@ function ShowModel({url, scale, position, rotation}: ShowModelProps) {
   );
 };
 
+// TODO looks bad medium ui
 function CombatRobots() {
   return (
     <div className='flex flex-col items-end mx-[5%]'>
