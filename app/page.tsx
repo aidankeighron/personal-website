@@ -115,7 +115,7 @@ function VideoEntry() {
 function AboutMe() {
   return (
     <div className='flex items-center flex-col'>
-        <div className='max-w-[1500px] mx-[5%] bg-a-third dark:bg-d-third flex flex-col sm:flex-row items-center rounded-2xl p-4 shadow-xl'>
+        <div className='max-w-[1500px] mx-[5%] bg-a-third dark:bg-d-third flex flex-col md:flex-row items-center rounded-2xl p-4 shadow-xl'>
           <m.div
             initial={{opacity: 0, scale: 0.7}}
             whileInView={{opacity: 1, scale: 1, transition: {
@@ -123,14 +123,14 @@ function AboutMe() {
               ease: 'easeOut'
             }}}            
             viewport={{once: true, amount: 'some'}}
-            className='sm:w-1/3 m-4'
+            className='md:w-1/3 m-4'
           >
           <Image placeholder='blur' blurDataURL='/images/aidan_profile.jpg' priority
                 src={aboutMeImage} alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' />
           {/* <Image width={0} height={0} sizes="100vw" placeholder='blur' blurDataURL='/images/aidan_profile.jpg'
                 src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' /> */}
           </m.div>
-          <p className='text-second dark:text-d-second text-sm sm:text-xl sm:w-2/3 whitespace-pre-line sm:mr-4'>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
+          <p className='text-second dark:text-d-second text-sm md:text-xl md:w-2/3 whitespace-pre-line md:mr-4'>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
 
 I Co-Founded the combat robotics team Bad Conflict, where we build robots to compete in antweight combat robotics competitions. I created a startup called Alchemy, where I am making an all-in-one task management software that aims to reduce the time it takes to plan out your day.
 
@@ -209,7 +209,7 @@ function CombatRobots() {
           ease: [0, 0.71, 0.2, 1.01]
         }}}            
         viewport={{once: true, amount: 'some'}}
-        className='robot-learn-more mb-10 sm:mb-[2.5%]'
+        className='robot-learn-more mb-10 md:mb-[2.5%]'
       >
         <Link href={"/currentrobots"}><p>Learn More</p></Link>
       </m.div>
@@ -283,7 +283,7 @@ function CombatRobots() {
         return (
           <div key={robot.name} className='robot-container'>
             {robot.videoUrl && 
-            <video autoPlay loop muted playsInline preload="auto" className='robot-video hidden sm:block'>
+            <video autoPlay loop muted playsInline preload="auto" className='robot-video hidden md:block'>
               <source src={robot.videoUrl} type="video/mp4" />
               Your browser does not support the video tag.
             </video>}
@@ -314,11 +314,11 @@ function CombatRobots() {
               <Preload all />
             </Canvas>}
             {/* TODO use <Image /> for better optimization */}
-            {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt} className='robot-image hidden sm:block'/>}
-            <div className='sm:hidden flex flex-row'>
-              {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt} className='robot-image mr-[2.5%] w-[45%] sm:hidden'/>}
+            {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt} className='robot-image hidden md:block'/>}
+            <div className='md:hidden flex flex-row'>
+              {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt} className='robot-image mr-[2.5%] w-[45%] md:hidden'/>}
               {robot.videoUrl && 
-              <video autoPlay loop muted playsInline preload="auto" className='robot-video ml-[2.5%] w-[45%] sm:hidden'>
+              <video autoPlay loop muted playsInline preload="auto" className='robot-video ml-[2.5%] w-[45%] md:hidden'>
                 <source src={robot.videoUrl} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>}
@@ -488,7 +488,7 @@ function Resume() {
 
 function OtherProjects() {
   return (
-    <div className='flex flex-wrap m-10 justify-around gap-y-10'>
+    <div className='flex flex-wrap m-10 justify-around gap-y-10 gap-x-5'>
       {otherProjects.map(project => {
         return (
           <m.div
