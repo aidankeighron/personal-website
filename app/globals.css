@@ -7,7 +7,7 @@
     @apply text-main bg-d-main rounded-md text-xl border-b-4 border-third dark:border-d-third p-2 shadow-xl;
   }
   .section-title {
-    @apply dark:text-main text-d-main text-4xl border-b-4 font-medium border-third dark:border-d-third p-1 ml-[5%] mt-[10vh] mb-[5vh] self-baseline w-fit;
+    @apply dark:text-main text-d-main text-4xl border-b-4 font-medium border-third dark:border-d-third p-1 ml-[5%] mt-[5vh] sm:mt-[10vh] mb-[5vh] self-baseline w-fit;
   }
   .bottom-border {
     @apply border-b-4 border-third dark:border-d-third;
@@ -19,22 +19,22 @@
     @apply w-fit text-base font-medium bottom-border dark:text-d-a-second text-a-second my-2;
   }
   .robot-container {
-    @apply flex flex-row h-[400px] mb-20 justify-between odd:flex-row-reverse dark:text-main text-d-main;
+    @apply flex flex-col-reverse sm:flex-row h-[800px] sm:h-[400px] mb-10 sm:mb-20 justify-between sm:odd:flex-row-reverse dark:text-main text-d-main;
   }
   .robot-text {
-    @apply text-base leading-9 self-center text-ellipsis basis-1/2 h-min overflow-y-clip mx-[2.5%] min-w-[500px];
+    @apply text-sm sm:text-base leading-9 self-center text-ellipsis sm:basis-1/2 h-min overflow-y-clip mx-[2.5%] sm:min-w-[500px];
   }
   .robot-learn-more {
     @apply bg-a-third dark:bg-d-third w-fit p-3 mt-3 rounded-2xl text-xl;
   }
   .robot-image {
-    @apply object-contain basis-1/4 h-full rounded-xl;
+    @apply object-contain sm:basis-1/4 sm:h-full rounded-xl;
   }
   .robot-video {
-    @apply object-contain basis-1/4 h-full rounded-xl;
+    @apply object-contain sm:basis-1/4 sm:h-full rounded-xl;
   }
   .robot-model {
-    @apply basis-1/2 bg-d-a-main rounded-xl self-center min-w-[500px];
+    @apply mb-5 sm:mb-0 sm:basis-1/2 bg-d-a-main rounded-xl self-center sm:min-w-[500px];
   }
 }
 
