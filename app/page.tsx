@@ -6,10 +6,11 @@ import { Canvas, useLoader } from '@react-three/fiber';
 import { OrbitControls, Preload, Html, useProgress } from '@react-three/drei';
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Position, Rotation } from './types';
-import { competitiveRobotList, projectList, combatRobotList, skillsets, workExperience, otherProjects } from './pageData';
+import { projectList, skillsets, workExperience, otherProjects } from './pageData';
 import { domAnimation, LazyMotion, m, MotionConfig, useScroll } from 'framer-motion';
 import Image from 'next/image';
 import aboutMeImage from '../public/images/aidan_profile.jpg';
+import robot2541Image from '../public/images/2451-2023-1.png';
 
 function Header() {
   const variants = {
@@ -93,7 +94,8 @@ function VideoEntry() {
     <h1 className='text-second dark:text-d-second text-4xl mb-16 m-2 w-fit h-fit p-4 border-b-4 border-third dark:border-d-third sm:hidden'>Aidan Keighron</h1>
     <div className='relative'>
       {/* TODO loading issue on laptop (use dev tools to throttle internet) */}
-      <video ref={videoRef} autoPlay loop muted playsInline preload="auto" className='aspect-video' style={{marginTop: `-${videoTopOffset}px`}}>
+      <video ref={videoRef} autoPlay loop muted playsInline preload="auto" width={1920} height={1080} 
+        className='aspect-video' style={{marginTop: `-${videoTopOffset}px`}}>
         <source src="/videos/intro_video5.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -125,10 +127,9 @@ function AboutMe() {
             viewport={{once: true, amount: 'some'}}
             className='md:w-1/3 m-4'
           >
-          <Image placeholder='blur' blurDataURL='/images/aidan_profile.jpg' priority
+          {/* TODO better blur url */}
+          <Image width={4007} height={4004} placeholder='blur' blurDataURL='/images/aidan_profile.jpg' priority
                 src={aboutMeImage} alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' />
-          {/* <Image width={0} height={0} sizes="100vw" placeholder='blur' blurDataURL='/images/aidan_profile.jpg'
-                src='/images/aidan_profile.jpg' alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' /> */}
           </m.div>
           <p className='text-second dark:text-d-second text-sm md:text-xl md:w-2/3 whitespace-pre-line md:mr-4'>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
 
@@ -160,21 +161,36 @@ function CanvasLoader() {
   );
 };
 
-function ShowModel({url, scale, position, rotation}: ShowModelProps) {
+function LoadModel({url, scale, position, rotation}: ShowModelProps) {
   const model: any = useLoader(GLTFLoader, url).scene;
+  return (        
+    <mesh>
+      <primitive
+        object={model} 
+        scale={scale}
+        rotation={rotation} 
+        position={position}
+      />
+    </mesh>
+  );
+}
 
-  return (
-    <>
-      <ambientLight />
-      <mesh>
-        <primitive
-          object={model} 
-          scale={scale}
-          rotation={rotation} 
-          position={position}
+function ShowModel({url, scale, position, rotation}: ShowModelProps) {
+  // TODO clipping
+  return (  
+    <Canvas frameloop='demand' dpr={[1, 2]} className='robot-model' camera={{position: [0, 0, 500]}} orthographic>
+      <Suspense fallback={<CanvasLoader />}>
+        <OrbitControls
+          enablePan={false}
+          enableZoom={false}
+          target={[0,0,0]}
+          position={[0,0,0]}
         />
-      </mesh>
-    </>
+        <ambientLight />
+        <LoadModel url={url} scale={scale} position={position} rotation={rotation} />
+      </Suspense>
+      <Preload all />
+  </Canvas>
   );
 };
 
@@ -214,39 +230,43 @@ function CombatRobots() {
       >
         <Link href={"/currentrobots"}><p>Learn More</p></Link>
       </m.div>
-      {combatRobotList.map((robot, index) => {
-        return (
-            <div key={robot.name} className='robot-container'>
-              <m.p
-                initial={{opacity: 0.5, y: '25%'}}
-                whileInView={{opacity: 1, y: 0, transition: {
-                  duration: 1,
-                  delay: 0.1,
-                  ease: 'easeOut'
-                }}}            
-                viewport={{once: true, amount: 'some'}}
-                className='robot-text'
-              >
-                {robot.description}
-              </m.p>
-              {/* TODO clipping */}
-              {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} className='robot-model' camera={{position: [0, 0, 500]}} orthographic>
-                <Suspense fallback={<CanvasLoader />}>
-                  <OrbitControls
-                    enablePan={false}
-                    enableZoom={false}
-                    target={[0,0,0]}
-                    position={[0,0,0]}
-                  />
-                  <ShowModel url={robot.modelUrl} scale={robot.scale}
-                    position={robot.position} rotation={robot.rotation} />
-                </Suspense>
-                <Preload all />
-              </Canvas>}
-              {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt} className='robot-image'/>}
-            </div>
-        )
-      })}
+      <div className='robot-container'>
+        <m.p
+          initial={{opacity: 0.5, y: '25%'}}
+          whileInView={{opacity: 1, y: 0, transition: {
+            duration: 1,
+            delay: 0.1,
+            ease: 'easeOut'
+          }}}            
+          viewport={{once: true, amount: 'some'}}
+          className='robot-text'
+        >I am the Team Manager of the combat robotics team, Bad Conflict. We compete in ant-weight robotics competitions, 
+        meaning the robots need to be less than one pound. Our team philosophy is to help our members compete in combat 
+        robotics by removing barriers to entry. We support our members throughout the creation process with member support 
+        for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat robotics.
+        </m.p>
+        <ShowModel url={"/models/twofold.glb"} scale={2} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} />
+      </div>
+      <div className='robot-container'>
+        <m.p
+          initial={{opacity: 0.5, y: '25%'}}
+          whileInView={{opacity: 1, y: 0, transition: {
+            duration: 1,
+            delay: 0.1,
+            ease: 'easeOut'
+          }}}            
+          viewport={{once: true, amount: 'some'}}
+          className='robot-text'
+        >My current robot is Horizon, a horizontal spinner. It has 1/8in Carbon Fiber top and bottom plates for stability and armor. 
+        Its chassis is made of TPU (3D printable rubber) to absorb damage. The weapon is a 101g AR500 weapon spinning, 
+        theoretically, at 18000 RPM. With a weapon diameter of over 6 inches, it has a tip speed of 350 MPH, packing quite a punch. 
+        Horizon also has a slower weapon configuration, as the previous configuration often runs out of power near the end of the 
+        3 minute matches.
+        </m.p>
+        <ShowModel url={"/models/horizon.glb"} scale={2}
+          position={[0,0,0]} rotation={[2*Math.PI/3, 0, -Math.PI/12]} />
+      </div>
+
       <m.h2 
         initial={{opacity: 0, scale: 0.7}}
         whileInView={{opacity: 1, scale: 1, transition: {
@@ -280,53 +300,40 @@ function CombatRobots() {
       >
         <Link href={"/currentrobots"}><p>Learn More</p></Link>
       </m.div>
-      {competitiveRobotList.map((robot, index) => {
-        return (
-          <div key={robot.name} className='robot-container'>
-            {robot.videoUrl && 
-            <video autoPlay loop muted playsInline preload="auto" className='robot-video hidden md:block'>
-              <source src={robot.videoUrl} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>}
-            <m.p 
-              initial={{opacity: 0.5, y: '25%'}}
-              whileInView={{opacity: 1, y: 0, transition: {
-                duration: 1,
-                delay: 0.1,
-                ease: 'easeOut'
-              }}}            
-              viewport={{once: true, amount: 'some'}}
-              className='robot-text'
-            >
-              {robot.description}
-            </m.p>
-            {robot.modelUrl && <Canvas frameloop='demand' dpr={[1, 2]} camera={{position: [0, 0, 500]}} orthographic
-                                        className='robot-model'>
-              <Suspense fallback={<CanvasLoader />}>
-                <OrbitControls
-                  enablePan={false}
-                  enableZoom={false}
-                  target={[0,0,0]}
-                  position={[0,0,0]}
-                />
-                <ShowModel url={robot.modelUrl} scale={robot.scale}
-                  position={robot.position} rotation={robot.rotation} />
-              </Suspense>
-              <Preload all />
-            </Canvas>}
-            {/* TODO use <Image /> for better optimization */}
-            {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt} className='robot-image hidden md:block'/>}
-            <div className='md:hidden flex flex-row'>
-              {robot.imageUrl && <img src={robot.imageUrl} alt={robot.imageAlt} className='robot-image mr-[2.5%] w-[45%] md:hidden'/>}
-              {robot.videoUrl && 
-              <video autoPlay loop muted playsInline preload="auto" className='robot-video ml-[2.5%] w-[45%] md:hidden'>
-                <source src={robot.videoUrl} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>}
-            </div>
-          </div>
-        )
-      })}
+      <div className='robot-container'> 
+        <video autoPlay loop muted playsInline preload="auto" width={1920} height={1080}
+          className='robot-video hidden md:block'>
+          <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <m.p 
+          initial={{opacity: 0.5, y: '25%'}}
+          whileInView={{opacity: 1, y: 0, transition: {
+            duration: 1,
+            delay: 0.1,
+            ease: 'easeOut'
+          }}}            
+          viewport={{once: true, amount: 'some'}}
+          className='robot-text'
+        >I did competitive robotics in high school as the Programming Lead of team 2451 PWNAGE. Each season, we built a 125 pound robot 
+        to compete in 3v3 competitions. We build a wide variety of robots, from a 420 degree turret that shoots basketball 
+        sized balls to a triple jointed arm able to pick up cones and cubes. It was a lot of fun designing the code for these robots. 
+        You had to ride the line of what the robot was capable of and get it as fast as possible without burning out a motor 
+        or snapping a shaft.
+        </m.p>
+        {/* TODO use <Image /> for better optimization */}
+        <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654}
+          className='robot-image hidden md:block'/>
+        <div className='md:hidden flex flex-row'>
+          <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654} 
+            className='robot-image rounded-xl mr-[2.5%] w-[45%] md:hidden'/>
+          <video autoPlay loop muted playsInline preload="auto" width={1920} height={1080}
+            className='robot-video ml-[2.5%] w-[45%] md:hidden'>
+            <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
     </div>
   )
 }
