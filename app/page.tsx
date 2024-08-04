@@ -131,7 +131,7 @@ function AboutMe() {
           <Image width={4007} height={4004} placeholder='blur' blurDataURL='/images/aidan_profile.jpg' priority
                 src={aboutMeImage} alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' />
           </m.div>
-          <p className='text-second dark:text-d-second text-sm md:text-xl md:w-2/3 whitespace-pre-line md:mr-4'>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
+          <p className='text-second dark:text-d-second text-sm md:text-xl md:w-2/3 whitespace-pre-line md:mx-4'>{`I am Aidan Keighron, a highly motivated computer science student at Michigan State University, fueled by a passion for robotics, automation, and software development. I'm constantly developing new software and robotics projects. 
 
 I Co-Founded the combat robotics team Bad Conflict, where we build robots to compete in antweight combat robotics competitions. I created a startup called Alchemy, where I am making an all-in-one task management software that aims to reduce the time it takes to plan out your day.
 
@@ -194,42 +194,55 @@ function ShowModel({url, scale, position, rotation}: ShowModelProps) {
   );
 };
 
+type WhatIDoProps = {
+  title: string,
+  date: string,
+  learnMoreLink?: string,
+}
+
+function WhatIDoHeader({title, date, learnMoreLink}: WhatIDoProps) {
+  return (
+    <>
+      <m.h2
+      initial={{opacity: 0, scale: 0.7}}
+      whileInView={{opacity: 1, scale: 1, transition: {
+        duration: 0.8,
+        ease: [0, 0.71, 0.2, 1.01]
+      }}}            
+      viewport={{once: true, amount: 'some'}} 
+      id={'robotics'} className='what-i-do-title'>
+      {title}
+    </m.h2>
+    <m.h3 
+      initial={{opacity: 0, scale: 0.7}}
+      whileInView={{opacity: 1, scale: 1, transition: {
+        duration: 0.8,
+        ease: [0, 0.71, 0.2, 1.01]
+      }}}            
+      viewport={{once: true, amount: 'some'}}
+      className={`what-i-do-date ${learnMoreLink ? "" : "mb-10 md:mb-[2.5vh]"}`}>
+        {date}
+    </m.h3>
+    {learnMoreLink && <m.div 
+      initial={{opacity: 0, scale: 0.7}}
+      whileInView={{opacity: 1, scale: 1, transition: {
+        duration: 0.8,
+        ease: [0, 0.71, 0.2, 1.01]
+      }}}            
+      viewport={{once: true, amount: 'some'}}
+      className='robot-learn-more mb-10 md:mb-[2.5vh]'
+    >
+      <Link href={"/currentrobots"}><p>Learn More</p></Link>
+    </m.div>}
+  </>
+  );
+}
+
 // TODO looks bad medium ui
 function CombatRobots() {
   return (
     <div className='flex flex-col items-end mx-[5%]'>
-      <m.h2
-        initial={{opacity: 0, scale: 0.7}}
-        whileInView={{opacity: 1, scale: 1, transition: {
-          duration: 0.8,
-          ease: [0, 0.71, 0.2, 1.01]
-        }}}            
-        viewport={{once: true, amount: 'some'}} 
-        id={'robotics'} className='what-i-do-title'
-      >
-        Combat Robotics
-      </m.h2>
-      <m.h3 
-        initial={{opacity: 0, scale: 0.7}}
-        whileInView={{opacity: 1, scale: 1, transition: {
-          duration: 0.8,
-          ease: [0, 0.71, 0.2, 1.01]
-        }}}            
-        viewport={{once: true, amount: 'some'}}
-        className='what-i-do-date'>
-          August 2022 - Present
-      </m.h3>
-      <m.div 
-        initial={{opacity: 0, scale: 0.7}}
-        whileInView={{opacity: 1, scale: 1, transition: {
-          duration: 0.8,
-          ease: [0, 0.71, 0.2, 1.01]
-        }}}            
-        viewport={{once: true, amount: 'some'}}
-        className='robot-learn-more mb-10 md:mb-[2.5%]'
-      >
-        <Link href={"/currentrobots"}><p>Learn More</p></Link>
-      </m.div>
+      <WhatIDoHeader title={"Combat Robotics"} date={"August 2022 - Present"} learnMoreLink={"/currentrobots"}/>
       <div className='robot-container'>
         <m.p
           initial={{opacity: 0.5, y: '25%'}}
@@ -247,7 +260,7 @@ function CombatRobots() {
         </m.p>
         <ShowModel url={"/models/twofold.glb"} scale={2} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} />
       </div>
-      <div className='robot-container'>
+      <div className='robot-container md:mt-[-5rem]'>
         <m.p
           initial={{opacity: 0.5, y: '25%'}}
           whileInView={{opacity: 1, y: 0, transition: {
@@ -267,40 +280,10 @@ function CombatRobots() {
           position={[0,0,0]} rotation={[2*Math.PI/3, 0, -Math.PI/12]} />
       </div>
 
-      <m.h2 
-        initial={{opacity: 0, scale: 0.7}}
-        whileInView={{opacity: 1, scale: 1, transition: {
-          duration: 0.8,
-          ease: [0, 0.71, 0.2, 1.01]
-        }}}            
-        viewport={{once: true, amount: 'some'}}
-        className='what-i-do-title self-baseline'
-      >
-        Competitive Robotics
-      </m.h2>
-      <m.h3 
-        initial={{opacity: 0, scale: 0.7}}
-        whileInView={{opacity: 1, scale: 1, transition: {
-          duration: 0.8,
-          ease: [0, 0.71, 0.2, 1.01]
-        }}}            
-        viewport={{once: true, amount: 'some'}}
-        className='what-i-do-date  self-baseline'
-      >
-        January 2019 - May 2023
-      </m.h3>
-      <m.div 
-        initial={{opacity: 0, scale: 0.7}}
-        whileInView={{opacity: 1, scale: 1, transition: {
-          duration: 0.8,
-          ease: [0, 0.71, 0.2, 1.01]
-        }}}            
-        viewport={{once: true, amount: 'some'}}
-        className='robot-learn-more self-baseline mb-20'
-      >
-        <Link href={"/currentrobots"}><p>Learn More</p></Link>
-      </m.div>
-      <div className='robot-container'> 
+      <div className='self-baseline mb-10'>
+        <WhatIDoHeader title='Competitive Robotics' date='January 2019 - May 2023' />
+      </div>
+      <div className='robot-container mb-0'> 
         <video autoPlay loop muted playsInline preload="auto" width={1920} height={1080}
           className='robot-video hidden md:block'>
           <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
