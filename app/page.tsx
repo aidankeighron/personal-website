@@ -1,6 +1,6 @@
 'use client' // TODO remove to utalize server side rendering
 
-import React, { Suspense, useLayoutEffect, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { OrbitControls, Preload, Html, useProgress } from '@react-three/drei';
@@ -178,7 +178,8 @@ function LoadModel({url, scale, position, rotation}: ShowModelProps) {
 function ShowModel({url, scale, position, rotation}: ShowModelProps) {
   // TODO clipping
   return (  
-    <Canvas frameloop='demand' dpr={[1, 2]} className='robot-model' camera={{position: [0, 0, 500]}} orthographic>
+    <Canvas frameloop='demand' dpr={[1, 2]} camera={{position: [0, 0, 500]}} orthographic
+      className='robot-model'>
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
           enablePan={false}
@@ -240,6 +241,21 @@ function WhatIDoHeader({title, date, learnMoreLink}: WhatIDoProps) {
 
 // TODO looks bad medium ui
 function CombatRobots() {
+  const [zoom, setZoom] = useState(2);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setZoom(window.innerWidth < 1024 ? 1.5 : 2);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className='flex flex-col items-end mx-[5%]'>
       <WhatIDoHeader title={"Combat Robotics"} date={"August 2022 - Present"} learnMoreLink={"/currentrobots"}/>
@@ -258,7 +274,7 @@ function CombatRobots() {
         robotics by removing barriers to entry. We support our members throughout the creation process with member support 
         for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat robotics.
         </m.p>
-        <ShowModel url={"/models/twofold.glb"} scale={2} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} />
+        <ShowModel url={"/models/twofold.glb"} scale={zoom} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} />
       </div>
       <div className='robot-container md:mt-[-5rem]'>
         <m.p
@@ -276,16 +292,16 @@ function CombatRobots() {
         Horizon also has a slower weapon configuration, as the previous configuration often runs out of power near the end of the 
         3 minute matches.
         </m.p>
-        <ShowModel url={"/models/horizon.glb"} scale={2}
+        <ShowModel url={"/models/horizon.glb"} scale={zoom}
           position={[0,0,0]} rotation={[2*Math.PI/3, 0, -Math.PI/12]} />
       </div>
 
       <div className='self-baseline mb-10'>
         <WhatIDoHeader title='Competitive Robotics' date='January 2019 - May 2023' />
       </div>
-      <div className='robot-container mb-0'> 
+      <div className='robot-container !flex-col xl:!flex-row mb-0'> 
         <video autoPlay loop muted playsInline preload="auto" width={1920} height={1080}
-          className='robot-video hidden md:block'>
+          className='robot-video hidden xl:block'>
           <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -297,7 +313,7 @@ function CombatRobots() {
             ease: 'easeOut'
           }}}            
           viewport={{once: true, amount: 'some'}}
-          className='robot-text'
+          className='robot-text max-w-[700px]'
         >I did competitive robotics in high school as the Programming Lead of team 2451 PWNAGE. Each season, we built a 125 pound robot 
         to compete in 3v3 competitions. We build a wide variety of robots, from a 420 degree turret that shoots basketball 
         sized balls to a triple jointed arm able to pick up cones and cubes. It was a lot of fun designing the code for these robots. 
@@ -306,12 +322,12 @@ function CombatRobots() {
         </m.p>
         {/* TODO use <Image /> for better optimization */}
         <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654}
-          className='robot-image hidden md:block'/>
-        <div className='md:hidden flex flex-row'>
+          className='robot-image hidden xl:block'/>
+        <div className='xl:hidden flex flex-row justify-center'>
           <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654} 
-            className='robot-image rounded-xl mr-[2.5%] w-[45%] md:hidden'/>
+            className='robot-image rounded-xl mr-[2.5%] w-[45%] xl:hidden'/>
           <video autoPlay loop muted playsInline preload="auto" width={1920} height={1080}
-            className='robot-video ml-[2.5%] w-[45%] md:hidden'>
+            className='robot-video ml-[2.5%] w-[45%] xl:hidden'>
             <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
             Your browser does not support the video tag.
           </video>

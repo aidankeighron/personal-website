@@ -18,23 +18,23 @@
   .what-i-do-date {
     @apply w-fit text-base font-medium bottom-border dark:text-d-a-second text-a-second my-2;
   }
-  .robot-container {
-    @apply flex flex-col-reverse w-[100%] md:flex-row h-[800px] md:h-[300px] mb-10 md:mb-20 justify-between md:odd:flex-row-reverse dark:text-main text-d-main;
-  }
-  .robot-text {
-    @apply text-sm sm:text-lg leading-9 self-center text-ellipsis md:basis-1/2 h-min overflow-y-clip mx-[2.5%] md:min-w-[500px];
-  }
   .robot-learn-more {
     @apply bg-a-third dark:bg-d-third w-fit p-3 mt-3 rounded-2xl text-xl;
   }
+  .robot-container {
+    @apply flex flex-col-reverse w-[100%] md:w-[90%] self-center md:gap-8 md:flex-row mb-10 md:mb-20 justify-center md:odd:flex-row-reverse dark:text-main text-d-main;
+  }
+  .robot-text {
+    @apply text-sm sm:text-base lg:text-lg leading-9 self-center mx-[2.5%] md:mx-0 md:my-[1%] md:w-full md:max-w-[550px];
+  }
   .robot-image {
-    @apply object-contain md:basis-1/4 md:h-full rounded-xl;
+    @apply object-contain md:basis-1/4 md:h-full rounded-xl max-h-[500px] self-center;
   }
   .robot-video {
-    @apply object-contain md:basis-1/4 md:h-full rounded-xl;
+    @apply object-contain md:basis-1/4 md:h-full rounded-xl max-h-[500px] self-center;
   }
   .robot-model {
-    @apply mb-5 md:mb-0 md:basis-1/2 bg-d-a-main rounded-xl self-center md:min-w-[500px];
+    @apply mb-5 md:mb-0 bg-d-a-main rounded-xl self-center md:max-h-[300px] !h-[300px] min-h-[300px] max-w-[350px] !w-[350px] min-w-[350px] md:!h-[300px] md:min-h-[300px] md:max-w-[350px] md:!w-[350px] md:min-w-[350px] lg:max-h-[400px] lg:!h-[400px] lg:min-h-[400px] lg:max-w-[450px] lg:!w-[450px] lg:min-w-[450px];
   }
 }
 
