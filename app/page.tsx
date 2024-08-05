@@ -80,6 +80,8 @@ function VideoEntry() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoTopOffset, setVideoTopOffset] = useState<number>(0);
 
+
+
   useLayoutEffect(() => {
     if (videoRef.current) {
       // TODO change this to a ratio of the width
@@ -96,7 +98,8 @@ function VideoEntry() {
       {/* TODO loading issue on laptop (use dev tools to throttle internet) */}
       <video ref={videoRef} autoPlay loop muted playsInline preload="auto" width={1920} height={1080} 
         className='aspect-video' style={{marginTop: `-${videoTopOffset}px`}}>
-        <source src="/videos/intro_video5.mp4" type="video/mp4" />
+        <source src="https://8owxurotrcpnrijg.public.blob.vercel-storage.com/intro_video5-Am3gEo5nncveDepJiuN4jee1Rvhh6m.mp4" type="video/mp4" />
+        {/* <source src="/videos/intro_video5.mp4" type="video/mp4" /> */}
         Your browser does not support the video tag.
       </video>
       <m.div
@@ -456,7 +459,7 @@ function Skillsets() {
       whileInView="visible"
       viewport={{once: true, amount: 'some'}}
       variants={variants}
-      className='mx-[10%] sm:mx-[15%] mb-10 dark:text-main text-d-main'
+      className='mx-[10%] mb-10 dark:text-main text-d-main'
     >
       <h1 className='text-4xl font-bold mb-6'>Work Experience</h1>
       {workExperience.map(experience => {

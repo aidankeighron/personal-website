@@ -22,10 +22,10 @@
     @apply bg-a-third dark:bg-d-third w-fit p-3 mt-3 rounded-2xl text-xl;
   }
   .robot-container {
-    @apply flex flex-col-reverse w-[100%] md:w-[90%] self-center md:gap-8 md:flex-row mb-10 md:mb-20 justify-center md:odd:flex-row-reverse dark:text-main text-d-main;
+    @apply flex flex-col-reverse w-[100%] md:w-[90%] self-center md:gap-8 md:flex-row mb-10 md:mb-20 justify-center xl:justify-evenly md:odd:flex-row-reverse dark:text-main text-d-main;
   }
   .robot-text {
-    @apply text-sm sm:text-base lg:text-lg leading-9 self-center mx-[2.5%] md:mx-0 md:my-[1%] md:w-full md:max-w-[550px];
+    @apply text-sm sm:text-base lg:text-lg leading-9 self-center mx-[2.5%] md:mx-0 md:my-[1%] md:w-full md:max-w-[550px] xl:max-w-[800px];
   }
   .robot-image {
     @apply object-contain md:basis-1/4 md:h-full rounded-xl max-h-[500px] self-center;
