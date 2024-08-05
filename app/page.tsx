@@ -44,6 +44,7 @@ function Header() {
       variants={variants}
       className='absolute z-10 space-x-4 w-full items-end justify-end mr-[2.5%] p-10 hidden md:flex'
     >
+      {/* TODO make them work and smooth scroll */}
       <Link href={'#aboutme'} scroll={true}>
         <m.p className='header-link'
           variants={item}
@@ -99,6 +100,10 @@ function VideoEntry() {
       <video ref={videoRef} autoPlay loop muted playsInline preload="auto" width={1920} height={1080} 
         className='aspect-video' style={{marginTop: `-${videoTopOffset}px`}}>
         <source src="https://8owxurotrcpnrijg.public.blob.vercel-storage.com/intro_video5-Am3gEo5nncveDepJiuN4jee1Rvhh6m.mp4" type="video/mp4" />
+        {/* If necessary */}
+        {/* https://cloudinary.com/pricing */}
+        {/* https://www.cloudflare.com/plans/ */}
+        {/* https://www.backblaze.com/cloud-storage/pricing */}
         {/* <source src="/videos/intro_video5.mp4" type="video/mp4" /> */}
         Your browser does not support the video tag.
       </video>
