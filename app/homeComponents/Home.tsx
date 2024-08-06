@@ -6,7 +6,7 @@ import CombatRobots from "./CombatRobotics";
 import Header from "./Header";
 import OtherProjects from "./OtherProjects";
 import Resume from "./Resume";
-import Skillsets from "./SkillSets";
+import Skillsets from "./Skillsets";
 import VideoEntry from "./VideoEntry";
 
 export default function Home() {

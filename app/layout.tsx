@@ -7,7 +7,7 @@ import { JetBrains_Mono } from 'next/font/google';
 // https://nikolasbarwicki.com/articles/seo-in-next-js-13-with-metadata-api
 export const metadata: Metadata = {
   title: {
-    template: "%s | Aidan Keighron",
+    template: '%s | Aidan Keighron',
     default: "Aidan Keighron",
   },
   description: "My personal website and portfolio",
