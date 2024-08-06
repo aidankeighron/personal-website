@@ -17,7 +17,7 @@ export default function CodeBlock({code, language}: CodeBlockParams) {
       .process(`<pre><code className="${language} codeBlock">${code}</code></pre>`).then((c: any) => {
         setContent(String(c));
       })
-    }, []);
+    });
   
     return <div dangerouslySetInnerHTML={{ __html: content }}></div>;
   }

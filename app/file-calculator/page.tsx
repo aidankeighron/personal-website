@@ -7,6 +7,11 @@ import { Scene } from "../components/physics/Scene";
 import { Physics } from "@react-three/cannon";
 import { StrictMode, useState } from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "File Calculator"
+}
 
 export default function Page() {
   const [dpr, setDpr] = useState(1.5);

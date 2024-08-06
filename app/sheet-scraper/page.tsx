@@ -3,6 +3,11 @@
 
 import Link from 'next/link';
 import Content from './content.mdx';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Sheet Scraper"
+}
 
 export default function Home() {
   return(

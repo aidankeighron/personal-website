@@ -7,7 +7,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
   let shiftTimer = useRef<number>(0);
   let lastTimeSeconds = useRef<number>(Date.now()/1000);
   let gear = useRef<number>(1);
-  let [speed, setSpeed] = useState<number>(0);
+  let speed = useRef<number>(0);
 
   useEffect(() => {
     const keyDownPressHandler = (e: KeyboardEvent) => {
@@ -28,32 +28,33 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
 
   useEffect(() => {
     let subscription = chassisApi.velocity.subscribe((value) => {
-      setSpeed(Math.sqrt(
+      speed.current = Math.sqrt(
         Math.pow(value[0], 2) + Math.pow(value[1], 2) + Math.pow(value[2], 2) 
-      ));
+      );
     });
     console.log("Subscribing to velocity");
 
     return () => {
       subscription();
     }
-  }, []);
+  });
 
-  const frontSteering = 0.5;
-  const backSteering = 0.1; // 0.25 drift?
-  const engineForce = 500;
-  const shiftTime = 0.2;
-  const gears: {'R': number, [key: number]: number} = {
-    'R': -0.5,
-    '0': 0,
-    '1': 1.0,
-    '2': 1.7,
-    '3': 2.5,
-    '4': 3.8,
-    '5': 5.0,
-  }
-
+  
   useEffect(() => {
+    const frontSteering = 0.5;
+    const backSteering = 0.1; // 0.25 drift?
+    const engineForce = 500;
+    const shiftTime = 0.2;
+    const gears: {'R': number, [key: number]: number} = {
+      'R': -0.5,
+      '0': 0,
+      '1': 1.0,
+      '2': 1.7,
+      '3': 2.5,
+      '4': 3.8,
+      '5': 5.0,
+    }
+
     if(!vehicleApi || !chassisApi) return;
     const currentTimeSeconds = Date.now() / 1000;
     const timeStepSeconds = currentTimeSeconds - lastTimeSeconds.current;
@@ -73,13 +74,13 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
     } 
     else {
       if (reverse) {
-        const power = (gears['R'] - Math.abs(speed)) / Math.abs(gears['R']);
+        const power = (gears['R'] - Math.abs(speed.current)) / Math.abs(gears['R']);
         const force = (engineForce / gear.current) * Math.abs(power);
         vehicleApi.applyEngineForce(-force, 2);
         vehicleApi.applyEngineForce(-force, 3);
       }
       else {
-        const power = (gears[gear.current] - speed) / (gears[gear.current] - gears[gear.current-1]);
+        const power = (gears[gear.current] - speed.current) / (gears[gear.current] - gears[gear.current-1]);
         if (power < 0.1 && gear.current < Object.keys(gears).length-2) { // -2 for 0 and R
           console.log("Upshift");
           gear.current += 1;
@@ -146,7 +147,7 @@ export function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: Pub
       chassisApi.rotation.set(0, Math.PI, 0);
       gear.current = 1;
     }
-  }, [controls, vehicleApi, chassisApi]); // TODO are all of these needed?
+  }, [controls, vehicleApi, chassisApi, startPosition]);
 
   return controls;
 }

@@ -81,7 +81,7 @@ export function Horizon({startPosition, orbit=false}: CarParams): JSX.Element {
   mesh.scale.set(0.002, 0.002, 0.002);
   let mesh1 = weapon;
   mesh1.scale.set(0.002, 0.002, 0.002);
-  }, [result]);
+  }, [result, weapon]);
 
   return (
     <>
@@ -207,7 +207,7 @@ function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: PublicApi,
       chassisApi.angularVelocity.set(0, 0, 0);
       chassisApi.rotation.set(0, 0, 0);
     }
-  }, [controls, vehicleApi, chassisApi]); // TODO are all of these needed?
+  }, [controls, vehicleApi, chassisApi, startPosition]); // TODO are all of these needed?
 
   return controls;
 }
