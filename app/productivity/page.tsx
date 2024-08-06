@@ -7,17 +7,13 @@ import { Scene } from "../components/physics/Scene";
 import { Physics } from "@react-three/cannon";
 import { StrictMode, useState } from 'react';
 import Link from 'next/link';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: "Productivity"
-}
 
 export default function Page() {
   const [dpr, setDpr] = useState(1.5);
 
   return (
     <div className='scene bg-d-main flex flex-col items-center'>
+    <title>Productivity | Aidan Keighron</title>
     <Link href='/'><p className='header-link w-fit absolute z-10 items-end justify-end top-10 left-20'>Home</p></Link>
       <StrictMode>
         <Canvas frameloop="demand" dpr={dpr} performance={{current: 1, min: 0.1, max: 1, debounce: 200}} className='bg-d-main'>

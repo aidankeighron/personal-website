@@ -7,18 +7,15 @@ import { Canvas } from '@react-three/fiber';
 import { PerformanceMonitor, Stats } from '@react-three/drei';
 import { Physics } from '@react-three/cannon';
 import { CombatScene } from '../components/physics/CombatScene';
-import { Metadata } from 'next';
 import Image from 'next/image';
-
-export const metadata: Metadata = {
-  title: "Current Robots" // TODO rename?
-}
 
 export default function CurrentRobots() {
   const [dpr, setDpr] = useState(1.5);
 
   return (
     <div className='bg-d-main flex flex-col items-center pt-40'>
+      <title>Current Robots | Aidan Keighron</title>
+      {/* TODO rename */}
       <Link href='/'><p className='header-link w-fit absolute z-10 items-end justify-end top-10 left-20'>Home</p></Link>
       <h1 className='text-5xl font-semibold bottom-border mb-2'>Combat Robotics</h1>
       <h1 className='text-sm text-a-main mb-10'>*Check out the playground below</h1>
