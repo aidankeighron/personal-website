@@ -35,6 +35,7 @@ export default function Skillsets() {
         viewport={{once: true, amount: 'some'}}
         variants={variants}
         className='mx-[5%] flex flex-wrap flex-row sm:justify-around mb-10 dark:text-main text-d-main w-[90%]'
+        id={'skills'}
       >
         {(() => {
           return (Object.entries(skillsets).map(([name, skillset]) => {

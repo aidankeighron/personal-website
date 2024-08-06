@@ -80,7 +80,7 @@ function WhatIDoHeader({title, date, learnMoreLink}: WhatIDoProps) {
           ease: [0, 0.71, 0.2, 1.01]
         }}}            
         viewport={{once: true, amount: 'some'}} 
-        id={'robotics'} className='what-i-do-title'>
+        className='what-i-do-title'>
         {title}
       </m.h2>
       <m.h3 
@@ -126,7 +126,7 @@ export default function CombatRobots() {
     }, []);
   
     return (
-      <div className='flex flex-col items-end mx-[5%]'>
+      <div id={'robotics'} className='flex flex-col items-end mx-[5%]'>
         <WhatIDoHeader title={"Combat Robotics"} date={"August 2022 - Present"} learnMoreLink={"/currentrobots"}/>
         <div className='robot-container'>
           <m.p

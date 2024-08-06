@@ -36,7 +36,7 @@ export default function Header() {
         className='absolute z-10 space-x-4 w-full items-end justify-end mr-[2.5%] p-10 hidden md:flex'
       >
         {/* TODO make them work and smooth scroll */}
-        <Link href={'#aboutme'} scroll={true}>
+        <Link href={'#aboutme'}  scroll={true}>
           <m.p className='header-link'
             variants={item}
           >
@@ -50,13 +50,13 @@ export default function Header() {
             Robotics
           </m.p>
         </Link>
-        <Link href={'#projects'} scroll={true}>
+        {/* <Link href={'#projects'} scroll={true}>
           <m.p className='header-link'
             variants={item}
           >
             Projects
           </m.p>
-        </Link>
+        </Link> */}
         <Link href={'#skills'} scroll={true}>
           <m.p className='header-link'
             variants={item}
