@@ -1,3 +1,4 @@
+// https://tailwindcss.com/docs/optimizing-for-production
 module.exports = {
   plugins: {
     tailwindcss: {},
