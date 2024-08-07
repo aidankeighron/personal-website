@@ -7,8 +7,8 @@ const withMdx = nextMdx({
 });
 
 const cspHeader = `
-    default-src 'self' *.public.blob.vercel-storage.com;
-    script-src 'self' *.vercel-scripts.com 'unsafe-eval' 'unsafe-inline';
+    default-src 'self' *.public.blob.vercel-storage.com esm.sh;
+    script-src 'self' *.vercel-scripts.com 'unsafe-eval' 'unsafe-inline' blob:;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self';

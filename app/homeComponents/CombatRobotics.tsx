@@ -144,6 +144,7 @@ export default function CombatRobots() {
           for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat robotics.
           </m.p>
           <ShowModel url={"/models/twofold.glb"} scale={zoom} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} />
+          {/* TODO text indicating you can rotate model */}
         </div>
         <div className='robot-container md:mt-[-5rem]'>
           <m.p

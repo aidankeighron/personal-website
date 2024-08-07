@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
@@ -41,7 +41,6 @@ export const metadata: Metadata = {
   },
   generator: "Next.js",
   keywords: "portfolio, personal website, aidan keighron, blog",
-  // viewport: "width=device-width, initial-scale=1", // TODO https://nextjs.org/docs/app/api-reference/functions/generate-viewport
   creator: "Aidan Keighron",
   publisher: "Vercel",
   // verification: "", // TODO look it up
@@ -54,19 +53,22 @@ export const metadata: Metadata = {
   //     url: '/apple-touch-icon-precomposed.png',
   //   },
   // },
-  // manifest: "", // TODO https://developer.mozilla.org/en-US/docs/Web/Manifest
   category: "Personal Website",
-  // referrer: 'origin-when-cross-origin', // TODO
-  // twitter: { // TODO https://developer.x.com/en/docs/twitter-for-websites/cards/overview/markup
-  //   card: 'summary_large_image',
-  //   title: 'Next.js',
-  //   description: 'The React Framework for the Web',
-  //   siteId: '1467726470533754880',
-  //   creator: '@nextjs',
-  //   creatorId: '1467726470533754880',
-  //   images: ['https://nextjs.org/og.png'], // Must be an absolute URL
-  // },
+  referrer: 'origin-when-cross-origin',
 };
+
+// https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'cyan' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+  colorScheme: "dark light", // TODO do I want this or normal
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 3,
+  userScalable: true,
+}
 
 // TODO set website icon
 // TODO? https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#local-fonts

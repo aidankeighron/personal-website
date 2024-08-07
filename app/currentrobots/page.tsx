@@ -27,7 +27,7 @@ export default function CurrentRobots() {
         {badConflictRobots.map((robot) => {
           return (
             <div key={robot.name} className='mx-16 mb-16 flex flex-row odd:flex-row-reverse justify-between'>
-              {robot.image1 && <Image src={robot.image1} alt={robot.image1Alt ?? ""} className='w-1/4 rounded-xl' />}
+              {robot.image1 && <Image width={200} height={200} src={robot.image1} alt={robot.image1Alt ?? ""} className='w-1/4 rounded-xl' />}
               <div className='self-center mx-12'>
                 <div className='flex flex-row items-end mb-5'>
                   <h3 className='text-3xl mr-5 bottom-border w-fit'>{robot.name}</h3>
@@ -45,7 +45,7 @@ export default function CurrentRobots() {
                   })}
                 </div>
               </div>
-              {robot.image2 && <Image src={robot.image2} alt={robot.image2Alt ?? ""} className='w-1/4 rounded-xl' />}
+              {robot.image2 && <Image width={200} height={200} src={robot.image2} alt={robot.image2Alt ?? ""} className='w-1/4 rounded-xl' />}
             </div>
           )
         })}

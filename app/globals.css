@@ -21,6 +21,7 @@
   .robot-learn-more {
     @apply bg-a-third dark:bg-d-third w-fit p-3 mt-3 rounded-2xl text-xl;
   }
+  /* TODO double shadows https://codepen.io/whosajid/pen/QWReYqV */
   .robot-container {
     @apply flex flex-col-reverse w-[100%] md:w-[90%] self-center md:gap-8 md:flex-row mb-10 md:mb-20 justify-center xl:justify-evenly md:odd:flex-row-reverse dark:text-main text-d-main;
   }
