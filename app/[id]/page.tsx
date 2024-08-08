@@ -42,25 +42,25 @@ export default function Project({params}: ProjectParams) {
   );
 }
 
-export async function getStaticPaths() {
-  const projects: string[] = [
-    "test",
-    "file-calculator",
-    "productivity",
-    "sheet-scraper",
-  ];
+// export async function getStaticPaths() { // TODO
+//   const projects: string[] = [
+//     "test",
+//     "file-calculator",
+//     "productivity",
+//     "sheet-scraper",
+//   ];
 
-  return {
-    paths: projects.map((project) => {
-      return {
-        params: {
-          id: project.replace(/\.md$/, ''),
-        },
-      };
-    }),
-    fallback: false,
-  };
-}
+//   return {
+//     paths: projects.map((project) => {
+//       return {
+//         params: {
+//           id: project.replace(/\.md$/, ''),
+//         },
+//       };
+//     }),
+//     fallback: false,
+//   };
+// }
 
 // "use client"; // TODO
 
