@@ -4,7 +4,7 @@
 
 @layer components {
   .header-link {
-    @apply text-main bg-d-main rounded-md text-xl border-b-4 border-third dark:border-d-third p-2 shadow-xl;
+    @apply text-d-a-main dark:text-main bg-a-main dark:bg-d-main rounded-md text-xl border-b-4 border-third dark:border-d-third p-2 shadow-xl;
   }
   .section-title {
     @apply dark:text-main text-d-main text-4xl border-b-4 font-medium border-third dark:border-d-third p-1 ml-[5%] mt-[5vh] sm:mt-[10vh] mb-[5vh] self-baseline w-fit;
@@ -40,22 +40,18 @@
 }
 
 :root {
-  --main0: #fff;
-  --main1: #a9abb3;
-  --secondary0: #000;
-  --secondary1: #111111;
-  --tertiary0: darkorange;
-  --tertiary1: darkorange;
+  --main0: #EEEEEE;
+  --main1: #DDDDDD;
+  --secondary: #666666;
+  --tertiary: #8E0092; 
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --main0: #111111;
     --main1: #25282c;
-    --secondary0: #fff;
-    --secondary1: #a9abb3;
-    --tertiary0: #00F7FF; 
-    --tertiary1: #4AA5A0; 
+    --secondary: #DDDDDD;
+    --tertiary: #FF8C00;
   }
 }
 
@@ -69,7 +65,16 @@
   font-family: "JetBrains Mono", monospace;
 } */
 
-html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--secondary1) var(--main0);
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--main0);
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: var(--secondary);
 }

@@ -63,7 +63,7 @@ export const viewport: Viewport = {
     { media: '(prefers-color-scheme: light)', color: 'cyan' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
-  colorScheme: "dark light", // TODO do I want this or normal
+  // colorScheme: "dark light", // TODO do I want this or normal
   width: 'device-width',
   initialScale: 1,
   maximumScale: 3,
@@ -76,10 +76,10 @@ const jetBrains = JetBrains_Mono({subsets: ['latin']});
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
   return (
-    <html lang="en" className={`dark text-main bg-d-main ${jetBrains.className}`}>
+    <html lang="en" className={`text-main bg-d-main ${jetBrains.className}`}>
       <SpeedInsights/>
       <Analytics />
-      <body className="bg-main dark:bg-d-main" suppressHydrationWarning={true}>{children}</body>
+      <body className="bg-main dark:bg-d-main text-d-main dark:text-main" suppressHydrationWarning={true}>{children}</body>
     </html>
   );
 }

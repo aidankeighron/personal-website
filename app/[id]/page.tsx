@@ -1,19 +1,65 @@
-'use client' // TODO
+import Link from "next/link";
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
+import BackToTop from "../components/BackToTop";
 
-import Link from 'next/link';
-import Content from './content.mdx';
+const uppercaseWords = (str: string) => str.replace(/(^.|\s.)/g, c => c.toUpperCase());
 
-export default function Home() {
+// import {
+//   Ripple,
+//   initTWE,
+// } from "tw-elements";
+
+// initTWE({ Ripple });
+
+
+
+type ProjectParams = {
+  params: {
+    id: string,
+  }
+}
+
+export default function Project({params}: ProjectParams) {
+  const DynamicContent = dynamic(() => import(`./${params.id}.mdx`), {
+    suspense: true,
+  });
+  const pageTitle = uppercaseWords(params.id.replaceAll("-", " "));
+
   return(
-    <div className='bg-d-main flex flex-col items-center pt-40'>
-      <title>File Calculator| Aidan Keighron</title>
-      {/* TODO pin to top */}
-      <Link href='/'><p className='header-link w-fit absolute z-10 items-end justify-end top-10 left-20'>Home</p></Link>
-      <div className='content'>
-        <Content />
+    <>
+      <Link href='/'><p className='header-link w-fit fixed z-10 items-end justify-end top-10 left-20'>Home</p></Link>
+      <div className='flex flex-col items-center pt-40'>
+        <title>{`${pageTitle} | Aidan Keighron`}</title>
+        <div className='content'>
+        <Suspense fallback={<p className='animate-pulse w-fit mx-auto text-2xl'>Loading...</p>}>
+          <DynamicContent />
+        </Suspense>
+        </div>
       </div>
-    </div>
+      <BackToTop />
+    </>
   );
+}
+
+export async function getStaticPaths() {
+  const projects: string[] = [
+    "test",
+    "file-calculator",
+    "productivity",
+    "sheet-scraper",
+  ];
+
+  return {
+    paths: projects.map((project) => {
+      return {
+        params: {
+          id: project.replace(/\.md$/, ''),
+        },
+      };
+    }),
+    fallback: false,
+  };
 }
 
 // "use client"; // TODO

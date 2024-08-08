@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense } from 'react';
 import rehypeStarryNight from 'rehype-starry-night';
 import {rehype} from 'rehype';
 
@@ -7,17 +7,18 @@ type CodeBlockParams = {
     language: string,
 }
 
-export default function CodeBlock({code, language}: CodeBlockParams) {
-    const [content, setContent] = useState<string>('<></>');
-
-    useEffect(() => {
-      rehype()
-      .data('settings', {fragment: true})
-      .use(rehypeStarryNight)
-      .process(`<pre><code className="${language} codeBlock">${code}</code></pre>`).then((c: any) => {
-        setContent(String(c));
-      })
-    });
+async function ParseCode({language, code}: CodeBlockParams) {
+  const content = await rehype().data('settings', {fragment: true}).use(rehypeStarryNight)
+  .process(`<pre><code className="${language} codeBlock">${code}</code></pre>`);
   
-    return <div dangerouslySetInnerHTML={{ __html: content }}></div>;
+  return (<div dangerouslySetInnerHTML={{ __html: String(content) }}></div>
+  );
+}
+
+export default function CodeBlock({code, language}: CodeBlockParams) {
+    return (
+      <Suspense fallback={<p className='animate-pulse w-fit mx-auto text-2xl'>Loading Code...</p>}>
+        <ParseCode language={language} code={code} />
+      </Suspense>
+    );
   }
