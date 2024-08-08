@@ -4,7 +4,7 @@
 
 @layer components {
   .header-link {
-    @apply text-d-a-main dark:text-main bg-a-main dark:bg-d-main rounded-md text-xl border-b-4 border-third dark:border-d-third p-2 shadow-xl;
+    @apply text-d-main dark:text-main bg-a-main dark:bg-d-main rounded-md text-xl border-b-4 border-third dark:border-d-third p-2 shadow-xl;
   }
   .section-title {
     @apply dark:text-main text-d-main text-4xl border-b-4 font-medium border-third dark:border-d-third p-1 ml-[5%] mt-[5vh] sm:mt-[10vh] mb-[5vh] self-baseline w-fit;
@@ -16,10 +16,10 @@
     @apply w-fit text-3xl font-semibold bottom-border mb-0 mt-[1vh] dark:text-main text-d-main;
   }
   .what-i-do-date {
-    @apply w-fit text-base font-medium bottom-border dark:text-d-a-second text-a-second my-2;
+    @apply w-fit text-base font-medium bottom-border dark:text-d-second text-second my-2;
   }
   .robot-learn-more {
-    @apply bg-a-third dark:bg-d-third w-fit p-3 mt-3 rounded-2xl text-xl;
+    @apply bg-third dark:bg-d-third text-main dark:text-d-main font-semibold w-fit p-3 mt-3 rounded-2xl text-xl;
   }
   /* TODO double shadows https://codepen.io/whosajid/pen/QWReYqV */
   .robot-container {
@@ -42,28 +42,18 @@
 :root {
   --main0: #EEEEEE;
   --main1: #DDDDDD;
-  --secondary: #666666;
+  --secondary: #4F4F4F;
   --tertiary: #8E0092; 
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --main0: #111111;
-    --main1: #25282c;
+    --main1: #25282C;
     --secondary: #DDDDDD;
     --tertiary: #FF8C00;
   }
 }
-
-/* @font-face { */
-  /* font-family: "JetBrains Mono"; */
-  /* src: url("/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf"); */
-  /* src: url("/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf"); */
-/* } */
-
-/* * {
-  font-family: "JetBrains Mono", monospace;
-} */
 
 ::-webkit-scrollbar {
   width: 8px;

@@ -50,12 +50,12 @@ export default function Skillsets() {
                     <div className='mb-5 font-medium' key={skill.name}>
                       <h2 className='text-xl'>{skill.name}</h2>
                       {skill.experienceYears !== undefined &&
-                        <p className='text-sm text-d-a-second'>{skill.experienceYears} Year{skill.experienceYears != 1 ? 's' : ''}</p>}
+                        <p className='text-base text-second font-light dark:font-extralight dark:text-d-second'>{skill.experienceYears} Year{skill.experienceYears != 1 ? 's' : ''}</p>}
                       {skill.subList !== undefined && skill.subList.map(sub => {
-                        return <p key={sub} className='text-sm text-d-a-second'>● {sub}</p>
+                        return <p key={sub} className='text-base text-second font-light dark:font-extralight dark:text-d-second'>● {sub}</p>
                       })}
                       {skill.skill !== undefined &&
-                        <p className='text-sm text-d-a-second mb-1'>Skill Level {skill.skill}</p>}
+                        <p className='text-base text-second dark:text-d-second font-light dark:font-extralight mb-1'>Skill Level {skill.skill}</p>}
                     </div>
                   )
                 })}
@@ -78,8 +78,8 @@ export default function Skillsets() {
             key={experience.company}
           >
             <h2 className='text-2xl font-bold bottom-border w-fit mb-3'>{experience.company}</h2>
-            <h3 className='text-sm mb-1 text-d-a-second'>{experience.description}</h3>
-            <h4 className='text-sm mb-4 text-d-a-second'>{experience.duration}</h4>
+            <h3 className='text-sm mb-1 text-second dark:text-d-second'>{experience.description}</h3>
+            <h4 className='text-sm mb-4 text-second dark:text-d-second'>{experience.duration}</h4>
             {experience.bullets.map(bullet => {
               return (<p key={bullet} className='text-base mb-2'>● {bullet}</p>);
             })}

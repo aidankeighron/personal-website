@@ -60,10 +60,10 @@ export const metadata: Metadata = {
 // https://nextjs.org/docs/app/api-reference/functions/generate-viewport
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'cyan' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' },
+    { media: '(prefers-color-scheme: light)', color: '#8E0092' },
+    { media: '(prefers-color-scheme: dark)', color: '#FF8C00' },
   ],
-  // colorScheme: "dark light", // TODO do I want this or normal
+  colorScheme: "dark light", // TODO do I want this or normal
   width: 'device-width',
   initialScale: 1,
   maximumScale: 3,

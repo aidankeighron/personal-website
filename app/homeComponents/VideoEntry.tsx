@@ -18,7 +18,7 @@ export default function VideoEntry() {
   
     return (
       <>
-      <h1 className='text-second dark:text-d-second text-4xl mb-16 m-2 w-fit h-fit p-4 border-b-4 border-third dark:border-d-third sm:hidden'>Aidan Keighron</h1>
+      <h1 className='text-d-main dark:text-main text-4xl mb-16 m-2 w-fit h-fit p-4 border-b-4 border-third dark:border-d-third sm:hidden'>Aidan Keighron</h1>
       <div className='relative'>
         {/* TODO loading issue on laptop (use dev tools to throttle internet) */}
         <video ref={videoRef} autoPlay loop muted playsInline preload="auto" width={1920} height={1080} 
@@ -37,11 +37,11 @@ export default function VideoEntry() {
           viewport={{once: true, amount: 'some', margin: '5%'}}
           className='bg-a-main dark:bg-d-main absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-fit h-fit p-4 rounded-md border-b-4 border-third dark:border-d-third shadow-xl hidden sm:block'
         >
-          <h1 className='text-second dark:text-d-second text-xl md:text-2xl lg:text-4xl font-bold text-center whitespace-nowrap'>Hi, I am Aidan Keighron</h1>
-          <p className='text-second dark:text-d-second text-xs md:text-sm lg:text-base font-medium text-center'>I'm a Software Developer and I make robots in my spare time</p>
+          <h1 className='text-d-main dark:text-main text-xl md:text-2xl lg:text-4xl font-bold text-center whitespace-nowrap'>Hi, I am Aidan Keighron</h1>
+          <p className='text-d-main dark:text-main text-xs md:text-sm lg:text-base font-medium text-center'>I'm a Software Developer and I make robots in my spare time</p>
         </m.div>
       </div>
-      <h1 className='text-second dark:text-d-second text-base mt-16 m-2 w-fit h-fit p-4 border-b-4 border-third dark:border-d-third sm:hidden'>I'm a Software Developer and I make robots in my spare time</h1>
+      <h1 className='text-d-main dark:text-main text-base mt-16 m-2 w-fit h-fit p-4 border-b-4 border-third dark:border-d-third sm:hidden'>I'm a Software Developer and I make robots in my spare time</h1>
       </>
     );
   }
