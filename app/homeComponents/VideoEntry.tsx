@@ -23,7 +23,7 @@ export default function VideoEntry() {
         {/* TODO loading issue on laptop (use dev tools to throttle internet) */}
         <video ref={videoRef} autoPlay loop muted playsInline preload="auto" width={1920} height={1080} 
           className='aspect-video' style={{marginTop: `-${videoTopOffset}px`}}>
-          <source src="https://8owxurotrcpnrijg.public.blob.vercel-storage.com/intro_video5-Am3gEo5nncveDepJiuN4jee1Rvhh6m.mp4" type="video/mp4" />
+          <source src="https://8owxurotrcpnrijg.public.blob.vercel-storage.com/Introvideo10-0Rdfp1DfzaQstt6r6zYfb70qEBwuYq.mp4" type="video/mp4" />
           {/* If necessary */}
           {/* https://cloudinary.com/pricing */}
           {/* https://www.cloudflare.com/plans/ */}
