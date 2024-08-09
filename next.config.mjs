@@ -20,25 +20,21 @@ const cspHeader = `
 `
 
 const nextConfig = withMdx({
-  serverExternalPackages: ['vscode-oniguruma', 'shiki'],
-  experimental: {
-    serverComponentsExternalPackages: ['vscode-oniguruma', 'shiki'],
-  },
   // Support MDX files as pages:
   pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/(.*)',
-  //       headers: [
-  //         {
-  //           key: 'Content-Security-Policy',
-  //           value: cspHeader.replace(/\n/g, ''),
-  //         },
-  //       ],
-  //     },
-  //   ]
-  // },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: cspHeader.replace(/\n/g, ''),
+          },
+        ],
+      },
+    ]
+  },
 })
 
 export default nextConfig;

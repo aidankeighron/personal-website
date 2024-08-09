@@ -5,15 +5,6 @@ import BackToTop from "../components/BackToTop";
 
 const uppercaseWords = (str: string) => str.replace(/(^.|\s.)/g, c => c.toUpperCase());
 
-// import {
-//   Ripple,
-//   initTWE,
-// } from "tw-elements";
-
-// initTWE({ Ripple });
-
-
-
 type ProjectParams = {
   params: {
     id: string,

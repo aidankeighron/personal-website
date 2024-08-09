@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import rehypeStarryNight from 'rehype-starry-night';
 import {rehype} from 'rehype';
+import rehypeHighlight from 'rehype-highlight'
 
 type CodeBlockParams = {
     code: string,
@@ -8,7 +8,9 @@ type CodeBlockParams = {
 }
 
 async function ParseCode({language, code}: CodeBlockParams) {
-  const content = await rehype().data('settings', {fragment: true}).use(rehypeStarryNight)
+  const content = await rehype()
+  .data('settings', {fragment: true})
+  .use(rehypeHighlight)
   .process(`<pre><code className="${language} codeBlock">${code}</code></pre>`);
   
   return (<div dangerouslySetInnerHTML={{ __html: String(content) }}></div>

@@ -13,6 +13,7 @@
         "Firestore",
         "frameloop",
         "GLTF",
+        "hljs",
         "metalness",
         "PWNAGE",
         "Raycast",
