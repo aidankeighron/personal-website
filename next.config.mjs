@@ -20,6 +20,10 @@ const cspHeader = `
 `
 
 const nextConfig = withMdx({
+  experimental: {
+    appDir: true,
+    serverComponentsExternalPackages: ['vscode-oniguruma', 'shiki'],
+  },
   // Support MDX files as pages:
   pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
   // async headers() {
