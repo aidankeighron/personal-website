@@ -21,7 +21,6 @@ const cspHeader = `
 
 const nextConfig = withMdx({
   experimental: {
-    appDir: true,
     serverComponentsExternalPackages: ['vscode-oniguruma', 'shiki'],
   },
   // Support MDX files as pages:
