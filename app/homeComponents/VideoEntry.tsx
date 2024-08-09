@@ -7,7 +7,7 @@ export default function VideoEntry() {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [videoTopOffset, setVideoTopOffset] = useState<number>(0);
   
-    
+    // TODO make this resize on going back 
     useLayoutEffect(() => {
       if (videoRef.current) {
         // TODO change this to a ratio of the width
