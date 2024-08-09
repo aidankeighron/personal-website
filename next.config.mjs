@@ -20,6 +20,7 @@ const cspHeader = `
 `
 
 const nextConfig = withMdx({
+  serverExternalPackages: ['vscode-oniguruma', 'shiki'],
   experimental: {
     serverComponentsExternalPackages: ['vscode-oniguruma', 'shiki'],
   },
