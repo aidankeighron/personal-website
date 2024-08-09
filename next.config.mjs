@@ -22,19 +22,19 @@ const cspHeader = `
 const nextConfig = withMdx({
   // Support MDX files as pages:
   pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: cspHeader.replace(/\n/g, ''),
-          },
-        ],
-      },
-    ]
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/(.*)',
+  //       headers: [
+  //         {
+  //           key: 'Content-Security-Policy',
+  //           value: cspHeader.replace(/\n/g, ''),
+  //         },
+  //       ],
+  //     },
+  //   ]
+  // },
 })
 
 export default nextConfig;
