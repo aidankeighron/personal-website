@@ -43,11 +43,11 @@ export default function Header() {
             About Me
           </m.p>
         </Link>
-        <Link href={'#robotics'} scroll={true}>
+        <Link href={'#whatido'} scroll={true}>
           <m.p className='header-link'
             variants={item}
           >
-            Robotics
+            What I Do
           </m.p>
         </Link>
         {/* <Link href={'#projects'} scroll={true}>

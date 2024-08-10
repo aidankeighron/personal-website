@@ -46,17 +46,49 @@ export default function Skillsets() {
               >
                 <h1 className='w-min text-3xl font-bold mb-6'>{name}</h1>
                 {skillset.map(skill => {
+                  const levelVariants = {
+                    visible: {
+                      transition: {when: "beforeChildren", staggerChildren: 0.5}
+                    },
+                    hidden: {
+                      transition: {when: "afterChildren"}
+                    },
+                  }
+                  console.log(`${skill.skill}%`)
+                  const levelItem = {
+                    visible: {
+                      width: `${skill.skill}%`,
+                      transition: {ease: 'easeOut', duration: 1, delay: 0.75}
+                    },
+                    hidden: {
+                      width: '5%',
+                    },
+                  }
                   return (
-                    <div className='mb-5 font-medium' key={skill.name}>
+                    <m.div 
+                      variants={levelVariants}
+                      className='mb-5 font-medium' key={skill.name}
+                    >
                       <h2 className='text-xl'>{skill.name}</h2>
                       {skill.experienceYears !== undefined &&
                         <p className='text-base text-second font-light dark:font-extralight dark:text-d-second'>{skill.experienceYears} Year{skill.experienceYears != 1 ? 's' : ''}</p>}
-                      {skill.subList !== undefined && skill.subList.map(sub => {
-                        return <p key={sub} className='text-base text-second font-light dark:font-extralight dark:text-d-second'>● {sub}</p>
-                      })}
+                      {skill.subList !== undefined && <div className="mt-2">
+                        {skill.subList.map(sub => {
+                          return (
+                              <p key={sub} className='text-base text-second font-light dark:font-extralight dark:text-d-second'>● {sub}</p>
+                            )
+                        })}
+                      </div>}
                       {skill.skill !== undefined &&
-                        <p className='text-base text-second dark:text-d-second font-light dark:font-extralight mb-1'>Skill Level {skill.skill}</p>}
-                    </div>
+                      <div className='w-[100%] h-[10px] mb-1 mt-3'>
+                        <m.div 
+                          variants={levelItem}
+                          className='h-full bg-third dark:bg-d-third rounded-xl'
+                        ></m.div>
+                      </div>
+                        // <p className='text-base text-second dark:text-d-second font-light dark:font-extralight mb-1'>Skill Level {skill.skill}</p>
+                      }
+                    </m.div>
                   )
                 })}
               </m.div>
@@ -76,6 +108,7 @@ export default function Skillsets() {
           <m.div 
             variants={item}
             key={experience.company}
+            className="max-w-[85%]"
           >
             <h2 className='text-2xl font-bold bottom-border w-fit mb-3'>{experience.company}</h2>
             <h3 className='text-sm mb-1 text-second dark:text-d-second'>{experience.description}</h3>

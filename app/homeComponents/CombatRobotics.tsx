@@ -137,11 +137,13 @@ export default function CombatRobots() {
               ease: 'easeOut'
             }}}            
             viewport={{once: true, amount: 'some'}}
-            className='robot-text'
-          >I am the Team Manager of the combat robotics team, Bad Conflict. We compete in ant-weight robotics competitions, 
-          meaning the robots need to be less than one pound. Our team philosophy is to help our members compete in combat 
-          robotics by removing barriers to entry. We support our members throughout the creation process with member support 
-          for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat robotics.
+            className='robot-text whitespace-pre-line'
+          >
+            {`I am the Co-Founder and Team Manager of the combat robotics team, Bad Conflict. 
+
+We compete in ant-weight robotics competitions, meaning the robots need to be less than one pound. With such a constraining limit, we are always innovating and looking for new ways to make our robots better.
+
+Our team philosophy is to help our members compete in combat robotics by removing barriers to entry. We support our members throughout the creation process with member support for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat robotics.`}
           </m.p>
           <ShowModel url={"/models/twofold.glb"} scale={zoom} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} />
           {/* TODO text indicating you can rotate model */}
@@ -155,12 +157,11 @@ export default function CombatRobots() {
               ease: 'easeOut'
             }}}            
             viewport={{once: true, amount: 'some'}}
-            className='robot-text'
-          >My current robot is Horizon, a horizontal spinner. It has 1/8in Carbon Fiber top and bottom plates for stability and armor. 
-          Its chassis is made of TPU (3D printable rubber) to absorb damage. The weapon is a 101g AR500 weapon spinning, 
-          theoretically, at 18000 RPM. With a weapon diameter of over 6 inches, it has a tip speed of 350 MPH, packing quite a punch. 
-          Horizon also has a slower weapon configuration, as the previous configuration often runs out of power near the end of the 
-          3 minute matches.
+            className='robot-text whitespace-pre-line'
+          >
+            {`My current robot is Horizon, a horizontal spinner. The robot you see to your right is not the first attempt. Version 1 was a great learning experience (meaning it had a lot of issues). With an underpowered, unprotected, and direct-drive weapon system, it was a rough first try that only won a match because the other robot had an electrical failure.
+
+Version 2 kept the same energy but with major design improvements. It has 1/8in carbon fiber top and bottom plates for stability and armor. Its chassis is made of TPU (3D printable rubber) to absorb damage. The weapon is a 101g AR500 weapon spinning, theoretically, at 18000 RPM. With a weapon diameter of over 6 inches, it has a tip speed of 350 MPH, packing quite a punch.`}
           </m.p>
           <ShowModel url={"/models/horizon.glb"} scale={zoom}
             position={[0,0,0]} rotation={[2*Math.PI/3, 0, -Math.PI/12]} />
@@ -169,9 +170,9 @@ export default function CombatRobots() {
         <div className='self-baseline mb-10'>
           <WhatIDoHeader title='Competitive Robotics' date='January 2019 - May 2023' />
         </div>
-        <div className='robot-container !flex-col xl:!flex-row mb-0'> 
+        <div className='robot-container !flex-col 2xl:!flex-row mb-0'> 
           <video autoPlay loop muted playsInline preload="auto" width={1920} height={1080}
-            className='robot-video hidden xl:block'>
+            className='robot-video hidden 2xl:block'>
             <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
@@ -183,21 +184,21 @@ export default function CombatRobots() {
               ease: 'easeOut'
             }}}            
             viewport={{once: true, amount: 'some'}}
-            className='robot-text max-w-[700px]'
-          >I did competitive robotics in high school as the Programming Lead of team 2451 PWNAGE. Each season, we built a 125 pound robot 
-          to compete in 3v3 competitions. We build a wide variety of robots, from a 420 degree turret that shoots basketball 
-          sized balls to a triple jointed arm able to pick up cones and cubes. It was a lot of fun designing the code for these robots. 
-          You had to ride the line of what the robot was capable of and get it as fast as possible without burning out a motor 
-          or snapping a shaft.
+            className='robot-text max-w-[700px] whitespace-pre-line'
+          >
+            {`I did competitive robotics in high school as the Programming Lead of team 2451 PWNAGE.
+
+Each season, we built a 125-pound robot to compete in 3v3 competitions. Throughout my four seasons on the team, we built a wide variety of robots, from a 420-degree turret that shoots basketball-sized balls to a triple-jointed arm able to pick up cones and cubes.
+
+I had a lot of fun designing the code for these robots. You're not designing a robot to last 5 years and do the same task 10,000 times. You have to develop a robot that can score as many points as possible in two minutes and thirty seconds. Motor ratings become a suggestion and if your 12V battery isn't at 7V by the end of the match, then that means you aren't putting enough into your motors.`}
           </m.p>
-          {/* TODO use <Image /> for better optimization */}
           <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654}
-            className='robot-image hidden xl:block'/>
-          <div className='xl:hidden flex flex-row justify-center'>
+            className='robot-image hidden 2xl:block'/>
+          <div className='2xl:hidden flex flex-row justify-center'>
             <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654} 
-              className='robot-image rounded-xl mr-[2.5%] w-[45%] xl:hidden'/>
+              className='robot-image rounded-xl mr-[2.5%] w-[45%] 2xl:hidden'/>
             <video autoPlay loop muted playsInline preload="auto" width={1920} height={1080}
-              className='robot-video ml-[2.5%] w-[45%] xl:hidden'>
+              className='robot-video ml-[2.5%] w-[45%] 2xl:hidden'>
               <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
               Your browser does not support the video tag.
             </video>

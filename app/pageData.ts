@@ -71,7 +71,7 @@ const projectList: Project[] = [
 type Skill = {
     name: string,
     experienceYears?: number,
-    skill?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10,
+    skill?: number,
     subList?: string[]
 }
 
@@ -106,27 +106,27 @@ const skillsets: {[key: string]: Skill[]} = {
     "Technical Skills": [
         {
             name: "Software Development",
-            skill: 8,
+            skill: 80,
         },
         {
             name: "Machine Learning",
-            skill: 4,
+            skill: 40,
         },
         {
             name: "Web Development",
-            skill: 7,
+            skill: 70,
         },
         {
             name: "Firebase (GCP)",
-            skill: 6,
+            skill: 60,
         },
         {
             name: "Git / GitHub",
-            skill: 7,
+            skill: 70,
         },
         {
             name: "REST",
-            skill: 6,
+            skill: 60,
         },
     ],
     "Soft Skills": [
@@ -160,11 +160,10 @@ const workExperience: WorkExperience[] = [
       company: "APS Data Technologies",
       description: "Tech startup based out of Aurora, IL",
       duration: "August 2022 - Present",
-      bullets: ["Worked on backend systems for car tracking in a parking lot, using machine learning to identify potential cars, filtering the outputted list of cars and finding their match from the previous frame",
-                "Optimizing said algorithm to get it running in real time (from 2 seconds per frame to 10 frames per second)",
-                "Developed a mobile app for the Paramount Theater in downtown Aurora, allowing users to purchase tickets and memberships, working with their backend databases to ensure live updates and a seamless transition for existing users, adding extra security measures to help with fraud prevention",
-                "Managed a team of 7+ interns, handled team training and task assignments",
-                "Managed other company projects, performing code reviews and helping developers solve code issues"]
+      bullets: ["Improved car tracking system accuracy by 48% and achieved real-time performance, decreasing processing time from 2 seconds to 0.2",
+"Spearheaded development of a mobile app for the Paramount Theater, writing 60% of the code and seamlessly integrating with existing databases and payment systems",
+"Empowered development team by providing 24/7 support, leading to a significant increase in productivity",
+"Managed a team of 7+ interns, overseeing training and assigning tasks to maximize output"]
     }
 ]
 
