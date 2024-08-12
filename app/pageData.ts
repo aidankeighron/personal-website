@@ -193,7 +193,8 @@ const otherProjects: OtherProject[] = [
         name: "Fantasy FRC",
         description: "Website for running a fantasy draft with FRC teams. It handles everything from picking teams to calculating their score.",
         date: "October 2022 - January 2023",
-        tags: ["HTML/CSS", "JavaScript", "Express.js", "Socket.io"],
+        tags: ["HTML/CSS", "JavaScript", "Express.js", "Socket.io", "mySQL"],
+        page: '/fantasy-FRC'
     },
     {
         name: "Machine Learning Maze",
@@ -215,6 +216,13 @@ const otherProjects: OtherProject[] = [
         tags: ["Swing", "Java"],
         page: '/productivity'
     },
+    {
+        name: "PID Visualizer",
+        description: "Visualization of a PID algorithm that is fully tuneable.",
+        date: "January 2023",
+        tags: ["Java", "Swing", "PID", "Robotics"],
+        page: '/PID-visualizer'
+    }
 ];
 
 type BCRobot = {

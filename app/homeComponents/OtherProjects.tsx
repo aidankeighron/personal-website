@@ -14,7 +14,7 @@ export default function OtherProjects() {
               whileInView={{opacity: 1, y: '0', transition: {duration: 1, ease: 'easeOut'}}}
               viewport={{once: true, amount: 'some', margin: '5%'}}
               key={project.name}
-              className='bg-a-main dark:bg-d-a-main p-8 rounded-xl shadow-lg h-full flex flex-col max-[400px]:w-[300px] w-[400px]'
+              className='bg-a-main dark:bg-d-a-main p-8 rounded-xl shadow-lg min-h-full flex flex-col max-[400px]:w-[300px] w-[400px]'
             >
               <p className='text-3xl font-semibold mb-2 bottom-border w-fit'>{project.name}</p>
               <p className='text-sm dark:text-d-second mb-3'>{project.date}</p>
