@@ -14,9 +14,11 @@
         "frameloop",
         "GLTF",
         "hljs",
+        "mathjax",
         "metalness",
         "PWNAGE",
         "Raycast",
+        "rehype",
         "skillset",
         "skillsets",
         "Trimesh"

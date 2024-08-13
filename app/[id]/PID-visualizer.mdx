@@ -1,6 +1,7 @@
 import '../components/css/md.css';
 import '../components/css/code.css';
 import CodeBlock from '../components/CodeBlock';
+import MathBlock from '../components/MathBlock';
 
 # Project Overview
 
@@ -37,11 +38,11 @@ First, let's define some terms:
 - Error: 'Setpoint - Actual' The difference between your current location and your desired location
 
 Next, let's look at the equation for a PID and break each part down:
-$$output = P + I + D$$
+<MathBlock math={String.raw`output = P + I + D`} />
 
 #### Proportional Term (P):
 
-$$P = kP * error$$
+<MathBlock math={String.raw`P = kP * error`} />
 
 The proportional term is calculated by multiplying the error by a constant kP. kP is determined by starting with a random number (typically a factor of 10 less than 1) and changing it until you get the outcome you want. There are a few mathematical methods for tuning a PID, but because of the vast variety of possible "solutions," it is typically best to adjust it by hand. The proportional term has the greatest overall influence on the PID output.
 
@@ -50,7 +51,7 @@ The proportional term is calculated by multiplying the error by a constant kP. k
 
 #### Integral Term (I):
 
-$$I = kI * \int_0^t error(T) \,dT$$
+<MathBlock math={String.raw`I = kI * \int_0^t error(T) \,dT`} />
 
 The integral term is calculated by integrating over all errors since the start of the PID and multiplying it by a constant kI. kI is normally a relatively small number since a large kI can cause oscillation. Because of these problems, the integral term is often restricted to a small value. The integral term is a push to get the actual to the setpoint.
 
@@ -59,9 +60,7 @@ The integral term is calculated by integrating over all errors since the start o
 
 #### Derivative Term (D):
 
-{/* $$D = kD * \frac{\mathrm{d} error}{\mathrm{d}t}$$ */}
-
-I=kI∗∫t0error(T)dT
+<MathBlock math={String.raw`D = kD * \frac{\mathrm{d} error}{\mathrm{d}t}`} />
 
 Taking the derivative of the error with regard to time multiplied by kD yields the derivative term. When attempting to account for external factors, the term can be beneficial. It helps to soften large, abrupt changes in error. The derivative term can cancel out events such as a car on cruise control suddenly going down a slope or a block of ice being placed in a room that is trying to keep a consistent temperature.
 
@@ -85,7 +84,7 @@ PIDs are a complex method of modeling motion but break down in complex real-worl
 
 To get from this path to motor output, we need to do some math:
 
-$$output = v(t) * kV + a(t) * kA + cos(p(t)) * kG + kS * sign(v(t))$$
+<MathBlock math={String.raw`output = v(t) * kV + a(t) * kA + cos(p(t)) * kG + kS * sign(v(t))`} />
 * p(t) = position over time \| v(t) = velocity over time \| a(t) = acceleration over time
 * S term is in the direction of v(t)
 * G term will vary depending on the object

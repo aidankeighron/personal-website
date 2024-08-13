@@ -143,3 +143,11 @@ ul * ul {
 .codeBlock {
   padding: 3px 0px !important;
 }
+
+.math-div {
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+}
