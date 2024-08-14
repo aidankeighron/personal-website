@@ -54,7 +54,7 @@ export default function Skillsets() {
                       transition: {when: "afterChildren"}
                     },
                   }
-                  console.log(`${skill.skill}%`)
+
                   const levelItem = {
                     visible: {
                       width: `${skill.skill}%`,

@@ -4,9 +4,10 @@ import CodeBlock from '../components/CodeBlock';
 
 # Project Overview
 
-Fantasy FRC is fantasy football with robotics. It is a website that manages the full process of running a draft for FRC, and it's pretty customizable. If you want to see how it looks, check out the <a href="#showcase">showcase</a>.
+Fantasy FRC is fantasy football with robotics. It is a website that manages the full process of running a draft for FRC, and it's pretty customizable.
 
-If you would like to check it out, the full code is available on GitHub: <a href="https://github.com/aidankeighron/sheet-scraper" target="_blank">Sheet Scraper</a>. If you would like to see the final result, here is a link to the <a href="https://github.com/aidankeighron/fantasy-FRC" target="_blank">Fantasy FRC</a>.
+If you would like to check it out, the full code is available on GitHub: <a href="https://github.com/aidankeighron/fantasy-FRC" target="_blank">Fantasy FRC</a>.
+
 ## Modifying
 
 The source code is protected under the MIT license, so you have full rights to modify it as long as you keep the licenses and copyright intact. NOTE: I am not an expert in JS, and while I have done my best to weed out any bugs, there might still be some out there. If you find any, please open an issue on GitHub or create a pull request with a fix.
@@ -114,7 +115,7 @@ To this:
 
 \* If you want to connect to the website externally you will need to <a href="https://portforward.com/" target="_blank">port forward</a> port 80 to your web server.
 
-Run the website using `node server.js` (server.js in /server) and navigate to `<hostname>/admin` (the admin page is only accessible by direct link) and type in a username and password (see <a href="#showcase">showcase</a> for what the admin page looks like). Once your admin has been added uncomment the lines to re-enable security. Then go to your MySQL server and get the ID and name of the account. In server.js locate `const adminId =` and set `adminId` and `adminName` to the user's ID and name respectively. Once an admin user is set up your admin go to the admin page and add the rest of your users.
+Run the website using `node server.js` (server.js in /server) and navigate to `<hostname>/admin` (the admin page is only accessible by direct link) and type in a username and password. Once your admin has been added uncomment the lines to re-enable security. Then go to your MySQL server and get the ID and name of the account. In server.js locate `const adminId =` and set `adminId` and `adminName` to the user's ID and name respectively. Once an admin user is set up your admin go to the admin page and add the rest of your users.
 
 ## Yearly Setup
 
@@ -176,3 +177,5 @@ Run `/server/rolling_team_info.py` and it will update all team's and user's scor
 <img src="/images/fantasy/drafting_search.png" style={{'border':"5px solid black", 'display': 'block', 'marginLeft': 'auto', 'marginRight': 'auto', 'width': '80%'}}></img>
 
 On the drafting page and teams page there is a search option that lets you search using team numbers or names.
+
+If you would like to check it out, the full code is available on GitHub: <a href="https://github.com/aidankeighron/fantasy-FRC" target="_blank">Fantasy FRC</a>.

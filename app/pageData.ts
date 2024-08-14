@@ -173,6 +173,7 @@ type OtherProject = {
     date: string,
     tags: string[],
     page?: string,
+    github?: string,
 }
 
 const otherProjects: OtherProject[] = [
@@ -181,47 +182,54 @@ const otherProjects: OtherProject[] = [
         description: "A calculator that uses folders and files to do calculations",
         date: "February 2022",
         tags: ["Java", "Multithreading"],
-        page: '/file-calculator'
+        page: '/file-calculator',
+        github: 'https://github.com/aidankeighron/calculator',
     },
     {
         name: "Physics Simulation",
         description: "Physics simulation with an intractable cube that you can throw around a room",
         date: "September 2023 - October 2023",
         tags: ["C#", "Physics"],
+        github: 'https://github.com/aidankeighron/simulation',
     },
     {
         name: "Fantasy FRC",
         description: "Website for running a fantasy draft with FRC teams. It handles everything from picking teams to calculating their score.",
         date: "October 2022 - January 2023",
         tags: ["HTML/CSS", "JavaScript", "Express.js", "Socket.io", "mySQL"],
-        page: '/fantasy-FRC'
+        page: '/fantasy-FRC',
+        github: 'https://github.com/aidankeighron/fantasy-FRC',
     },
     {
         name: "Machine Learning Maze",
         description: "Neural Network for a cube traveling through a maze, built without libraries.",
         date: "October 2021 - January 2022",
         tags: ["AI", "Java"],
+        github: 'https://github.com/aidankeighron/machine-learning',
     },
     {
         name: "Sheet Scraper",
         description: "Scraped designed to make a collection of every FRC shirt trade.",
         date: "October 2021 - January 2022",
         tags: ["Python", "Google Sheets API"],
-        page: '/sheet-scraper'
+        page: '/sheet-scraper',
+        github: 'https://github.com/aidankeighron/sheet-scraper',
     },
     {
         name: "Productivity",
         description: "Productivity software that runs in the corner of your desktop to keep track of all of your tasks, has many other cool features.",
         date: "December 2021 - May 2022",
         tags: ["Swing", "Java"],
-        page: '/productivity'
+        page: '/productivity',
+        github: 'https://github.com/aidankeighron/productivity',
     },
     {
         name: "PID Visualizer",
         description: "Visualization of a PID algorithm that is fully tuneable.",
         date: "January 2023",
         tags: ["Java", "Swing", "PID", "Robotics"],
-        page: '/PID-visualizer'
+        page: '/PID-visualizer',
+        github: 'https://github.com/aidankeighron/PID-visualizer',
     }
 ];
 

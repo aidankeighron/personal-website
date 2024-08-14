@@ -15,6 +15,7 @@ type ShowModelProps = {
     scale: number,
     position: Position,
     rotation: Rotation,
+    name: string
 }
   
 function CanvasLoader() {
@@ -30,7 +31,7 @@ function CanvasLoader() {
     );
 };
   
-function LoadModel({url, scale, position, rotation}: ShowModelProps) {
+function LoadModel({url, scale, position, rotation, name}: ShowModelProps) {
     const model: any = useLoader(GLTFLoader, url).scene;
     return (        
       <mesh>
@@ -44,23 +45,27 @@ function LoadModel({url, scale, position, rotation}: ShowModelProps) {
     );
 }
   
-function ShowModel({url, scale, position, rotation}: ShowModelProps) {
+function ShowModel({url, scale, position, rotation, name}: ShowModelProps) {
     // TODO clipping
-    return (  
-      <Canvas frameloop='demand' dpr={[1, 2]} camera={{position: [0, 0, 500]}} orthographic
-        className='robot-model'>
-        <Suspense fallback={<CanvasLoader />}>
-          <OrbitControls
-            enablePan={false}
-            enableZoom={false}
-            target={[0,0,0]}
-            position={[0,0,0]}
-          />
-          <ambientLight />
-          <LoadModel url={url} scale={scale} position={position} rotation={rotation} />
-        </Suspense>
-        <Preload all />
-    </Canvas>
+    return ( 
+      <div className="flex flex-col">
+        <p className="text-2xl mb-1 self-center">{name}</p>
+        <Canvas frameloop='demand' dpr={[1, 2]} camera={{position: [0, 0, 500]}} orthographic
+          className='robot-model'>
+          <Suspense fallback={<CanvasLoader />}>
+            <OrbitControls
+              enablePan={false}
+              enableZoom={false}
+              target={[0,0,0]}
+              position={[0,0,0]}
+            />
+            <ambientLight />
+            <LoadModel url={url} scale={scale} position={position} rotation={rotation} name={name}/>
+          </Suspense>
+          <Preload all />
+      </Canvas>
+      <p className="text-base mt-1 text-d-a-main dark:text-a-main">* Model is draggable</p>
+    </div>
     );
 };
   
@@ -145,7 +150,7 @@ We compete in ant-weight robotics competitions, meaning the robots need to be le
 
 Our team philosophy is to help our members compete in combat robotics by removing barriers to entry. We support our members throughout the creation process with member support for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat robotics.`}
           </m.p>
-          <ShowModel url={"/models/twofold.glb"} scale={zoom} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} />
+          <ShowModel url={"/models/twofold.glb"} scale={zoom} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} name="Twofold" />
           {/* TODO text indicating you can rotate model */}
         </div>
         <div className='robot-container md:mt-[-5rem]'>
@@ -164,7 +169,7 @@ Our team philosophy is to help our members compete in combat robotics by removin
 Version 2 kept the same energy but with major design improvements. It has 1/8in carbon fiber top and bottom plates for stability and armor. Its chassis is made of TPU (3D printable rubber) to absorb damage. The weapon is a 101g AR500 weapon spinning, theoretically, at 18000 RPM. With a weapon diameter of over 6 inches, it has a tip speed of 350 MPH, packing quite a punch.`}
           </m.p>
           <ShowModel url={"/models/horizon.glb"} scale={zoom}
-            position={[0,0,0]} rotation={[2*Math.PI/3, 0, -Math.PI/12]} />
+            position={[0,0,0]} rotation={[2*Math.PI/3, 0, -Math.PI/12]} name={"Horizon"} />
         </div>
   
         <div className='self-baseline mb-10'>

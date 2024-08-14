@@ -26,7 +26,10 @@ export default function OtherProjects() {
                   );
                 })}
               </div>
-              {project.page && <Link href={project.page} className='mt-auto'><p className='robot-learn-more'>Learn More</p></Link>}
+              <div className="mt-auto flex flex-row justify-between">
+                {project.github && <Link href={project.github} className=''><p className='robot-learn-more'>View Code</p></Link>}
+                {project.page && <Link href={project.page} className=''><p className='robot-learn-more'>Learn More</p></Link>}
+              </div>
             </m.div>
           )
         })}
