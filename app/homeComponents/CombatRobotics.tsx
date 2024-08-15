@@ -64,7 +64,7 @@ function ShowModel({url, scale, position, rotation, name}: ShowModelProps) {
           </Suspense>
           <Preload all />
       </Canvas>
-      <p className="text-base mt-1 text-d-a-main dark:text-a-main">* Model is draggable</p>
+      <p className="text-base mx-2 mt-2 text-d-a-main dark:text-a-main">* Model is draggable</p>
     </div>
     );
 };
@@ -146,9 +146,9 @@ export default function CombatRobots() {
           >
             {`I am the Co-Founder and Team Manager of the combat robotics team, Bad Conflict. 
 
-We compete in ant-weight robotics competitions, meaning the robots need to be less than one pound. With such a constraining limit, we are always innovating and looking for new ways to make our robots better.
+We compete in antweight robotics competitions, meaning the robots need to be less than one pound. With such a constraining limit, we are always innovating and looking for new ways to make our robots better, more durable, efficient, and destructive.
 
-Our team philosophy is to help our members compete in combat robotics by removing barriers to entry. We support our members throughout the creation process with member support for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat robotics.`}
+Our team philosophy is to help our members compete in combat robotics by removing barriers to entry. We support our members throughout the creation process with member support for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat materials, manufacturing, and entry fees.`}
           </m.p>
           <ShowModel url={"/models/twofold.glb"} scale={zoom} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} name="Twofold" />
           {/* TODO text indicating you can rotate model */}
@@ -164,9 +164,11 @@ Our team philosophy is to help our members compete in combat robotics by removin
             viewport={{once: true, amount: 'some'}}
             className='robot-text whitespace-pre-line'
           >
-            {`My current robot is Horizon, a horizontal spinner. The robot you see to your right is not the first attempt. Version 1 was a great learning experience (meaning it had a lot of issues). With an underpowered, unprotected, and direct-drive weapon system, it was a rough first try that only won a match because the other robot had an electrical failure.
+            {`My current robot is Horizon, a horizontal spinner. The Horizon you see here is not my first attempt. Version 1 was a great learning experience (meaning it had a lot of issues). With an underpowered, unprotected, and direct-drive weapon system, it was a rough first try that only won a match because the other robot had an electrical failure.
 
-Version 2 kept the same energy but with major design improvements. It has 1/8in carbon fiber top and bottom plates for stability and armor. Its chassis is made of TPU (3D printable rubber) to absorb damage. The weapon is a 101g AR500 weapon spinning, theoretically, at 18000 RPM. With a weapon diameter of over 6 inches, it has a tip speed of 350 MPH, packing quite a punch.`}
+Version 2 came with major design improvements. It has 1/8in carbon fiber top and bottom plates for stability and armor. Its chassis is made of TPU (3D printable rubber) to absorb hits. The weapon is a 101g AR500 weapon spinning, theoretically, at 18000 RPM. With a weapon diameter of over 6 inches, it has a tip speed of 350 MPH, packing quite a punch.
+
+Horizon is signed up to compete in a few competitions this fall. Based on how hard it hits and how quickly it eats through a charged battery, it should be a formable foe.`}
           </m.p>
           <ShowModel url={"/models/horizon.glb"} scale={zoom}
             position={[0,0,0]} rotation={[2*Math.PI/3, 0, -Math.PI/12]} name={"Horizon"} />
@@ -191,11 +193,13 @@ Version 2 kept the same energy but with major design improvements. It has 1/8in 
             viewport={{once: true, amount: 'some'}}
             className='robot-text max-w-[700px] whitespace-pre-line'
           >
-            {`I did competitive robotics in high school as the Programming Lead of team 2451 PWNAGE.
+            {`In high school, I was the Programming Lead of competitive robotics 2451 PWNAGE.
 
 Each season, we built a 125-pound robot to compete in 3v3 competitions. Throughout my four seasons on the team, we built a wide variety of robots, from a 420-degree turret that shoots basketball-sized balls to a triple-jointed arm able to pick up cones and cubes.
 
-I had a lot of fun designing the code for these robots. You're not designing a robot to last 5 years and do the same task 10,000 times. You have to develop a robot that can score as many points as possible in two minutes and thirty seconds. Motor ratings become a suggestion and if your 12V battery isn't at 7V by the end of the match, then that means you aren't putting enough into your motors.`}
+I had a lot of fun designing the code for these robots. You are not designing a robot for a factory floor that is going to do the same motion 10,000 times. You are designing a robot to be as fast as possible, riding the line of what it is capable of and throwing longevity out the window.
+
+The creativity and engineering I experienced on PWNAGE were unparalleled. And everyone on the team, mentors and students, put everything they had into creating some of the most competitive robots in the world.`}
           </m.p>
           <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654}
             className='robot-image hidden 2xl:block'/>

@@ -106,7 +106,7 @@ const skillsets: {[key: string]: Skill[]} = {
     "Technical Skills": [
         {
             name: "Software Development",
-            skill: 80,
+            skill: 85,
         },
         {
             name: "Machine Learning",
@@ -114,7 +114,7 @@ const skillsets: {[key: string]: Skill[]} = {
         },
         {
             name: "Web Development",
-            skill: 70,
+            skill: 80,
         },
         {
             name: "Firebase (GCP)",
@@ -122,19 +122,23 @@ const skillsets: {[key: string]: Skill[]} = {
         },
         {
             name: "Git / GitHub",
-            skill: 70,
+            skill: 80,
         },
         {
             name: "REST",
-            skill: 60,
+            skill: 70,
         },
+        {
+            name: "Computer Vision",
+            skill: 75,
+        }
     ],
     "Soft Skills": [
         {
-            name: "Team Management"
+            name: "Team Leadership"
         },
         {
-            name: "Leadership"
+            name: "Communication"
         },
         {
             name: "Agile Development"
@@ -145,6 +149,21 @@ const skillsets: {[key: string]: Skill[]} = {
         {
             name: "Time Management"
         },
+        {
+            name: "Problem Solving"
+        },
+        {
+            name: "Project Management"
+        },
+        {
+            name: "Creative Writing"
+        },
+        {
+            name: "Resilience and Determination"
+        },
+        {
+            name: "Passion for Learning"
+        }
     ]
 }
 
@@ -230,6 +249,60 @@ const otherProjects: OtherProject[] = [
         tags: ["Java", "Swing", "PID", "Robotics"],
         page: '/PID-visualizer',
         github: 'https://github.com/aidankeighron/PID-visualizer',
+    },
+    {
+        name: "Compression Algorithm",
+        description: "Python compression algorithm that uses random number seeding to compress large files to a few bytes.",
+        date: "July 2023",
+        tags: ["Python", "Compression", "Algorithms"],
+        github: "https://github.com/aidankeighron/compression-algorithm",
+    },
+    {
+        name: "Smash Elo Ranking",
+        description: "Elo algorithm implementation for personal Super Smash Bros Ultimate tournament.",
+        date: "October 2023",
+        tags: ["Python", "Elo"],
+        github: "https://github.com/aidankeighron/smash-elo-ranking/tree/main"
+    },
+    {
+        name: "Reminder Notification",
+        description: "Desktop app to schedule recurring reminders with custom notifications.",
+        date: "August 2023",
+        tags: ["JavaScript", "Electron.js"],
+        github: "https://github.com/aidankeighron/reminder-notification/commits/main/"
+    },
+    {
+        name: "Youtube Limit",
+        description: "Chrome extension to block Youtube usage until all due Asana (time management tool) tasks have been complected.",
+        date: "September 2023",
+        tags: ["Productivity", "JavaScript", "Chrome Extension", "API"]
+    },
+    {
+        name: "Asana Notes App",
+        description: "Mobile app to view and add new tasks to Asana (time management tool).",
+        date: "August - September 2023",
+        tags: ["Asana", "JavaScript", "React Native"]
+    },
+    {
+        name: "Group Extension",
+        description: "Save and load chrome tab groups across devices.",
+        date: "July 2013",
+        tags: ["Chrome extension", "JavaScript", "Productivity"],
+        github: "https://github.com/aidankeighron/group-extension"
+    },
+    {
+        name: "Falling Sand",
+        description: "Particle physics simulator with a multitude of different elements to choose from.",
+        date: "April 2022",
+        tags: ["Java", "Swing", "Physics"],
+        github: "https://github.com/aidankeighron/falling-sand"
+    },
+    {
+        name: "Util",
+        description: "Utility website with a collection of advanced programming concepts, list of algorithms and data structures, and helpful links.",
+        date: "October 2022 - Present",
+        tags: ["JavaScript", "Jekyll", "Utility"],
+        github: "https://github.com/aidankeighron/Util"
     }
 ];
 
