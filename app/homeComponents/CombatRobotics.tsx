@@ -46,7 +46,7 @@ function LoadModel({url, scale, position, rotation, name}: ShowModelProps) {
 }
   
 function ShowModel({url, scale, position, rotation, name}: ShowModelProps) {
-    // TODO clipping
+    // TODO https://glb.babylonpress.org/
     return ( 
       <div className="flex flex-col">
         <p className="text-2xl mb-1 self-center">{name}</p>
@@ -150,7 +150,7 @@ We compete in antweight robotics competitions, meaning the robots need to be les
 
 Our team philosophy is to help our members compete in combat robotics by removing barriers to entry. We support our members throughout the creation process with member support for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat materials, manufacturing, and entry fees.`}
           </m.p>
-          <ShowModel url={"/models/twofold.glb"} scale={zoom} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} name="Twofold" />
+          <ShowModel url={"/models/twofold-opt.glb"} scale={zoom} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} name="Twofold" />
           {/* TODO text indicating you can rotate model */}
         </div>
         <div className='robot-container md:mt-[-5rem]'>
@@ -170,7 +170,7 @@ Version 2 came with major design improvements. It has 1/8in carbon fiber top and
 
 Horizon is signed up to compete in a few competitions this fall. Based on how hard it hits and how quickly it eats through a charged battery, it should be a formable foe.`}
           </m.p>
-          <ShowModel url={"/models/horizon.glb"} scale={zoom}
+          <ShowModel url={"/models/horizon-opt.glb"} scale={zoom}
             position={[0,0,0]} rotation={[2*Math.PI/3, 0, -Math.PI/12]} name={"Horizon"} />
         </div>
   

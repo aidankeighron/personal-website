@@ -21,17 +21,12 @@ export default function VideoEntry() {
       <>
       <h1 className='text-d-main dark:text-main text-4xl mb-16 m-2 w-fit h-fit p-4 border-b-4 border-third dark:border-d-third sm:hidden'>Aidan Keighron</h1>
       <div className='relative'>
-        {/* TODO loading issue on laptop (use dev tools to throttle internet) */}
         <video ref={videoRef} autoPlay loop muted playsInline preload="auto" width={1920} height={1080} 
           className='aspect-video' style={{marginTop: `-${videoTopOffset}px`}}>
-          <source src="https://8owxurotrcpnrijg.public.blob.vercel-storage.com/Introvideo10-0Rdfp1DfzaQstt6r6zYfb70qEBwuYq.mp4" type="video/mp4" />
-          {/* If necessary */}
-          {/* https://cloudinary.com/pricing */}
-          {/* https://www.cloudflare.com/plans/ */}
-          {/* https://www.backblaze.com/cloud-storage/pricing */}
-          {/* <source src="/videos/intro_video5.mp4" type="video/mp4" /> */}
+          <source src="https://firebasestorage.googleapis.com/v0/b/personal-website-54361.appspot.com/o/Introvideo10.mp4?alt=media&token=c3696367-8fd0-4f9f-a797-533834d8883d" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+
         <m.div
           initial={{opacity: 0, y: '25%', x: '-50%'}}
           whileInView={{opacity: 1, y: '0', x: '-50%', transition: {duration: 1, ease: 'easeOut'}}}

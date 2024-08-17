@@ -7,7 +7,7 @@ const withMdx = nextMdx({
 });
 
 const cspHeader = `
-    default-src 'self' *.public.blob.vercel-storage.com esm.sh www.desmos.com;
+    default-src 'self' *.public.blob.vercel-storage.com esm.sh www.desmos.com *.googleapis.com;
     script-src 'self' *.vercel-scripts.com 'unsafe-eval' 'unsafe-inline' blob:;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
