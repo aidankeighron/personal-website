@@ -1,7 +1,7 @@
 "use client" // TODO can remove?
 
 import { m } from "framer-motion";
-import { useRef, useState, useLayoutEffect } from "react";
+import { useRef, useState, useLayoutEffect, useEffect } from "react";
 
 export default function VideoEntry() {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -16,6 +16,22 @@ export default function VideoEntry() {
         }
       }
     }, [])
+
+    
+    useEffect(() => {
+      if (!videoRef.current) {
+        return;
+      }
+      const onVideoError = () => {
+        if (videoRef.current) {
+          videoRef.current.src = "/videos/introvideo10.mp4";
+          videoRef.current.removeEventListener('error', onVideoError, true);
+        }
+      }
+
+      videoRef.current.src = 'https://firebasestorage.googleapis.com/v0/b/personal-website-54361.appspot.com/o/Introvideo10.mp4?alt=media&token=c3696367-8fd0-4f9f-a797-533834d8883d';
+      videoRef.current.addEventListener('error', onVideoError, true);
+    }, [])
   
     return (
       <>
@@ -23,7 +39,8 @@ export default function VideoEntry() {
       <div className='relative'>
         <video ref={videoRef} autoPlay loop muted playsInline preload="auto" width={1920} height={1080} 
           className='aspect-video' style={{marginTop: `-${videoTopOffset}px`}}>
-          <source src="https://firebasestorage.googleapis.com/v0/b/personal-website-54361.appspot.com/o/Introvideo10.mp4?alt=media&token=c3696367-8fd0-4f9f-a797-533834d8883d" type="video/mp4" />
+          {/* <source src="https://firebasestorage.googleapis.com/v0/b/personal-website-54361.appspot.com/o/Introvideo10.mp4?alt=media&token=c3696367-8fd0-4f9f-a797-533834d8883d" type="video/mp4" /> */}
+          {/* <source src="/videos/introvideo10.mp4" type="video/mp4" />  */}
           Your browser does not support the video tag.
         </video>
 
