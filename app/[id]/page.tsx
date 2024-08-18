@@ -2,6 +2,7 @@ import Link from "next/link";
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import BackToTop from "../components/BackToTop";
+import { redirect } from 'next/navigation'
 
 const uppercaseWords = (str: string) => str.replace(/(^.|\s.)/g, c => c.toUpperCase());
 
@@ -12,7 +13,17 @@ type ProjectParams = {
 }
 
 export default function Project({params}: ProjectParams) {
-  const DynamicContent = dynamic(() => import(`./${params.id}.mdx`), {
+  const DynamicContent = dynamic(async () => {
+    let mdxFile;
+    try {
+      mdxFile = await import(`./${params.id}.mdx`);
+    }
+    catch (error) {
+      console.log("error");
+      redirect(("/404"));
+    }
+    return mdxFile;
+  }, {
     suspense: true,
   });
   const pageTitle = uppercaseWords(params.id.replaceAll("-", " "));

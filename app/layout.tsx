@@ -44,15 +44,20 @@ export const metadata: Metadata = {
   creator: "Aidan Keighron",
   publisher: "Vercel",
   // verification: "", // TODO look it up
-  // icons: { // TODO https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons#image-files-ico-jpg-png
-  //   icon: '/icon.png',
-  //   shortcut: '/shortcut-icon.png',
-  //   apple: '/apple-icon.png',
-  //   other: {
-  //     rel: 'apple-touch-icon-precomposed',
-  //     url: '/apple-touch-icon-precomposed.png',
-  //   },
-  // },
+  icons: {
+    icon: [
+      {
+        media: '(prefers-color-scheme: light)',
+        url: '/images/light-icon.png',
+        href: '/images/light-icon.png',
+      },
+      {
+        media: '(prefers-color-scheme: dark)',
+        url: '/images/dark-icon.png',
+        href: '/images/dark-icon.png',
+      },
+    ],
+  },
   category: "Personal Website",
   referrer: 'origin-when-cross-origin',
 };
@@ -61,16 +66,15 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#8E0092' },
-    { media: '(prefers-color-scheme: dark)', color: '#FF8C00' },
+    { media: '(prefers-color-scheme: dark)', color: '#50DFB3' },
   ],
-  colorScheme: "dark light", // TODO do I want this or normal
+  colorScheme: "dark light",
   width: 'device-width',
   initialScale: 1,
   maximumScale: 3,
   userScalable: true,
 }
 
-// TODO set website icon
 // TODO? https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#local-fonts
 const jetBrains = JetBrains_Mono({subsets: ['latin']});
 

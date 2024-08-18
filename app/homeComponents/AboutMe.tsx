@@ -7,7 +7,7 @@ import aboutMeImage from '../../public/images/aidan_profile.jpg';
 export default function AboutMe() {
     return (
       <div className='flex items-center flex-col'>
-          <div id={'aboutme'} className='max-w-[1500px] mx-[5%] bg-third dark:bg-d-third flex flex-col md:flex-row items-center rounded-2xl p-4 shadow-xl'>
+          <div id={'aboutme'} className='max-w-[1500px] mx-[5%] bg-about-me-background dark:bg-d-about-me-background flex flex-col md:flex-row items-center rounded-2xl p-4 shadow-xl'>
             <m.div
               initial={{opacity: 0, scale: 0.7}}
               whileInView={{opacity: 1, scale: 1, transition: {
@@ -21,7 +21,7 @@ export default function AboutMe() {
             <Image width={4007} height={4004} placeholder='blur' blurDataURL='/images/aidan_profile.jpg' priority
                   src={aboutMeImage} alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' />
             </m.div>
-            <p className='dark:text-d-main text-main text-sm md:text-xl md:w-2/3 whitespace-pre-line md:mx-4'>{`I am a highly motivated computer science student at Michigan State University, fueled by a passion for robotics and software development.
+            <p className='text-d-main font-medium text-sm md:text-xl md:w-2/3 whitespace-pre-line md:mx-4'>{`I am a highly motivated computer science student at Michigan State University, fueled by a passion for robotics and software development.
 
 On the robotics side of things, I co-founded the combat robotics team Bad Conflict, where we build robots to compete in antweight (meaning robots are less than one pound) competitions. My current robot, Horizon, is a horizontal spinner that packs quite a punch.
 

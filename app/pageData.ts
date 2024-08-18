@@ -177,7 +177,7 @@ type WorkExperience = {
 const workExperience: WorkExperience[] = [
     {
       company: "APS Data Technologies",
-      description: "Tech startup based out of Aurora, IL",
+      description: "Aurora, IL",
       duration: "August 2022 - Present",
       bullets: ["Improved car tracking system accuracy by 48% and achieved real-time performance, decreasing processing time from 2 seconds to 0.2",
 "Spearheaded development of a mobile app for the Paramount Theater, writing 60% of the code and seamlessly integrating with existing databases and payment systems",

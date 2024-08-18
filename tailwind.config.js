@@ -8,14 +8,15 @@ module.exports = {
       'main': '#EEEEEE',
       'a-main': '#DDDDDD',
       'second': '#4F4F4F',      
-      'third': '#8E0092',
-
+      'third': '#BD66D5',
+      'about-me-background': '#DFC5FE',
       
       'd-main': '#111111',
       'd-a-main': '#25282C',
       'd-second': '#A9ABB3',
-      'd-third': '#FF8C00',
-
+      'd-third': '#7EFFD8',
+      'd-about-me-background': '#A5FFE4',
+      
     },
     extend: {},
   },
