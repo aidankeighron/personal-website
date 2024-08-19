@@ -2,7 +2,7 @@
 
 import { useScroll, MotionConfig, LazyMotion, domAnimation, m } from "framer-motion";
 import AboutMe from "./AboutMe";
-import CombatRobots from "./CombatRobotics";
+import WhatIDo from "./WhatIDo";
 import Header from "./Header";
 import OtherProjects from "./OtherProjects";
 import Resume from "./Resume";
@@ -38,7 +38,7 @@ export default function Home() {
                 >
                     What I Do
                 </m.h1>
-                <CombatRobots />
+                <WhatIDo />
                 <m.h1
                     initial={{opacity: 0, x: '-10vh'}}
                     whileInView={{opacity: 1, x: 0, transition: {duration: 1}}}

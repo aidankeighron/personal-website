@@ -114,7 +114,7 @@ function WhatIDoHeader({title, date, learnMoreLink}: WhatIDoProps) {
 }
   
   // TODO looks bad medium ui
-export default function CombatRobots() {
+export default function WhatIDo() {
     const [zoom, setZoom] = useState(2);
   
     useEffect(() => {
@@ -174,10 +174,10 @@ Horizon is signed up to compete in a few competitions this fall. Based on how ha
             position={[0,0,0]} rotation={[2*Math.PI/3, 0, -Math.PI/12]} name={"Horizon"} />
         </div>
   
-        <div className='self-baseline mb-10'>
+        <div className='self-baseline'>
           <WhatIDoHeader title='Competitive Robotics' date='January 2019 - May 2023' />
         </div>
-        <div className='robot-container !flex-col 2xl:!flex-row mb-0'> 
+        <div className='robot-container !flex-col 2xl:!flex-row'> 
           <video autoPlay loop muted playsInline preload="auto" width={1920} height={1080}
             className='robot-video hidden 2xl:block'>
             <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
@@ -212,6 +212,29 @@ The creativity and engineering I experienced on PWNAGE were unparalleled. And ev
               Your browser does not support the video tag.
             </video>
           </div>
+        </div>
+        <WhatIDoHeader title='Alchemy' date='February 2024 - Present' />
+        <div className='robot-container w-[100%] !flex-col xl:!flex-row mb-0'> 
+          <Image src={"/images/alchemy.png"} alt={"Alchemy software"} width={1920} height={1040} 
+            className='robot-image xl:max-w-[50%] mb-5 xl:mb-0'/>
+          <m.p 
+            initial={{opacity: 0.5, y: '25%'}}
+            whileInView={{opacity: 1, y: 0, transition: {
+              duration: 1,
+              delay: 0.1,
+              ease: 'easeOut'
+            }}}            
+            viewport={{once: true, amount: 'some'}}
+            className='robot-text max-w-[80%] xl:max-w-[800px] whitespace-pre-line'
+          >
+            {`Alchemy is a task management tool that I designed to help me improve my productivity.
+
+I have always struggled with time management and I could never find anything that suited me. Everything either had too much overhead or was too simple. I felt like I was spending more time planning out my tasks than completing them.
+
+I set out to create a tool that would let you instantly create new tasks without removing customizability. I ended up with Alchemy. To create a task, all you have to do is click on the day you plan to complete the task and type in the name. It's that simple.
+
+Seeing how much it improved my own productivity, I decided to create a startup centered around Alchemy. Currently, I am working on the business plan and creating a website.`}
+          </m.p>
         </div>
       </div>
     )

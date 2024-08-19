@@ -50,13 +50,6 @@ export default function Header() {
             What I Do
           </m.p>
         </Link>
-        {/* <Link href={'#projects'} scroll={true}>
-          <m.p className='header-link'
-            variants={item}
-          >
-            Projects
-          </m.p>
-        </Link> */}
         <Link href={'#skills'} scroll={true}>
           <m.p className='header-link'
             variants={item}

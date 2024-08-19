@@ -9,7 +9,7 @@ export default function Resume() {
         whileInView={{ width: '100%', borderRadius: '0px' }}
         viewport={{once: true, amount: 'some'}}
         transition={{ease: 'easeInOut', duration: 1}}
-        className='bg-about-me-background dark:bg-d-third h-[120px] text-d-main' // w-full
+        className='bg-about-me-background dark:bg-d-about-me-background h-[120px] text-d-main' // w-full
       >
         <a href='/AidanKeighronResume.pdf' target="_blank" className='underline text-4xl flex items-center justify-center h-full mx-[5vw] whitespace-nowrap'>View Resume</a>
       </m.div>

@@ -19,7 +19,7 @@
     @apply w-fit text-base font-medium bottom-border dark:text-d-second text-second my-2;
   }
   .robot-learn-more {
-    @apply bg-about-me-background dark:bg-d-third text-d-main font-semibold w-fit p-3 mt-3 rounded-2xl text-xl;
+    @apply bg-about-me-background dark:bg-d-about-me-background text-d-main font-semibold w-fit p-3 mt-3 rounded-2xl text-xl;
   }
   /* TODO double shadows https://codepen.io/whosajid/pen/QWReYqV */
   .robot-container {
