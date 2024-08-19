@@ -53,7 +53,7 @@ export default function Home() {
                     initial={{opacity: 0, x: '-10vh'}}
                     whileInView={{opacity: 1, x: 0, transition: {duration: 1}}}
                     viewport={{once: true, amount: 'some', margin: '5%'}}
-                    className='section-title'
+                    id={'otherprojects'} className='section-title'
                 >
                     Other Projects
                 </m.h1>

@@ -57,6 +57,13 @@ export default function Header() {
             Skills
           </m.p>
         </Link>
+        <Link href={'#otherprojects'} scroll={true}>
+          <m.p className='header-link'
+            variants={item}
+          >
+            Other Projects
+          </m.p>
+        </Link>
       </m.div>
     );
 };

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
-import BackToTop from "../components/BackToTop";
+import BackToTop from "../../components/BackToTop";
 import { redirect } from 'next/navigation'
 
 const uppercaseWords = (str: string) => str.replace(/(^.|\s.)/g, c => c.toUpperCase());

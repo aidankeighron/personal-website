@@ -27,7 +27,7 @@ export default function OtherProjects() {
                 })}
               </div>
               <div className="mt-auto flex flex-col sm:flex-row justify-between">
-                {project.github && <Link href={project.github} className=''><p className='robot-learn-more'>View Code</p></Link>}
+                {project.github && <Link href={project.github} className='' target='_blank'><p className='robot-learn-more'>View Code</p></Link>}
                 {project.page && <Link href={project.page} className=''><p className='robot-learn-more'>Learn More</p></Link>}
               </div>
             </m.div>

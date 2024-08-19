@@ -1,6 +1,6 @@
 "use client" // TODO remove
 
-import { useProgress, OrbitControls, Preload, Html } from "@react-three/drei";
+import { useProgress, OrbitControls, Html } from "@react-three/drei";
 import { useLoader, Canvas } from "@react-three/fiber";
 import { m } from "framer-motion";
 import Image from "next/image";
@@ -62,7 +62,6 @@ function ShowModel({url, scale, position, rotation, name}: ShowModelProps) {
             <ambientLight />
             <LoadModel url={url} scale={scale} position={position} rotation={rotation} name={name}/>
           </Suspense>
-          <Preload all />
       </Canvas>
       <p className="text-base mx-2 mt-2 text-d-a-main dark:text-a-main">* Model is draggable</p>
     </div>
@@ -178,7 +177,7 @@ Horizon is signed up to compete in a few competitions this fall. Based on how ha
           <WhatIDoHeader title='Competitive Robotics' date='January 2019 - May 2023' />
         </div>
         <div className='robot-container !flex-col 2xl:!flex-row'> 
-          <video autoPlay loop muted playsInline preload="auto" width={1920} height={1080}
+          <video autoPlay loop muted playsInline preload="none" width={1920} height={1080}
             className='robot-video hidden 2xl:block'>
             <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
             Your browser does not support the video tag.
@@ -206,7 +205,7 @@ The creativity and engineering I experienced on PWNAGE were unparalleled. And ev
           <div className='2xl:hidden flex flex-row justify-center'>
             <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654} 
               className='robot-image rounded-xl mr-[2.5%] w-[45%] 2xl:hidden'/>
-            <video autoPlay loop muted playsInline preload="auto" width={1920} height={1080}
+            <video autoPlay loop muted playsInline preload="none" width={1920} height={1080}
               className='robot-video ml-[2.5%] w-[45%] 2xl:hidden'>
               <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
               Your browser does not support the video tag.
