@@ -8,7 +8,7 @@ const withMdx = nextMdx({
 
 const cspHeader = `
     default-src 'self' *.public.blob.vercel-storage.com esm.sh www.desmos.com *.googleapis.com;
-    script-src 'self' *.vercel-scripts.com 'unsafe-eval' 'unsafe-inline' blob:;
+    script-src 'self' *.vercel-scripts.com 'unsafe-eval' 'unsafe-inline' blob: vercel.live;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self';
@@ -22,19 +22,19 @@ const cspHeader = `
 const nextConfig = withMdx({
   // Support MDX files as pages:
   pageExtensions: ['md', 'mdx', 'tsx', 'ts', 'jsx', 'js'],
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: cspHeader.replace(/\n/g, ''),
-          },
-        ],
-      },
-    ]
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/(.*)',
+  //       headers: [
+  //         {
+  //           key: 'Content-Security-Policy',
+  //           value: cspHeader.replace(/\n/g, ''),
+  //         },
+  //       ],
+  //     },
+  //   ]
+  // },
 })
 
 export default nextConfig;

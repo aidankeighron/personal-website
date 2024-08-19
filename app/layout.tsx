@@ -29,13 +29,6 @@ export const metadata: Metadata = {
     // videos: ,
     locale: 'en_US',
   },
-  robots: { 
-    index: true, 
-    follow: true, 
-    noarchive: true, 
-    nosnippet: true, 
-    noimageindex: true, 
-  },
   authors: {
     name: "Aidan Keighron"
   },
