@@ -30,7 +30,7 @@ export default function Project({params}: ProjectParams) {
 
   return(
     <>
-      <Link href='/'><p className='header-link w-fit fixed z-10 items-end justify-end top-10 left-20'>Home</p></Link>
+      <Link href='/'><p className='header-link w-fit fixed z-10 items-end justify-end top-10 left-[2.5%]'>Home</p></Link>
       <div className='flex flex-col items-center pt-40'>
         <title>{`${pageTitle} | Aidan Keighron`}</title>
         <div className='content'>
@@ -80,7 +80,7 @@ export default function Project({params}: ProjectParams) {
 //   return (
 //     <div className='scene bg-d-main flex flex-col items-center'>
 //     <title>File Calculator | Aidan Keighron</title>
-//     <Link href='/'><p className='header-link w-fit absolute z-10 items-end justify-end top-10 left-20'>Home</p></Link>
+//     <Link href='/'><p className='header-link w-fit absolute z-10 items-end justify-end top-10 left-[2.5%]'>Home</p></Link>
 //       <StrictMode>
 //         <Canvas frameloop="demand" dpr={dpr} performance={{current: 1, min: 0.1, max: 1, debounce: 200}} className='bg-d-main'>
 //         <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)}>

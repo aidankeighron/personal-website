@@ -56,7 +56,7 @@ export default function CurrentRobots() {
 
   return (
     <>
-      <Link href='/'><p className='header-link w-fit fixed z-10 items-end justify-end top-10 left-20'>Home</p></Link>
+      <Link href='/'><p className='header-link w-fit fixed z-10 items-end justify-end top-10 left-[2.5%]'>Home</p></Link>
       <div className='flex flex-col items-center pt-40'>
         <title>Current Robots | Aidan Keighron</title>
         {/* TODO rename */}
