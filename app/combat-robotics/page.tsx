@@ -12,8 +12,11 @@ import BackToTop from '../components/BackToTop';
 const imagesAndVideos = {
   horizon: {
     image: "/images/horizon_1.jpg",
-    imageDim: {w: 3000, h: 4000},
+    imageDim: {w: 3000, h: 1890},
     imageAlt: "Horizon, combat robot",
+    image1: "/images/horizon_v1_2.jpg",
+    imageDim1: {w: 3000, h: 2391},
+    image1Alt: "V1 Horizon, combat robot",
     video: "/videos/horizon_demo.mp4",
     videoDim: {w: 1920, h: 1080},
   },
@@ -39,8 +42,11 @@ const css = {
   robotFactsValue: "text-base md:text-lg font-light dark:font-semibold text-second dark:text-a-main",
   robotDiv: "mb-16 flex flex-col xl:flex-row justify-between",
   robotImage: "robot-image w-1/4 rounded-xl hidden xl:block",
+  robotHorizonDoubleImage: "robot-image rounded-xl hidden xl:block",
+  robotHorizonDoubleText: "text-lg mb-0 mt-2",
   robotHiddenDiv: "xl:hidden flex flex-row justify-center",
   robotHiddenImage: "robot-image mr-[2.5%] w-[45%] rounded-xl xl:hidden",
+  robotHiddenHorizonDoubleImage: "robot-image rounded-xl xl:hidden",
   robotVideo: "robot-video rounded-xl w-1/4 hidden xl:block",
   robotHiddenVideo: "robot-video rounded-xl ml-[2.5%] w-[45%] xl:hidden",
 }
@@ -62,16 +68,24 @@ export default function CurrentRobots() {
           {/* TODO Image of robot */}
           <div className='flex flex-col odd:flex-col-reverse'>
             <div className={css.robotDiv}>
-              <Image width={imagesAndVideos.horizon.imageDim.w} height={imagesAndVideos.horizon.imageDim.h} src={imagesAndVideos.horizon.image} 
-                alt={imagesAndVideos.horizon.imageAlt} className={css.robotImage} />
+              <div className='flex flex-col justify-around w-1/4'>
+                <p className={css.robotHorizonDoubleText}>V1</p>
+                <Image width={imagesAndVideos.horizon.imageDim1.w} height={imagesAndVideos.horizon.imageDim1.h} src={imagesAndVideos.horizon.image1} 
+                  alt={imagesAndVideos.horizon.image1Alt} className={css.robotHorizonDoubleImage} />
+                <p className={css.robotHorizonDoubleText}>V2</p>
+                <Image width={imagesAndVideos.horizon.imageDim.w} height={imagesAndVideos.horizon.imageDim.h} src={imagesAndVideos.horizon.image} 
+                  alt={imagesAndVideos.horizon.imageAlt} className={css.robotHorizonDoubleImage} />
+              </div>
               <div className={css.robotInfoDiv}>
                 <div className={css.robotTitleDiv}>
                   <h3 className={css.robotTitle}>Horizon</h3>
                   <h4 className={css.robotWL}>W: 1, L: 3</h4>
                 </div>
-                <p className={css.robotDesc}>{`Horizon is a horizontal spinner with a 100g weapon that spins at ~18000 RPM. 
-It has a TPU chassis to absorb impact and Carbon Fiber top and bottom plates for rigidity. It's weapon is AR500 Steel and has 
-a tip speed of 350 MPH.`}</p>
+                <p className={css.robotDesc}>{`Version 1 of Horizon has competed in 1 competition so far, it lost 3 out of its 4 matches
+and the last match it won because the other robot lost power halfway through. Version 2 of Horizon has yet to compete but it
+is expected to be a major improvement to the previous version. It went from a direct drive system to belt driven to better protect
+the motor (V1 direct drive motor got hit a few times), it has all around better materials and design from CF-Nylon and 4140 to TPU, 
+Carbon Fiber, and AR500.`}</p>
                 <div className={css.robotFactsOuterDiv}>
                   {Object.entries({
                     "Weight": "450g",
@@ -94,8 +108,14 @@ a tip speed of 350 MPH.`}</p>
                 Your browser does not support the video tag.
               </video>
               <div className={css.robotHiddenDiv}>
-                <Image width={imagesAndVideos.horizon.imageDim.w} height={imagesAndVideos.horizon.imageDim.h} src={imagesAndVideos.horizon.image} 
-                  alt={imagesAndVideos.horizon.imageAlt} className={css.robotHiddenImage} />
+                <div className='flex flex-col justify-around mr-[2.5%] w-[45%]'>
+                  <p className={css.robotHorizonDoubleText}>V1</p>
+                  <Image width={imagesAndVideos.horizon.imageDim1.w} height={imagesAndVideos.horizon.imageDim1.h} src={imagesAndVideos.horizon.image1} 
+                    alt={imagesAndVideos.horizon.image1Alt} className={css.robotHiddenHorizonDoubleImage} />
+                  <p className={css.robotHorizonDoubleText}>V2</p>
+                  <Image width={imagesAndVideos.horizon.imageDim.w} height={imagesAndVideos.horizon.imageDim.h} src={imagesAndVideos.horizon.image} 
+                    alt={imagesAndVideos.horizon.imageAlt} className={css.robotHiddenHorizonDoubleImage} />
+                </div>
                 <video autoPlay loop muted playsInline preload="none" width={imagesAndVideos.horizon.videoDim.w} height={imagesAndVideos.horizon.videoDim.h}
                   className={css.robotHiddenVideo}>
                   <source src={imagesAndVideos.horizon.video} type="video/mp4" />
@@ -112,8 +132,8 @@ a tip speed of 350 MPH.`}</p>
                   <h4 className={css.robotWL}>W: 5, L: 7</h4>
                 </div>
                 <p className={css.robotDesc}>{`Twofold is a double wedge designed to get under opponents and push them around. The double wedge 
-design allows Twofold to take a lot more damage as it comes with a spare ready to go. Fun fact: Twofold is so low to the ground that some 
-weapons are unable to do any damage.`}</p>
+design allows Twofold to take a lot more damage as it comes with a spare ready to go. Fun fact: Twofold is 1in off the ground so some 
+weapons are unable to do any damage as it can just drive under them.`}</p>
                 <div className={css.robotFactsOuterDiv}>
                   {Object.entries({
                       "Weight": "0.5lb",
