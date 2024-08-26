@@ -42,8 +42,8 @@ const css = {
   robotFactsValue: "text-base md:text-lg font-light dark:font-semibold text-second dark:text-a-main",
   robotDiv: "mb-16 flex flex-col xl:flex-row justify-between",
   robotImage: "robot-image w-1/4 rounded-xl hidden xl:block",
-  robotHorizonDoubleImage: "robot-image rounded-xl hidden xl:block",
-  robotHorizonDoubleText: "text-lg mb-0 mt-2",
+  robotHorizonDoubleImage: "robot-image rounded-xl",
+  robotHorizonDoubleText: "text-base mb-0 mt-2 ml-1 font-medium",
   robotHiddenDiv: "xl:hidden flex flex-row justify-center",
   robotHiddenImage: "robot-image mr-[2.5%] w-[45%] rounded-xl xl:hidden",
   robotHiddenHorizonDoubleImage: "robot-image rounded-xl xl:hidden",
@@ -79,7 +79,7 @@ export default function CurrentRobots() {
               <div className={css.robotInfoDiv}>
                 <div className={css.robotTitleDiv}>
                   <h3 className={css.robotTitle}>Horizon</h3>
-                  <h4 className={css.robotWL}>W: 1, L: 3</h4>
+                  <h4 className={css.robotWL}>W: 1 L: 3</h4>
                 </div>
                 <p className={css.robotDesc}>{`Version 1 of Horizon has competed in 1 competition so far, it lost 3 out of its 4 matches
 and the last match it won because the other robot lost power halfway through. Version 2 of Horizon has yet to compete but it
@@ -129,7 +129,7 @@ Carbon Fiber, and AR500.`}</p>
               <div className={css.robotInfoDiv}>
                 <div className={css.robotTitleDiv}>
                   <h3 className={css.robotTitle}>Twofold</h3>
-                  <h4 className={css.robotWL}>W: 5, L: 7</h4>
+                  <h4 className={css.robotWL}>W: 5 L: 7</h4>
                 </div>
                 <p className={css.robotDesc}>{`Twofold is a double wedge designed to get under opponents and push them around. The double wedge 
 design allows Twofold to take a lot more damage as it comes with a spare ready to go. Fun fact: Twofold is 1in off the ground so some 
@@ -169,7 +169,7 @@ weapons are unable to do any damage as it can just drive under them.`}</p>
                   broadphase="SAP" gravity={[0, -2.6, 0]}>
                   <CombatScene startPosition={[0, 0.1, 0]} orbit={true} />
                 </Physics>
-                <Stats />
+                {/* <Stats /> */}
               </PerformanceMonitor>
             </Canvas>
           </StrictMode>
