@@ -34,9 +34,10 @@ export default function Project({params}: ProjectParams) {
       <div className='flex flex-col items-center pt-40'>
         <title>{`${pageTitle} | Aidan Keighron`}</title>
         <div className='content'>
-        <Suspense fallback={<p className='animate-pulse w-fit mx-auto text-2xl'>Loading...</p>}>
-          <DynamicContent />
-        </Suspense>
+          <p className="text-4xl bottom-border w-fit">{pageTitle}</p>
+          <Suspense fallback={<p className='animate-pulse w-fit mx-auto text-2xl'>Loading...</p>}>
+            <DynamicContent />
+          </Suspense>
         </div>
       </div>
       <BackToTop />
