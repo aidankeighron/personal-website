@@ -58,14 +58,12 @@ export default function CurrentRobots() {
     <>
       <Link href='/'><p className='header-link w-fit fixed z-10 items-end justify-end top-10 left-[2.5%]'>Home</p></Link>
       <div className='flex flex-col items-center pt-40'>
-        <title>Current Robots | Aidan Keighron</title>
-        {/* TODO rename */}
-        <h1 className='text-3xl md:text-5xl font-semibold bottom-border mb-2'>Combat Robotics</h1>
+        <title>Combat Robotics | Aidan Keighron</title>
+        <h1 className='text-3xl lg:text-5xl font-semibold bottom-border mb-2 mx-10'>Bad Conflict Combat Robotics</h1>
         <h1 className='text-sm text-second dark:text-a-main mb-10'>* Check out the demo below</h1>
 
         <div className='flex w-[90%] flex-col'>
-          <h2 className='text-xl md:text-3xl bottom-border font-medium w-fit mb-10'>Combat Robots - Antweight (1lb)</h2>
-          {/* TODO Image of robot */}
+          <h2 className='text-xl md:text-2xl bottom-border font-medium w-fit mb-10 ml-10'>Combat Robots - Antweight (1lb)</h2>
           <div className='flex flex-col odd:flex-col-reverse'>
             <div className={css.robotDiv}>
               <div className='flex flex-col justify-around w-1/4'>
