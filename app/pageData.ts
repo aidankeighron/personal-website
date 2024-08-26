@@ -320,6 +320,7 @@ type BCRobot = {
     image1Alt?: string,
     image2?: string,
     image2Alt?: string,
+    video2?: string,
 }
 
 const badConflictRobots: BCRobot[] = [
@@ -336,6 +337,9 @@ const badConflictRobots: BCRobot[] = [
             "Dimensions": "6.6in x 4.9in x 1.5in",
             "Number of Wires": "15"
         },
+        image1: "/images/horizon_1.jpg",
+        image1Alt: "Horizon, combat robot",
+        video2: "/videos/horizon_demo.mp4",
     },
     {
         name: "Twofold",

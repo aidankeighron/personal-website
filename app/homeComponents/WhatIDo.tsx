@@ -106,7 +106,7 @@ function WhatIDoHeader({title, date, learnMoreLink}: WhatIDoProps) {
         viewport={{once: true, amount: 'some'}}
         className='robot-learn-more mb-10 md:mb-[2.5vh]'
       >
-        <Link href={"/currentrobots"}><p>Learn More</p></Link>
+        <Link href={learnMoreLink}><p>Learn More</p></Link>
       </m.div>}
     </>
     );
@@ -131,7 +131,7 @@ export default function WhatIDo() {
   
     return (
       <div id={'robotics'} className='flex flex-col items-end mx-[5%]'>
-        <WhatIDoHeader title={"Combat Robotics"} date={"August 2022 - Present"} /> {/* learnMoreLink={"/currentrobots"}/> */} 
+        <WhatIDoHeader title={"Combat Robotics"} date={"August 2022 - Present"} learnMoreLink={"/combat-robotics"} />
         <div className='robot-container'>
           <m.p
             initial={{opacity: 0.5, y: '25%'}}
@@ -198,7 +198,7 @@ Each season, we built a 125-pound robot to compete in 3v3 competitions. Througho
 
 I had a lot of fun designing the code for these robots. You are not designing a robot for a factory floor that is going to do the same motion 10,000 times. You are designing a robot to be as fast as possible, riding the line of what it is capable of and throwing longevity out the window.
 
-The creativity and engineering I experienced on PWNAGE were unparalleled. And everyone on the team, mentors and students, put everything they had into creating some of the most competitive robots in the world.`}
+The creativity and engineering I experienced on PWNAGE were unparalleled. And everyone on the team, mentors and students alike, put everything they had into creating some of the most competitive robots in the world.`}
           </m.p>
           <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654}
             className='robot-image hidden 2xl:block'/>

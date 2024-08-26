@@ -57,7 +57,7 @@ export function Horizon({startPosition, orbit=false}: CarParams): JSX.Element {
       wheels
   }), useRef(null));
 
-  useControls(vehicleApi, chassisApi, position);
+  const controls = useControls(vehicleApi, chassisApi, position);
 
   let weaponAngle = 0;
   useFrame(() => {
@@ -103,11 +103,11 @@ export function Horizon({startPosition, orbit=false}: CarParams): JSX.Element {
             </mesh>
           </group> */}
       </group>
-      <PhysicsBox position={[0, 0.1, -0.5]} args={[0.2, 0.2, 0.2]} color="blue" />
-      <PhysicsBox position={[0, 0.3, -0.5]} args={[0.1, 0.1, 0.1]} color="purple" />
-      <PhysicsBox position={[-0.5, 0.1, -0.5]} args={[0.3, 0.3, 0.3]} color="red" />
-      <PhysicsBox position={[-0.5, 0.5, -0.5]} args={[0.3, 0.3, 0.3]} color="yellow" />
-      <PhysicsBox position={[-0.4, 1, -0.5]} args={[0.3, 0.3, 0.3]} color="green" />
+      <PhysicsBox position={[0, 0.1, -0.5]} args={[0.2, 0.2, 0.2]} controls={controls} color="blue" />
+      <PhysicsBox position={[0, 0.3, -0.5]} args={[0.1, 0.1, 0.1]} controls={controls} color="purple" />
+      <PhysicsBox position={[-0.5, 0.1, -0.5]} args={[0.3, 0.3, 0.3]} controls={controls} color="red" />
+      <PhysicsBox position={[-0.5, 0.5, -0.5]} args={[0.3, 0.3, 0.3]} controls={controls} color="yellow" />
+      <PhysicsBox position={[-0.4, 1, -0.5]} args={[0.3, 0.3, 0.3]} controls={controls} color="green" />
     </>
   );
 }
@@ -116,9 +116,10 @@ type PhysicsBoxArgs = {
   position: Position,
   args: Position,
   color: string,
+  controls?: {[key: string]: boolean}
 }
-function PhysicsBox({position, args, color}: PhysicsBoxArgs) {
-  const [physicsBox, ] = useBox(() => ({
+function PhysicsBox({position, args, color, controls}: PhysicsBoxArgs) {
+  const [physicsBox, physicsBoxAPI] = useBox(() => ({
       allowSleep: false, // TODO what does this do
       args: args,
       mass: 200,
@@ -127,6 +128,18 @@ function PhysicsBox({position, args, color}: PhysicsBoxArgs) {
       type: 'Dynamic',
   }), useRef(null));
   
+  useEffect(() => {
+    if (controls === undefined) return;
+    const reset = controls.r;
+    
+    if (reset) {
+      physicsBoxAPI.position.set(...position);
+      physicsBoxAPI.rotation.set(0, 0, 0);
+      physicsBoxAPI.velocity.set(0, 0, 0);
+      physicsBoxAPI.angularVelocity.set(0, 0, 0);
+    }
+  }, [controls, physicsBoxAPI, position]);
+
   return (
     <mesh ref={physicsBox as any}>
     <meshBasicMaterial color={color} opacity={0.5} />
@@ -263,7 +276,7 @@ function useWheels(width: number, height: number, front: number, radius: number)
         isFrontWheel: false,
       },
     ];
-    console.log(-front * frontMultiplier*3)
+
     type GetByIndex<T extends BodyProps> = (index: number) => T
     const propsFunc: GetByIndex<CompoundBodyProps> = () => ({
         collisionFilterGroup: GROUP1,
