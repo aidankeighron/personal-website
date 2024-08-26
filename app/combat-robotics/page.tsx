@@ -11,20 +11,20 @@ import BackToTop from '../components/BackToTop';
 
 const imagesAndVideos = {
   horizon: {
-    image: "/images/horizon_1.jpg",
+    image: "/images/horizon_1.webp",
     imageDim: {w: 3000, h: 1890},
     imageAlt: "Horizon, combat robot",
-    image1: "/images/horizon_v1_2.jpg",
+    image1: "/images/horizon_v1_2.webp",
     imageDim1: {w: 3000, h: 2391},
     image1Alt: "V1 Horizon, combat robot",
     video: "/videos/horizon_demo.mp4",
     videoDim: {w: 1920, h: 1080},
   },
   twofold: {
-    image: "/images/twofold_1.jpg",
+    image: "/images/twofold_1.webp",
     imageDim: {w: 3000, h: 4000},
     imageAlt: "Twofold after a competition",
-    image1: "/images/twofold_2.jpg",
+    image1: "/images/twofold_2.webp",
     imageDim1: {w: 3000, h: 4000},
     image1Alt: "Twofold before a competition",
   }

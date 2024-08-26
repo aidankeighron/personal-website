@@ -18,7 +18,7 @@ export default function AboutMe() {
               className='md:w-1/3 m-4'
             >
             {/* TODO better blur url */}
-            <Image width={4007} height={4004} placeholder='blur' blurDataURL='/images/aidan_profile.jpg' priority
+            <Image width={4007} height={4004} placeholder='blur' blurDataURL='/images/aidan_profile.webp' priority
                   src={aboutMeImage} alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' />
             </m.div>
             <p className='text-d-main font-medium text-sm md:text-xl md:w-2/3 whitespace-pre-line md:mx-4'>{`I am a highly motivated computer science student at Michigan State University, fueled by a passion for robotics and software development.
