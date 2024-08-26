@@ -66,7 +66,7 @@ export default function CurrentRobots() {
           <h2 className='text-xl md:text-2xl bottom-border font-medium w-fit mb-10 ml-10'>Combat Robots - Antweight (1lb)</h2>
           <div className='flex flex-col odd:flex-col-reverse'>
             <div className={css.robotDiv}>
-              <div className='flex flex-col justify-around w-1/4'>
+              <div className='flex-col justify-around w-1/4 hidden xl:flex'>
                 <p className={css.robotHorizonDoubleText}>V1</p>
                 <Image width={imagesAndVideos.horizon.imageDim1.w} height={imagesAndVideos.horizon.imageDim1.h} src={imagesAndVideos.horizon.image1} 
                   alt={imagesAndVideos.horizon.image1Alt} className={css.robotHorizonDoubleImage} />
