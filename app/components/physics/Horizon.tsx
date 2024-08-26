@@ -7,10 +7,11 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // import { WheelDebug } from "./WheelDebug";
 import { Group, Object3DEventMap } from "three";
 import { Position } from "@/app/types";
+import { WheelDebug } from "./WheelDebug";
 
 const GROUP0 = 1;
 const GROUP1 = 2;
-const weaponArgs: Position = [0.1, 0.07, 0.3];
+const weaponArgs: Position = [0.1, 0.07, 0.4];
 type CarParams = {
   startPosition: Position,
   orbit?: boolean,
@@ -64,9 +65,9 @@ export function Horizon({startPosition, orbit=false}: CarParams): JSX.Element {
     const slow = true;
 
     if (slow) {
-      weaponAngle -= 0.3;
+      weaponAngle -= 0.5;
       vehicleApi.setSteeringValue(weaponAngle, 3);
-      weaponRef.current.rotation.z += 0.3;
+      weaponRef.current.rotation.z += 0.5;
     }
     else {
       weaponAngle -= 1;
@@ -169,7 +170,7 @@ function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: PublicApi,
   }, []);
 
   const frontSteering = 1;
-  const engineForce = 150;
+  const engineForce = 170;
 
   useEffect(() => {
     if(!vehicleApi || !chassisApi) return;
@@ -262,7 +263,7 @@ function useWheels(width: number, height: number, front: number, radius: number)
         isFrontWheel: true,
       },
       {
-        radius,
+        radius: 0.01,
         directionLocal: [0, -1, 0],
         axleLocal: [0, 1, 0],
         suspensionStiffness: 20,
