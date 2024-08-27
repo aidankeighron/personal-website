@@ -70,7 +70,7 @@ export default function VideoEntry() {
       }
     }
 
-    videoRef.current.src = 'https://firebasestorage.googleapis.com/v0/b/personal-website-2-17025.appspot.com/o/Introvideo14.mp4?alt=media&token=186d3f37-20f3-4e69-a659-b2598ed50f57';
+    videoRef.current.src = 'https://firebasestorage.googleapis.com/v0/b/personal-website-54361.appspot.com/o/Introvideo10-opt.mp4?alt=media&token=36f5d109-97c1-4d8e-95ad-455e342c1baa';
     videoRef.current.addEventListener('error', onVideoError, true);
   }, [])
 
