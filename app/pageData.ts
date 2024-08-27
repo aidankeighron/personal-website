@@ -303,6 +303,13 @@ const otherProjects: OtherProject[] = [
         date: "October 2022 - Present",
         tags: ["JavaScript", "Jekyll", "Utility"],
         github: "https://github.com/aidankeighron/Util"
+    },
+    {
+        name: "Desmos",
+        description: "Collection of various desmos graphs.",
+        date: "October 2021 - Present",
+        tags: ["Desmos", "Math", "Physics"],
+        page: "/desmos"
     }
 ];
 
