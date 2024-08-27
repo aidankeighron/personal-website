@@ -17,7 +17,7 @@ const imagesAndVideos = {
     image1: "/images/horizon_v1_2.webp",
     imageDim1: {w: 3000, h: 2391},
     image1Alt: "V1 Horizon, combat robot",
-    video: "/videos/horizon_demo.mp4",
+    video: "/videos/horizon_demo-opt.webm",
     videoDim: {w: 1920, h: 1080},
   },
   twofold: {

@@ -7,7 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useState, useEffect } from "react";
 import { Position, Rotation } from "../types";
-import robot2541Image from '../../public/images/2451-2023-1.png';
+import robot2541Image from '../../public/images/2451-2023-1.webp';
+
+const PWNAGEVideo = "/videos/mantis_demo_1-opt.webm";
+const PWNAGEImage = "";
 
 type ShowModelProps = {
     url: string,
@@ -178,7 +181,7 @@ Horizon is signed up to compete in a few competitions this fall. Based on how ha
         <div className='robot-container !flex-col 2xl:!flex-row'> 
           <video autoPlay loop muted playsInline preload="none" width={1920} height={1080}
             className='robot-video hidden 2xl:block'>
-            <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
+            <source src={PWNAGEVideo} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <m.p 
@@ -206,14 +209,14 @@ The creativity and engineering I experienced on PWNAGE were unparalleled. And ev
               className='robot-image rounded-xl mr-[2.5%] w-[45%] 2xl:hidden'/>
             <video autoPlay loop muted playsInline preload="none" width={1920} height={1080}
               className='robot-video ml-[2.5%] w-[45%] 2xl:hidden'>
-              <source src={"/videos/mantis_demo_1.mp4"} type="video/mp4" />
+              <source src={PWNAGEVideo} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
         </div>
         <WhatIDoHeader title='Alchemy' date='February 2024 - Present' />
         <div className='robot-container w-[100%] !flex-col xl:!flex-row mb-0'> 
-          <Image src={"/images/alchemy.png"} alt={"Alchemy software"} width={1920} height={1040} 
+          <Image src={"/images/alchemy.webp"} alt={"Alchemy software"} width={1920} height={1040} 
             className='robot-image xl:max-w-[50%] mb-5 xl:mb-0'/>
           <m.p 
             initial={{opacity: 0.5, y: '25%'}}
