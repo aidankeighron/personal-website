@@ -1,12 +1,11 @@
 "use client" // TODO remove
 
-import { useProgress, OrbitControls, Html } from "@react-three/drei";
-import { useLoader, Canvas } from "@react-three/fiber";
+import { useProgress, OrbitControls, Html, useGLTF } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useState, useEffect } from "react";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { Position, Rotation } from "../types";
 import robot2541Image from '../../public/images/2451-2023-1.png';
 
@@ -32,7 +31,7 @@ function CanvasLoader() {
 };
   
 function LoadModel({url, scale, position, rotation, name}: ShowModelProps) {
-    const model: any = useLoader(GLTFLoader, url).scene;
+    const model: any = useGLTF(url).scene;
     return (        
       <mesh>
         <primitive

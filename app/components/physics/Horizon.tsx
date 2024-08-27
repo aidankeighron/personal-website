@@ -1,13 +1,12 @@
 import { useBox, useRaycastVehicle, PublicApi, RaycastVehiclePublicApi, 
     WheelInfoOptions, BodyProps, CompoundBodyProps, useCompoundBody,
 } from "@react-three/cannon";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { Ref, useEffect, useRef, useState } from "react";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 // import { WheelDebug } from "./WheelDebug";
 import { Group, Object3DEventMap } from "three";
 import { Position } from "@/app/types";
-import { WheelDebug } from "./WheelDebug";
+import { useGLTF } from "@react-three/drei";
 
 const GROUP0 = 1;
 const GROUP1 = 2;
@@ -18,19 +17,10 @@ type CarParams = {
 }
 
 export function Horizon({startPosition, orbit=false}: CarParams): JSX.Element {
-  // TODO make drive upside down
-  // TODO hitting objects pushes you up
-  // TODO reset cubes
-  const result = useLoader(
-  GLTFLoader,
-  "/models/horizon_no_weapon.glb"
-  ).scene;
+  const result = useGLTF("/models/horizon_no_weapon-opt.glb").scene;
 
   const weaponRef = useRef<any>(null);
-  const weapon = useLoader(
-  GLTFLoader,
-  "/models/horizon_weapon.glb"
-  ).scene;
+  const weapon = useGLTF("/models/horizon_weapon-opt.glb").scene;
 
   const position: Position = startPosition;
   const width: number = 0.2;
