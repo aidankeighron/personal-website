@@ -161,7 +161,7 @@ weapons are unable to do any damage as it can just drive under them.`}</p>
           <h1 className='text-3xl bottom-border font-medium w-fit mb-2'>Playground</h1>
           <p className='text-second dark:text-d-second text-base mb-10'>* W A S D to move | R to reset, Controls on mobile are a work in progress</p>
           <StrictMode>
-            <Canvas frameloop="demand" dpr={dpr} performance={{current: 1, min: 0.1, max: 1, debounce: 200}} style={{height: '90vh'}} className='bg-d-a-main rounded-xl'>
+            <Canvas frameloop="demand" dpr={dpr} performance={{current: 1, min: 0.1, max: 1, debounce: 200}} style={{height: '90vh'}} className='bg-a-main dark:bg-d-a-main rounded-xl'>
               <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)}>
                 <Physics
                   broadphase="SAP" gravity={[0, -2.6, 0]}>
