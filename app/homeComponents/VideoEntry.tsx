@@ -6,7 +6,7 @@ import { useRef, useState, useLayoutEffect, useEffect } from "react";
 
 function Socials() {
   return (
-    <div className="flex flex-row justify-around mt-3 gap-x-4">
+    <div className="flex flex-row justify-around mt-3 gap-x-4 text-main">
       <Link href={"https://github.com/aidankeighron"} className='' target='_blank'>
         <button type="button"
           className="mb-2 flex rounded bg-[#333] px-6 py-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg">
