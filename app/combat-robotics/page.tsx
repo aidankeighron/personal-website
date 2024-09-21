@@ -77,7 +77,11 @@ export default function CurrentRobots() {
               <div className={css.robotInfoDiv}>
                 <div className={css.robotTitleDiv}>
                   <h3 className={css.robotTitle}>Horizon</h3>
-                  <h4 className={css.robotWL}>W: 1 L: 3</h4>
+                  <h4 className={css.robotWL}>Most recent competition W: 3 L: 2</h4>
+                  {/* W: 1 L: 3 */}
+                  {/* W: 1 L: 3 */}
+                  {/* W: 3 L: 2 */}
+                  {/*  */}
                 </div>
                 <p className={css.robotDesc}>{`Version 1 of Horizon has competed in 1 competition so far, it lost 3 out of its 4 matches
 and the last match it won because the other robot lost power halfway through. Version 2 of Horizon has yet to compete but it
