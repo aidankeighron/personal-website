@@ -214,9 +214,9 @@ The creativity and engineering I experienced on PWNAGE were unparalleled. And ev
             </video>
           </div>
         </div>
-        <WhatIDoHeader title='Alchemy' date='February 2024 - Present' />
+        <WhatIDoHeader title='Half Full' date='February 2024 - Present' />
         <div className='robot-container w-[100%] !flex-col xl:!flex-row mb-0'> 
-          <Image src={"/images/alchemy.webp"} alt={"Alchemy software"} width={1920} height={1040} 
+          <Image src={"/images/halffull.png"} alt={"Half Full software"} width={1920} height={1040} 
             className='robot-image xl:max-w-[50%] mb-5 xl:mb-0'/>
           <m.p 
             initial={{opacity: 0.5, y: '25%'}}
@@ -228,13 +228,13 @@ The creativity and engineering I experienced on PWNAGE were unparalleled. And ev
             viewport={{once: true, amount: 'some'}}
             className='robot-text max-w-[80%] xl:max-w-[800px] whitespace-pre-line'
           >
-            {`Alchemy is a task management tool that I designed to help me improve my productivity.
+            {`Half Full is a task management tool that I designed to help me improve my productivity.
 
 I have always struggled with time management and I could never find anything that suited me. Everything either had too much overhead or was too simple. I felt like I was spending more time planning out my tasks than completing them.
 
-I set out to create a tool that would let you instantly create new tasks without removing customizability. I ended up with Alchemy. To create a task, all you have to do is click on the day you plan to complete the task and type in the name. It's that simple.
+I set out to create a tool that would let you instantly create new tasks without removing customizability. I ended up with Half Full. To create a task, all you have to do is click on the day you plan to complete the task and type in the name. It's that simple.
 
-Seeing how much it improved my own productivity, I decided to create a startup centered around Alchemy. Currently, I am working on the business plan and creating a website.`}
+Seeing how much it improved my own productivity, I decided to create a startup centered around Half Full. Currently, I am working on the business plan and creating a website.`}
           </m.p>
         </div>
       </div>

@@ -25,7 +25,7 @@ export default function AboutMe() {
 
 On the robotics side of things, I co-founded the combat robotics team Bad Conflict, where we build robots to compete in antweight (meaning robots are less than one pound) competitions. My current robot, Horizon, is a horizontal spinner that packs quite a punch.
 
-Taking software development to the next level I created a startup called Alchemy, where I am making an all-in-one task management software that aims to reduce the time it takes to plan out your week.`}</p>
+Taking software development to the next level I created a startup called Half Full, where I am making an all-in-one task management software that aims to reduce the time it takes to plan out your week.`}</p>
           </div>
       </div>
     );
