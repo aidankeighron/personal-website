@@ -30,6 +30,7 @@ export default function Home() {
                     About Me
                 </m.h1>
                 <AboutMe />
+                <Resume />
                 <m.h1
                     initial={{opacity: 0, x: '-10vh'}}
                     whileInView={{opacity: 1, x: 0, transition: {duration: 1}}}
@@ -48,7 +49,6 @@ export default function Home() {
                     Skills
                 </m.h1>        
                 <Skillsets />
-                <Resume />
                 <m.h1
                     initial={{opacity: 0, x: '-10vh'}}
                     whileInView={{opacity: 1, x: 0, transition: {duration: 1}}}
