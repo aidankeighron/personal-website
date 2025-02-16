@@ -100,7 +100,7 @@ export default function Skillsets() {
         whileInView="visible"
         viewport={{once: true, amount: 'some'}}
         variants={variants}
-        className='mx-[10%] mb-10 dark:text-main text-d-main'
+        className='mx-[5%] w-[90%] mb-10 dark:text-main text-d-main'
       >
         <h1 className='text-4xl font-bold mb-6'>Work Experience</h1>
         {workExperience.map(experience => {
