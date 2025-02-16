@@ -21,7 +21,7 @@ export default function AboutMe() {
             <Image width={4007} height={4004} placeholder='blur' blurDataURL='/images/aidan_profile.webp' priority
                   src={aboutMeImage} alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' />
             </m.div>
-            <p className='text-d-main font-medium text-sm md:text-xl md:w-2/3 whitespace-pre-line md:mx-4'>{`I am a highly motivated computer science student at Michigan State University, fueled by a passion for robotics and software development.
+            <p className='text-d-main font-medium text-sm md:text-lg md:w-2/3 whitespace-pre-line md:mx-4'>{`I am a highly motivated computer science student at Michigan State University, fueled by a passion for robotics and software development.
 
 On the robotics side of things, I co-founded the combat robotics team Bad Conflict, where we build robots to compete in antweight (meaning robots are less than one pound) competitions. My current robot, Horizon, is a horizontal spinner that packs quite a punch.
 
