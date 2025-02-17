@@ -286,7 +286,7 @@ const otherProjects: OtherProject[] = [
     {
         name: "Group Extension",
         description: "Save and load chrome tab groups across devices.",
-        date: "July 2013",
+        date: "July 2023",
         tags: ["Chrome extension", "JavaScript", "Productivity"],
         github: "https://github.com/aidankeighron/group-extension"
     },
