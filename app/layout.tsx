@@ -11,22 +11,11 @@ export const metadata: Metadata = {
     default: "Aidan Keighron",
   },
   description: "My personal website and portfolio",
-  // metadataBase: "", // TODO root url
   openGraph: {
-    type: "website", 
-    // url: "", // TODO root url
+    type: "website",
     title: "Aidan Keighron personal website", 
     description: "My personal website and portfolio", 
     siteName: "Aidan Keighron",
-    // images: [
-    //   {
-    //     url: 'https://nextjs.org/og-alt.png', // Must be an absolute URL
-    //     width: 1800,
-    //     height: 1600,
-    //     alt: 'My custom alt',
-    //   },
-    // ], // TODO
-    // videos: ,
     locale: 'en_US',
   },
   authors: {
@@ -36,7 +25,6 @@ export const metadata: Metadata = {
   keywords: "portfolio, personal website, aidan keighron, blog",
   creator: "Aidan Keighron",
   publisher: "Vercel",
-  // verification: "", // TODO look it up
   icons: {
     icon: [
       {
@@ -68,7 +56,6 @@ export const viewport: Viewport = {
   userScalable: true,
 }
 
-// TODO? https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#local-fonts
 const jetBrains = JetBrains_Mono({subsets: ['latin']});
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {

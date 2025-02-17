@@ -8,12 +8,5 @@ export default function manifest(): MetadataRoute.Manifest {
         start_url: "/",
         categories: ["portfolio, personal website, aidan keighron, blog"],
         orientation: "portrait-primary",
-        // icons: [ // TODO https://developer.mozilla.org/en-US/docs/Web/Manifest/icons
-        //     {
-        //       src: '/favicon.ico',
-        //       sizes: 'any',
-        //       type: 'image/x-icon',
-        //     },
-        // ],
     }
   }

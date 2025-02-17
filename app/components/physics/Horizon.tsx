@@ -30,7 +30,7 @@ export function Horizon({startPosition, orbit=false}: CarParams): JSX.Element {
 
   const chassisBodyArgs: Position = [width, height, front * 2];
   const [chassisBody, chassisApi] = useBox(() => ({
-  allowSleep: false, // TODO what does this do
+  allowSleep: false,
   args: chassisBodyArgs,
   mass: 150,
   position,
@@ -111,7 +111,7 @@ type PhysicsBoxArgs = {
 }
 function PhysicsBox({position, args, color, controls}: PhysicsBoxArgs) {
   const [physicsBox, physicsBoxAPI] = useBox(() => ({
-      allowSleep: false, // TODO what does this do
+      allowSleep: false,
       args: args,
       mass: 200,
       position: position,
@@ -211,7 +211,7 @@ function useControls(vehicleApi: RaycastVehiclePublicApi, chassisApi: PublicApi,
       chassisApi.angularVelocity.set(0, 0, 0);
       chassisApi.rotation.set(0, 0, 0);
     }
-  }, [controls, vehicleApi, chassisApi, startPosition]); // TODO are all of these needed?
+  }, [controls, vehicleApi, chassisApi, startPosition]);
 
   return controls;
 }

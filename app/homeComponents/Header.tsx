@@ -35,7 +35,6 @@ export default function Header() {
         variants={variants}
         className='absolute z-10 space-x-4 w-full items-end justify-end mr-[2.5%] p-10 hidden md:flex'
       >
-        {/* TODO make them work and smooth scroll */}
         <Link href={'#aboutme'}  scroll={true}>
           <m.p className='header-link'
             variants={item}

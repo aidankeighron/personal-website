@@ -106,7 +106,6 @@ ul * ul {
   overflow-x: auto !important;
   scrollbar-width: thin;
   scrollbar-color: var(--secondary) var(--main0);
-  /* TODO remove arrows */
 }
 
 ::-webkit-scrollbar {

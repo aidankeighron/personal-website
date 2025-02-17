@@ -17,7 +17,6 @@ export default function AboutMe() {
               viewport={{once: true, amount: 'some'}}
               className='md:w-1/3 m-4'
             >
-            {/* TODO better blur url */}
             <Image width={4007} height={4004} placeholder='blur' blurDataURL='/images/aidan_profile.webp' priority
                   src={aboutMeImage} alt="Picture of Aidan Keighron" className='h-max w-max rounded-xl' />
             </m.div>

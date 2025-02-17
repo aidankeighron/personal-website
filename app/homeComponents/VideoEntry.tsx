@@ -1,4 +1,4 @@
-"use client" // TODO can remove?
+"use client" 
 
 import { m } from "framer-motion";
 import Link from "next/link";
@@ -48,10 +48,8 @@ export default function VideoEntry() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoTopOffset, setVideoTopOffset] = useState<number>(0);
 
-  // TODO make this resize on going back 
   useLayoutEffect(() => {
     if (videoRef.current) {
-      // TODO change this to a ratio of the width
       if (videoRef.current.offsetHeight > window.innerHeight) {
         setVideoTopOffset(videoRef.current.offsetHeight-window.innerHeight);
       }

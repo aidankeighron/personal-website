@@ -1,4 +1,4 @@
-"use client" // TODO remove
+"use client" 
 
 import { useProgress, OrbitControls, Html, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
@@ -23,7 +23,6 @@ type ShowModelProps = {
 function CanvasLoader() {
     const { progress } = useProgress();
   
-    // TODO loading bar
     return (
       <Html as='div' center
         style={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
@@ -48,7 +47,6 @@ function LoadModel({url, scale, position, rotation, name}: ShowModelProps) {
 }
   
 function ShowModel({url, scale, position, rotation, name}: ShowModelProps) {
-    // TODO https://glb.babylonpress.org/
     return ( 
       <div className="flex flex-col">
         <p className="text-2xl mb-1 self-center">{name}</p>
@@ -114,7 +112,6 @@ function WhatIDoHeader({title, date, learnMoreLink}: WhatIDoProps) {
     );
 }
   
-  // TODO looks bad medium ui
 export default function WhatIDo() {
     const [zoom, setZoom] = useState(2);
   
@@ -152,7 +149,6 @@ We compete in antweight robotics competitions, meaning the robots need to be les
 Our team philosophy is to help our members compete in combat robotics by removing barriers to entry. We support our members throughout the creation process with member support for designing, wiring, and building. We also get corporate sponsorships to help offset the cost of combat materials, manufacturing, and entry fees.`}
           </m.p>
           <ShowModel url={"/models/twofold-opt.glb"} scale={zoom} position={[0,0,0]} rotation={[-1, -0.1, Math.PI + 0.2]} name="Twofold" />
-          {/* TODO text indicating you can rotate model */}
         </div>
         <div className='robot-container md:mt-[-5rem]'>
           <m.p

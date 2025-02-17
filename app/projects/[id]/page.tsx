@@ -45,7 +45,7 @@ export default function Project({params}: ProjectParams) {
   );
 }
 
-// export async function getStaticPaths() { // TODO
+// export async function getStaticPaths() {
 //   const projects: string[] = [
 //     "test",
 //     "file-calculator",
@@ -65,7 +65,7 @@ export default function Project({params}: ProjectParams) {
 //   };
 // }
 
-// "use client"; // TODO
+// "use client";
 
 // import { Html, PerformanceMonitor, Stats } from '@react-three/drei';
 // import Content from './content.mdx';

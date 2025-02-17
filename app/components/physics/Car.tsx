@@ -28,7 +28,7 @@ export function Car({startPosition, orbit=false}: CarParams): JSX.Element {
 
   const chassisBodyArgs: Position = [width, height, front * 2];
   const [chassisBody, chassisApi] = useBox(() => ({
-    allowSleep: false, // TODO what does this do
+    allowSleep: false,
     args: chassisBodyArgs,
     mass: 150,
     position,
