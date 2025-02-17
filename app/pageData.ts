@@ -262,14 +262,14 @@ const otherProjects: OtherProject[] = [
         description: "Elo algorithm implementation for personal Super Smash Bros Ultimate tournament.",
         date: "October 2023",
         tags: ["Python", "Elo"],
-        github: "https://github.com/aidankeighron/smash-elo-ranking/tree/main"
+        github: "https://github.com/aidankeighron/smash-elo-ranking"
     },
     {
         name: "Reminder Notification",
         description: "Desktop app to schedule recurring reminders with custom notifications.",
         date: "August 2023",
         tags: ["JavaScript", "Electron.js"],
-        github: "https://github.com/aidankeighron/reminder-notification/commits/main/"
+        github: "https://github.com/aidankeighron/reminder-notification"
     },
     {
         name: "Youtube Limit",
