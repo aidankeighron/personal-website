@@ -102,7 +102,7 @@ export default function Skillsets() {
         variants={variants}
         className='mx-[5%] w-[90%] mb-10 dark:text-main text-d-main'
       >
-        <h1 className='text-4xl font-bold mb-6'>Work Experience</h1>
+        <h1 className='text-4xl font-bold mb-6' id={'work'}>Work Experience</h1>
         {workExperience.map(experience => {
           return (
           <m.div 

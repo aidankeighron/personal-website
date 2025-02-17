@@ -34,6 +34,7 @@ export default function Header() {
         animate="visible"
         variants={variants}
         className='absolute z-10 space-x-4 w-full items-end justify-end mr-[2.5%] p-10 hidden md:flex'
+        // TODO fixed ?
       >
         <Link href={'#aboutme'}  scroll={true}>
           <m.p className='header-link'
@@ -54,6 +55,13 @@ export default function Header() {
             variants={item}
           >
             Skills
+          </m.p>
+        </Link>
+        <Link href={'#work'} scroll={true}>
+          <m.p className='header-link'
+            variants={item}
+          >
+            Work Experience
           </m.p>
         </Link>
         <Link href={'#otherprojects'} scroll={true}>
