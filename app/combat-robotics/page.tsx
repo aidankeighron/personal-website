@@ -43,7 +43,7 @@ const css = {
   robotDiv: "mb-16 flex flex-col xl:flex-row justify-between",
   robotImage: "robot-image w-1/4 rounded-xl hidden xl:block",
   robotHorizonDoubleImage: "robot-image rounded-xl",
-  robotHorizonDoubleText: "text-base mb-0 mt-2 ml-1 font-medium",
+  robotHorizonDoubleText: "text-lg mb-2 mt-4 ml-1 font-medium bottom-border w-fit",
   robotHiddenDiv: "xl:hidden flex flex-row justify-center",
   robotHiddenImage: "robot-image mr-[2.5%] w-[45%] rounded-xl xl:hidden",
   robotHiddenHorizonDoubleImage: "robot-image rounded-xl xl:hidden",
@@ -67,10 +67,10 @@ export default function CurrentRobots() {
           <div className='flex flex-col odd:flex-col-reverse'>
             <div className={css.robotDiv}>
               <div className='flex-col justify-around w-1/4 hidden xl:flex'>
-                <p className={css.robotHorizonDoubleText}>V1</p>
+                <p className={css.robotHorizonDoubleText}>Version One:</p>
                 <Image width={imagesAndVideos.horizon.imageDim1.w} height={imagesAndVideos.horizon.imageDim1.h} src={imagesAndVideos.horizon.image1} 
                   alt={imagesAndVideos.horizon.image1Alt} className={css.robotHorizonDoubleImage} />
-                <p className={css.robotHorizonDoubleText}>V2</p>
+                <p className={css.robotHorizonDoubleText}>Version Two:</p>
                 <Image width={imagesAndVideos.horizon.imageDim.w} height={imagesAndVideos.horizon.imageDim.h} src={imagesAndVideos.horizon.image} 
                   alt={imagesAndVideos.horizon.imageAlt} className={css.robotHorizonDoubleImage} />
               </div>
