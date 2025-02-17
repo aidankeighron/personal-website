@@ -3,6 +3,7 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import { JetBrains_Mono } from 'next/font/google';
+import Footer from "./components/Footer";
 
 // https://nikolasbarwicki.com/articles/seo-in-next-js-13-with-metadata-api
 export const metadata: Metadata = {
@@ -64,6 +65,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
       <SpeedInsights/>
       <Analytics />
       <body className="bg-main dark:bg-d-main text-d-main dark:text-main" suppressHydrationWarning={true}>{children}</body>
+      <Footer />
     </html>
   );
 }
