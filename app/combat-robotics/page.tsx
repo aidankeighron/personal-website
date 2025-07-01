@@ -16,9 +16,16 @@ const imagesAndVideos = {
     imageAlt: "Horizon, combat robot",
     image1: "/images/horizon_v1_2.webp",
     imageDim1: {w: 3000, h: 2391},
-    image1Alt: "V1 Horizon, combat robot",
+    image1Alt: "V2 Horizon, combat robot",
+    image2: "/images/horizon_v3.webp",
+    imageDim2: {w: 3000, h: 2391},
+    image2Alt: "V3 Horizon, combat robot",
     video: "/videos/horizon_demo-opt.webm",
     videoDim: {w: 1920, h: 1080},
+    video1: "/videos/horizon_demo2.webm",
+    videoDim1: {w: 1920, h: 1080},
+    largeVideo: "/videos/2025 i3 Detroit.mp4",
+    largeVideoDim: {w: 1920, h: 1080},
   },
   twofold: {
     image: "/images/twofold_1.webp",
@@ -43,12 +50,13 @@ const css = {
   robotDiv: "mb-16 flex flex-col xl:flex-row justify-between",
   robotImage: "robot-image w-1/4 rounded-xl hidden xl:block",
   robotHorizonDoubleImage: "robot-image rounded-xl",
-  robotHorizonDoubleText: "text-lg mb-2 mt-4 ml-1 font-medium bottom-border w-fit",
+  robotHorizonDoubleText: "text-lg mb-2 mt-4 ml-1 font-medium bottom-border w-fit my-4",
   robotHiddenDiv: "xl:hidden flex flex-row justify-center",
   robotHiddenImage: "robot-image mr-[2.5%] w-[45%] rounded-xl xl:hidden",
   robotHiddenHorizonDoubleImage: "robot-image rounded-xl xl:hidden",
-  robotVideo: "robot-video rounded-xl w-1/4 hidden xl:block",
-  robotHiddenVideo: "robot-video rounded-xl ml-[2.5%] w-[45%] xl:hidden",
+  robotVideo: "robot-video rounded-xl hidden xl:block w-[80%] h-fit my-4",
+  robotHiddenVideo: "robot-video rounded-xl ml-[2.5%] w-[90%] xl:hidden h-fit my-4",
+  robotLargeVideo: "robot-video rounded-xl ml-[2.5%] w-fit h-fit my-4",
 }
 
 export default function CurrentRobots() {
@@ -73,6 +81,9 @@ export default function CurrentRobots() {
                 <p className={css.robotHorizonDoubleText}>Version Two:</p>
                 <Image width={imagesAndVideos.horizon.imageDim.w} height={imagesAndVideos.horizon.imageDim.h} src={imagesAndVideos.horizon.image} 
                   alt={imagesAndVideos.horizon.imageAlt} className={css.robotHorizonDoubleImage} />
+                <p className={css.robotHorizonDoubleText}>Version Three:</p>
+                <Image width={imagesAndVideos.horizon.imageDim2.w} height={imagesAndVideos.horizon.imageDim2.h} src={imagesAndVideos.horizon.image2} 
+                  alt={imagesAndVideos.horizon.image2Alt} className={css.robotHorizonDoubleImage} />
               </div>
               <div className={css.robotInfoDiv}>
                 <div className={css.robotTitleDiv}>
@@ -104,27 +115,49 @@ Carbon Fiber, and AR500.`}</p>
                   })}
                 </div>
               </div>
-              <video autoPlay loop muted playsInline preload="none" width={imagesAndVideos.horizon.videoDim.w} height={imagesAndVideos.horizon.videoDim.h}
-                className={css.robotVideo}>
-                <source src={imagesAndVideos.horizon.video} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              <div className={css.robotHiddenDiv}>
-                <div className='flex flex-col justify-around mr-[2.5%] w-[45%]'>
-                  <p className={css.robotHorizonDoubleText}>V1</p>
-                  <Image width={imagesAndVideos.horizon.imageDim1.w} height={imagesAndVideos.horizon.imageDim1.h} src={imagesAndVideos.horizon.image1} 
-                    alt={imagesAndVideos.horizon.image1Alt} className={css.robotHiddenHorizonDoubleImage} />
-                  <p className={css.robotHorizonDoubleText}>V2</p>
-                  <Image width={imagesAndVideos.horizon.imageDim.w} height={imagesAndVideos.horizon.imageDim.h} src={imagesAndVideos.horizon.image} 
-                    alt={imagesAndVideos.horizon.imageAlt} className={css.robotHiddenHorizonDoubleImage} />
-                </div>
+              <div className='w-1/4'>
                 <video autoPlay loop muted playsInline preload="none" width={imagesAndVideos.horizon.videoDim.w} height={imagesAndVideos.horizon.videoDim.h}
-                  className={css.robotHiddenVideo}>
+                  className={css.robotVideo}>
                   <source src={imagesAndVideos.horizon.video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+                <video autoPlay loop muted playsInline preload="none" width={imagesAndVideos.horizon.videoDim1.w} height={imagesAndVideos.horizon.videoDim1.h}
+                  className={css.robotVideo}>
+                  <source src={imagesAndVideos.horizon.video1} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className={css.robotHiddenDiv}>
+                <div className='flex flex-col justify-around mr-[2.5%] w-[45%]'>
+                  <p className={css.robotHorizonDoubleText}>Version One:</p>
+                  <Image width={imagesAndVideos.horizon.imageDim1.w} height={imagesAndVideos.horizon.imageDim1.h} src={imagesAndVideos.horizon.image1} 
+                    alt={imagesAndVideos.horizon.image1Alt} className={css.robotHiddenHorizonDoubleImage} />
+                  <p className={css.robotHorizonDoubleText}>Version Two:</p>
+                  <Image width={imagesAndVideos.horizon.imageDim.w} height={imagesAndVideos.horizon.imageDim.h} src={imagesAndVideos.horizon.image} 
+                    alt={imagesAndVideos.horizon.imageAlt} className={css.robotHiddenHorizonDoubleImage} />
+                  <p className={css.robotHorizonDoubleText}>Version Three:</p>
+                  <Image width={imagesAndVideos.horizon.imageDim2.w} height={imagesAndVideos.horizon.imageDim2.h} src={imagesAndVideos.horizon.image2} 
+                    alt={imagesAndVideos.horizon.image2Alt} className={css.robotHiddenHorizonDoubleImage} />
+                </div>
+                <div className='w-auto'>
+                  <video autoPlay loop muted playsInline preload="none" width={imagesAndVideos.horizon.videoDim.w} height={imagesAndVideos.horizon.videoDim.h}
+                    className={css.robotHiddenVideo}>
+                    <source src={imagesAndVideos.horizon.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                  <video autoPlay loop muted playsInline preload="none" width={imagesAndVideos.horizon.videoDim1.w} height={imagesAndVideos.horizon.videoDim1.h}
+                    className={css.robotHiddenVideo}>
+                    <source src={imagesAndVideos.horizon.video1} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
               </div>
             </div>
+            <video autoPlay loop muted playsInline preload="none" width={imagesAndVideos.horizon.largeVideoDim.w} height={imagesAndVideos.horizon.largeVideoDim.h}
+              className={css.robotLargeVideo}>
+              <source src={imagesAndVideos.horizon.largeVideo} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
             <div className={css.robotDiv}>
               <Image width={imagesAndVideos.twofold.imageDim.w} height={imagesAndVideos.twofold.imageDim.h} src={imagesAndVideos.twofold.image} 
                 alt={imagesAndVideos.twofold.imageAlt} className={css.robotImage} />

@@ -28,7 +28,7 @@
     @apply text-sm sm:text-base lg:text-lg leading-9 self-center mx-[2.5%] md:mx-0 md:my-[1%] md:w-full md:max-w-[550px] xl:max-w-[800px];
   }
   .robot-image {
-    @apply object-contain md:basis-1/4 md:h-full rounded-xl max-h-[500px] self-center;
+    @apply object-contain md:basis-1/4 md:h-full rounded-xl max-h-[250px] self-center w-fit;
   }
   .robot-video {
     @apply object-contain md:basis-1/4 md:h-full rounded-xl max-h-[500px] self-center;
