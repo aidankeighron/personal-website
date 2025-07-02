@@ -24,7 +24,7 @@ const imagesAndVideos = {
     videoDim: {w: 1920, h: 1080},
     video1: "/videos/horizon_demo2.webm",
     videoDim1: {w: 1920, h: 1080},
-    largeVideo: "/videos/2025 i3 Detroit.mp4",
+    largeVideo: "/videos/2025 i3 Detroit.webm",
     largeVideoDim: {w: 1920, h: 1080},
   },
   twofold: {
