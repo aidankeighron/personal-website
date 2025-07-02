@@ -56,7 +56,7 @@ const css = {
   robotHiddenHorizonDoubleImage: "robot-image rounded-xl xl:hidden",
   robotVideo: "robot-video rounded-xl hidden xl:block w-[80%] h-fit my-4",
   robotHiddenVideo: "robot-video rounded-xl ml-[2.5%] w-[90%] xl:hidden h-fit my-4",
-  robotLargeVideo: "robot-video rounded-xl ml-[2.5%] w-fit h-fit my-4",
+  robotLargeVideo: "robot-video rounded-xl ml-[2.5%] w-fit h-fit my-4 brightness-[60%]",
 }
 
 export default function CurrentRobots() {
