@@ -79,7 +79,7 @@ const skillsets: {[key: string]: Skill[]} = {
     "Programming Languages": [
         {
             name: "Python",
-            experienceYears: 2,
+            experienceYears: 3,
         },
         {
             name: "Java",
@@ -95,12 +95,12 @@ const skillsets: {[key: string]: Skill[]} = {
         },
         {
             name: "JavaScript / TypeScript",
-            experienceYears: 2,
+            experienceYears: 3,
             subList: ["React Native", "Electron", "Express.js / Socket.io", "Next.js"],
         },
         {
             name: "HTML / CSS",
-            experienceYears: 2,
+            experienceYears: 3,
         },
     ],
     "Technical Skills": [
@@ -176,14 +176,31 @@ type WorkExperience = {
   
 const workExperience: WorkExperience[] = [
     {
+      company: "Toyota",
+      description: "Saline, MI",
+      duration: "May 2025 - Present",
+      bullets: []
+    },
+    {
+      company: "Half Full",
+      description: "Wheaton, IL",
+      duration: "January 2024 - Present",
+      bullets: [
+        'Founded a startup to help others increase productivity and improve time management; gained experience in business management and leadership',
+        'Developed exclusive features using Electron.js to streamline task scheduling and weekly planning, reducing time investment by 35%, and allowing users to personalize their task creation process',
+        'Conducted thorough competitor analysis to ensure product marketability and distinction from existing products',
+        'Gathered market research, prioritizing development to suit customer needs, resulting in a larger target market with more potential for success',
+    ]
+    },
+    {
       company: "APS Data Technologies",
       description: "Aurora, IL",
-      duration: "August 2022 - Present",
+      duration: "August 2022 - May 2025",
       bullets: ["Improved car tracking system accuracy by 48% and achieved real-time performance, decreasing processing time from 2 seconds to 0.2",
 "Spearheaded development of a mobile app for the Paramount Theater, writing 60% of the code and seamlessly integrating with existing databases and payment systems",
 "Empowered development team by providing 24/7 support, leading to a significant increase in productivity",
 "Managed a team of 7+ interns, overseeing training and assigning tasks to maximize output"]
-    }
+    },
 ]
 
 type OtherProject = {
