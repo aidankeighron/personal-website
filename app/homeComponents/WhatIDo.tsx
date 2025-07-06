@@ -1,13 +1,15 @@
 "use client" 
 
-import { useProgress, OrbitControls, Html, useGLTF } from "@react-three/drei";
+import { useProgress, OrbitControls, Html, useGLTF, PerformanceMonitor } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Suspense, useState, useEffect } from "react";
+import { Suspense, useState, useEffect, StrictMode } from "react";
 import { Position, Rotation } from "../types";
 import robot2541Image from '../../public/images/2451-2023-1.webp';
+import { Physics } from '@react-three/cannon';
+import { CombatScene } from '../components/physics/CombatScene';
 
 const PWNAGEVideo = "/videos/mantis_demo_1-opt.webm";
 const PWNAGEImage = "";
@@ -114,6 +116,7 @@ function WhatIDoHeader({title, date, learnMoreLink}: WhatIDoProps) {
   
 export default function WhatIDo() {
     const [zoom, setZoom] = useState(2);
+    const [dpr, setDpr] = useState(1.5);
   
     useEffect(() => {
       const handleResize = () => {
@@ -170,7 +173,21 @@ Horizon is signed up to compete in a few competitions this fall. Based on how ha
           <ShowModel url={"/models/horizon-opt.glb"} scale={zoom}
             position={[0,0,0]} rotation={[2*Math.PI/3, 0, -Math.PI/12]} name={"Horizon"} />
         </div>
-  
+        
+        <h1 className='text-3xl bottom-border font-medium w-fit mb-2'>Playground</h1>
+        <p className='text-second dark:text-d-second text-base mb-10'>* W A S D to move | R to reset, Controls on mobile are a work in progress</p>
+        <StrictMode>
+          <Canvas frameloop="demand" dpr={dpr} performance={{current: 1, min: 0.1, max: 1, debounce: 200}} style={{height: '90vh'}} className='bg-a-main dark:bg-d-a-main rounded-xl'>
+            <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)}>
+              <Physics
+                broadphase="SAP" gravity={[0, -2.6, 0]}>
+                <CombatScene startPosition={[0, 0.1, 0]} orbit={true} />
+              </Physics>
+              {/* <Stats /> */}
+            </PerformanceMonitor>
+          </Canvas>
+        </StrictMode>
+
         <div className='self-baseline'>
           <WhatIDoHeader title='Competitive Robotics' date='January 2019 - May 2023' />
         </div>
