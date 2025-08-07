@@ -216,10 +216,10 @@ I had a lot of fun designing the code for these robots. You are not designing a 
 The creativity and engineering I experienced on PWNAGE were unparalleled. And everyone on the team, mentors and students alike, put everything they had into creating some of the most competitive robots in the world.`}
           </m.p>
           <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654}
-            className='robot-image hidden 2xl:block'/>
+            className='home-image hidden 2xl:block'/>
           <div className='2xl:hidden flex flex-row justify-center'>
             <Image src={robot2541Image} alt={"Image of 2451's 2023 FRC Robot"} width={541} height={654} 
-              className='robot-image rounded-xl mr-[2.5%] w-[45%] 2xl:hidden'/>
+              className='home-image rounded-xl mr-[2.5%] w-[45%] 2xl:hidden'/>
             <video autoPlay loop muted playsInline preload="none" width={1920} height={1080}
               className='robot-video ml-[2.5%] w-[45%] 2xl:hidden'>
               <source src={PWNAGEVideo} type="video/mp4" />
@@ -230,7 +230,7 @@ The creativity and engineering I experienced on PWNAGE were unparalleled. And ev
         <WhatIDoHeader title='Half Full' date='February 2024 - Present' />
         <div className='robot-container w-[100%] !flex-col xl:!flex-row mb-0'> 
           <Image src={"/images/halffull.png"} alt={"Half Full software"} width={1920} height={1040} 
-            className='robot-image xl:max-w-[50%] mb-5 xl:mb-0'/>
+            className='home-image xl:max-w-[50%] mb-5 xl:mb-0'/>
           <m.p 
             initial={{opacity: 0.5, y: '25%'}}
             whileInView={{opacity: 1, y: 0, transition: {
