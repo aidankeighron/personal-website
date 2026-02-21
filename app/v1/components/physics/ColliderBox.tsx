@@ -1,4 +1,4 @@
-import { Position } from "@/app/types";
+import { Position } from "@/app/v1/types";
 import { useBox } from "@react-three/cannon";
 
 const debug = true;

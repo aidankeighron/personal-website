@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense, useState, useEffect, StrictMode } from "react";
 import { Position, Rotation } from "../types";
-import robot2541Image from '../../public/images/2451-2023-1.webp';
+import robot2541Image from '../../../public/images/2451-2023-1.webp';
 import { Physics } from '@react-three/cannon';
 import { CombatScene } from '../components/physics/CombatScene';
 

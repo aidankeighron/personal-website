@@ -2,7 +2,7 @@
 
 import { m } from "framer-motion";
 import Image from "next/image";
-import aboutMeImage from '../../public/images/aidan_profile.jpg';
+import aboutMeImage from '../../../public/images/aidan_profile.jpg';
 
 export default function AboutMe() {
     return (

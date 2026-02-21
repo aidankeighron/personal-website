@@ -5,7 +5,7 @@ import { useFrame } from "@react-three/fiber";
 import { Ref, useEffect, useRef, useState } from "react";
 // import { WheelDebug } from "./WheelDebug";
 import { Group, Object3DEventMap } from "three";
-import { Position } from "@/app/types";
+import { Position } from "@/app/v1/types";
 import { useGLTF } from "@react-three/drei";
 
 const GROUP0 = 1;

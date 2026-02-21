@@ -4,7 +4,7 @@ import {
 } from "@react-three/drei";
 import { Suspense } from "react";
 import { Ground } from "./Ground";
-import { Position } from "@/app/types";
+import { Position } from "@/app/v1/types";
 import { Horizon } from "./Horizon";
 
   type SceneProps = {

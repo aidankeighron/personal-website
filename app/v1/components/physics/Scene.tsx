@@ -6,7 +6,7 @@ import { Suspense, useRef } from "react";
 import { Car } from "./Car";
 import { Ground } from "./Ground";
 import { usePlane } from "@react-three/cannon";
-import { Position } from "@/app/types";
+import { Position } from "@/app/v1/types";
   
 type SceneProps = {
   startPosition: Position,
