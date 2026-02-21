@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { JetBrains_Mono } from 'next/font/google';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 const jetBrains = JetBrains_Mono({subsets: ['latin']});
 
@@ -19,6 +21,8 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
   return (
     <html lang="en">
       <body className={`${jetBrains.className} bg-main dark:bg-d-main text-d-main dark:text-main`}>
+        <SpeedInsights/>
+        <Analytics />
         {children}
       </body>
     </html>

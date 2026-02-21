@@ -59,13 +59,11 @@ export const viewport: Viewport = {
 
 const jetBrains = JetBrains_Mono({subsets: ['latin']});
 
-export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {
+export default function V1Layout({children}: Readonly<{children: React.ReactNode}>) {
   return (
-    <html lang="en" className={`text-main bg-d-main ${jetBrains.className}`}>
-      <SpeedInsights/>
-      <Analytics />
-      <body className="bg-main dark:bg-d-main text-d-main dark:text-main" suppressHydrationWarning={true}>{children}</body>
+    <>
+      {children}
       <Footer />
-    </html>
+    </>
   );
 }
