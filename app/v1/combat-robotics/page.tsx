@@ -64,7 +64,7 @@ export default function CurrentRobots() {
 
   return (
     <>
-      <Link href='/'><p className='header-link w-fit fixed z-10 items-end justify-end top-10 left-[2.5%]'>Home</p></Link>
+      <Link href='/v1'><p className='header-link w-fit fixed z-10 items-end justify-end top-10 left-[2.5%]'>Home</p></Link>
       <div className='flex flex-col items-center pt-40'>
         <title>Combat Robotics | Aidan Keighron</title>
         <h1 className='text-3xl lg:text-5xl font-semibold bottom-border mb-2 mx-10'>Bad Conflict Combat Robotics</h1>

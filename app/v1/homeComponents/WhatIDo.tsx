@@ -133,7 +133,7 @@ export default function WhatIDo() {
   
     return (
       <div id={'robotics'} className='flex flex-col items-end mx-[5%]'>
-        <WhatIDoHeader title={"Combat Robotics"} date={"August 2022 - Present"} learnMoreLink={"/combat-robotics"} />
+        <WhatIDoHeader title={"Combat Robotics"} date={"August 2022 - Present"} learnMoreLink={"/v1/combat-robotics"} />
         <div className='robot-container'>
           <m.p
             initial={{opacity: 0.5, y: '25%'}}

@@ -218,7 +218,7 @@ const otherProjects: OtherProject[] = [
         description: "A calculator that uses folders and files to do calculations",
         date: "February 2022",
         tags: ["Java", "Multithreading"],
-        page: '/projects/file-calculator',
+        page: '/v1/projects/file-calculator',
         github: 'https://github.com/aidankeighron/calculator',
     },
     {
@@ -233,7 +233,7 @@ const otherProjects: OtherProject[] = [
         description: "Website for running a fantasy draft with FRC teams. It handles everything from picking teams to calculating their score.",
         date: "October 2022 - January 2023",
         tags: ["HTML/CSS", "JavaScript", "Express.js", "Socket.io", "mySQL"],
-        page: '/projects/fantasy-FRC',
+        page: '/v1/projects/fantasy-FRC',
         github: 'https://github.com/aidankeighron/fantasy-FRC',
     },
     {
@@ -248,7 +248,7 @@ const otherProjects: OtherProject[] = [
         description: "Scraped designed to make a collection of every FRC shirt trade.",
         date: "October 2021 - January 2022",
         tags: ["Python", "Google Sheets API"],
-        page: '/projects/sheet-scraper',
+        page: '/v1/projects/sheet-scraper',
         github: 'https://github.com/aidankeighron/sheet-scraper',
     },
     {
@@ -256,7 +256,7 @@ const otherProjects: OtherProject[] = [
         description: "Productivity software that runs in the corner of your desktop to keep track of all of your tasks, has many other cool features.",
         date: "December 2021 - May 2022",
         tags: ["Swing", "Java"],
-        page: '/projects/productivity',
+        page: '/v1/projects/productivity',
         github: 'https://github.com/aidankeighron/productivity',
     },
     {
@@ -264,7 +264,7 @@ const otherProjects: OtherProject[] = [
         description: "Visualization of a PID algorithm that is fully tuneable.",
         date: "January 2023",
         tags: ["Java", "Swing", "PID", "Robotics"],
-        page: '/projects/PID-visualizer',
+        page: '/v1/projects/PID-visualizer',
         github: 'https://github.com/aidankeighron/PID-visualizer',
     },
     {
@@ -326,7 +326,7 @@ const otherProjects: OtherProject[] = [
         description: "Collection of various desmos graphs.",
         date: "October 2021 - Present",
         tags: ["Desmos", "Math", "Physics"],
-        page: "/desmos"
+        page: "/v1/desmos"
     }
 ];
 
