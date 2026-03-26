@@ -4,7 +4,7 @@ import BackToTop from './components/BackToTop';
 
 export default function Page() {
   return(
-    <main className='flex flex-col items-center'>
+    <main className='w-full flex flex-col items-center'>
       <title>Home | Aidan Keighron</title>
       <Home />
       <BackToTop />
