@@ -115,17 +115,14 @@ function WhatIDoHeader({title, date, learnMoreLink}: WhatIDoProps) {
 }
   
 export default function WhatIDo() {
-    const [hasMounted, setHasMounted] = useState(false);
     const [zoom, setZoom] = useState(2);
     const [dpr, setDpr] = useState(1.5);
   
     useEffect(() => {
-      setHasMounted(true);
       const handleResize = () => {
         setZoom(window.innerWidth < 1024 ? 1.5 : 2);
       };
-      
-      handleResize(); // Initial call
+  
       window.addEventListener('resize', handleResize);
   
       // Clean up the event listener when the component unmounts
@@ -133,10 +130,6 @@ export default function WhatIDo() {
         window.removeEventListener('resize', handleResize);
       };
     }, []);
-  
-    if (!hasMounted) {
-      return <div className="min-h-screen"></div>; // Placeholder
-    }
   
     return (
       <div id={'robotics'} className='flex flex-col items-end mx-[5%]'>
