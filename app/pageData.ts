@@ -75,32 +75,41 @@ type Skill = {
     subList?: string[]
 }
 
+const calculateYears = (startYear: number) => {
+    const today = new Date();
+    let years = today.getFullYear() - startYear;
+    if (today.getMonth() < 4 || (today.getMonth() === 4 && today.getDate() < 10)) {
+        years--;
+    }
+    return years;
+}
+
 const skillsets: {[key: string]: Skill[]} = {
     "Programming Languages": [
         {
             name: "Python",
-            experienceYears: 3,
+            experienceYears: calculateYears(2021),
         },
         {
             name: "Java",
-            experienceYears: 3,
+            experienceYears: calculateYears(2021),
         },
         {
             name: "C++",
-            experienceYears: 1,
+            experienceYears: calculateYears(2023),
         },
         {
             name: "C#",
-            experienceYears: 3,
+            experienceYears: calculateYears(2021),
         },
         {
             name: "JavaScript / TypeScript",
-            experienceYears: 3,
+            experienceYears: calculateYears(2021),
             subList: ["React Native", "Electron", "Express.js / Socket.io", "Next.js"],
         },
         {
             name: "HTML / CSS",
-            experienceYears: 3,
+            experienceYears: calculateYears(2021),
         },
     ],
     "Technical Skills": [
