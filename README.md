@@ -1,5 +1,7 @@
 ## Personal Website
 
+Personal website built with Next.js and Three.js (for the 3d models).
+
 ### Inspiration
 
 https://v4.brittanychiang.com/#about
